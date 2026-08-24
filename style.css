@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #f7f5f0; /* Fundo suave levemente creme */
+    background-color: #f7f5f0;
     color: #4a4a4a;
     line-height: 1.6;
 }
@@ -29,7 +29,7 @@ header {
 .logo {
     font-size: 1.6rem;
     font-weight: bold;
-    color: #800032;
+    color: #700938;
 }
 
 nav ul {
@@ -54,9 +54,9 @@ nav a:hover {
 .hero {
     position: relative;
     background-color: #fcebf2;
-    background-image: url('logo.png'); /* Sua logo usada como estampa */
-    background-repeat: repeat;
-    background-size: 320px;
+    background-image: url('./logo.png'); /* Usa a logo como padrão no fundo */
+    background-repeat: repeat; /* Repete a logo de forma organizada */
+    background-size: 320px; /* Tamanho proporcional de cada marca d'água */
     background-position: center;
     text-align: center;
     padding: 110px 20px;
@@ -64,10 +64,10 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     min-height: 480px;
-    overflow: visible;
+    overflow: hidden;
 }
 
-/* Camada semitransparente rosa para o efeito suave de marca d'água */
+/* Camada suave rosa por cima do fundo para criar a marca d'água */
 .hero::before {
     content: '';
     position: absolute;
@@ -97,7 +97,7 @@ nav a:hover {
     font-size: 1.15rem;
     color: #4a4a4a;
     margin-bottom: 30px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 /* BOTÃO VERDE */
@@ -119,13 +119,13 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* LOGO FLUTUANTE EM DESTAQUE NO CANTO DIREITO */
+/* LOGO CIRCULAR EM DESTAQUE NO CANTO DIREITO */
 .hero-logo-destaque {
     position: absolute;
     right: 6%;
-    bottom: -60px;
-    width: 290px;
-    height: 290px;
+    bottom: -40px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     object-fit: cover;
     z-index: 3;
