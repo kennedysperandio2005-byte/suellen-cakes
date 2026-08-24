@@ -49,11 +49,15 @@ nav a:hover {
     color: #d81b60;
 }
 
-/* HERO / INÍCIO */
+/* HERO / INÍCIO COM LOGO NO FUNDO */
 .hero {
     background-color: #fcebf2;
+    background-image: linear-gradient(rgba(252, 235, 242, 0.88), rgba(252, 235, 242, 0.88)), url('logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     text-align: center;
-    padding: 80px 20px;
+    padding: 100px 20px;
 }
 
 .hero h1 {
