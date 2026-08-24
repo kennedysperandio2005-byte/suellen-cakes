@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #faf3f6;
+    background-color: #f7f5f0; /* Fundo suave levemente creme */
     color: #4a4a4a;
     line-height: 1.6;
 }
@@ -29,19 +29,20 @@ header {
 .logo {
     font-size: 1.6rem;
     font-weight: bold;
-    color: #700938;
+    color: #800032;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 25px;
 }
 
 nav a {
     text-decoration: none;
-    color: #555;
-    font-weight: 600;
+    color: #4a4a4a;
+    font-weight: 500;
+    font-size: 0.95rem;
     transition: color 0.3s;
 }
 
@@ -49,84 +50,101 @@ nav a:hover {
     color: #d81b60;
 }
 
-/* HERO / INÍCIO COM IMAGEM OCUPANDO TODO O FUNDO ROSA */
+/* HERO COM PADRÃO DE MARCA D'ÁGUA REPETIDA NO FUNDO */
 .hero {
     position: relative;
     background-color: #fcebf2;
+    background-image: url('logo.png'); /* Sua logo usada como estampa */
+    background-repeat: repeat;
+    background-size: 320px;
+    background-position: center;
     text-align: center;
-    padding: 120px 20px;
+    padding: 110px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 480px;
-    overflow: hidden;
+    overflow: visible;
 }
 
-/* IMAGEM PREENCHENDO 100% DA SEÇÃO HERO SEM DISTORCER */
-.hero-bg-logo {
+/* Camada semitransparente rosa para o efeito suave de marca d'água */
+.hero::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Preenche toda a área rosa proporcionalmente */
-    opacity: 0.55; /* Opacidade forte e bem visível */
-    pointer-events: none;
+    background-color: rgba(252, 235, 242, 0.82);
     z-index: 1;
-    mix-blend-mode: multiply; /* Remove o fundo branco da imagem e mescla com a cor rosa */
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 750px;
 }
 
 .hero h1 {
-    font-size: 3.2rem;
+    font-size: 3rem;
     color: #700938;
     margin-bottom: 15px;
     font-weight: 700;
-    text-shadow: 0 2px 12px rgba(252, 235, 242, 0.9), 0 0 20px rgba(255, 255, 255, 0.8);
+    line-height: 1.25;
 }
 
 .hero p {
-    font-size: 1.25rem;
-    color: #333333;
+    font-size: 1.15rem;
+    color: #4a4a4a;
     margin-bottom: 30px;
-    font-weight: 500;
-    text-shadow: 0 2px 10px rgba(252, 235, 242, 0.9), 0 0 15px rgba(255, 255, 255, 0.8);
+    font-weight: 400;
 }
 
+/* BOTÃO VERDE */
 .btn-whatsapp {
     display: inline-block;
-    background-color: #d81b60;
+    background-color: #2ecc71;
     color: white;
-    padding: 14px 32px;
-    font-weight: bold;
+    padding: 14px 38px;
+    font-weight: 700;
+    font-size: 0.95rem;
     border-radius: 30px;
     text-decoration: none;
     transition: transform 0.2s, background-color 0.3s;
-    box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+    box-shadow: 0 4px 14px rgba(46, 204, 113, 0.3);
 }
 
 .btn-whatsapp:hover {
-    background-color: #b8144f;
+    background-color: #27ae60;
     transform: translateY(-2px);
+}
+
+/* LOGO FLUTUANTE EM DESTAQUE NO CANTO DIREITO */
+.hero-logo-destaque {
+    position: absolute;
+    right: 6%;
+    bottom: -60px;
+    width: 290px;
+    height: 290px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 3;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    background-color: #ffffff;
 }
 
 /* SEÇÕES GERAIS */
 .secao {
-    padding: 60px 5%;
+    padding: 70px 5%;
     text-align: center;
     max-width: 1100px;
     margin: 0 auto;
 }
 
 .secao h2 {
-    font-size: 2.2rem;
-    color: #700938;
-    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #333333;
+    margin-bottom: 35px;
     font-weight: 700;
 }
 
@@ -134,150 +152,83 @@ nav a:hover {
 .grid-produtos {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 .card-produto {
     background: white;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    width: 240px;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+    width: 290px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     transition: transform 0.3s;
 }
 
 .card-produto:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
 .card-produto h3 {
-    color: #d81b60;
-    margin: 15px 0 8px;
-    font-size: 1.25rem;
+    color: #222222;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .card-produto p {
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 0.95rem;
+    color: #666666;
 }
 
-/* ESTILO DA ÁREA DE IMAGEM */
-.img-placeholder {
-    width: 100%;
-    height: 180px;
-    background-color: #f7bdcf;
+/* SOBRE NÓS */
+.sobre-nos {
+    background-color: #ffffff;
     border-radius: 16px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #700938;
-    font-weight: bold;
-    font-size: 1.05rem;
-}
-
-.img-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* FESTAS E CASAMENTOS */
-.destaque-eventos {
-    background-color: #ffffff;
-    border-radius: 24px;
     padding: 50px 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.destaque-eventos p {
-    max-width: 850px;
-    margin: 0 auto;
-    font-size: 1rem;
-    color: #555;
-}
-
-.btn-secundario {
-    display: inline-block;
-    margin-top: 25px;
-    background-color: #d81b60;
-    color: white;
-    padding: 14px 32px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 12px rgba(216, 27, 96, 0.25);
-}
-
-.btn-secundario:hover {
-    background-color: #b8144f;
-    transform: translateY(-2px);
-}
-
-/* GALERIA */
-.grid-galeria {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.foto-item {
-    background: white;
-    padding: 12px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-}
-
-.foto-item .img-placeholder {
-    width: 230px;
-    height: 165px;
-}
-
-/* SOBRE NÓS E CONTATO */
-.sobre-nos, .contato {
-    background-color: #ffffff;
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    margin-bottom: 30px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .sobre-nos p {
     max-width: 800px;
     margin: 0 auto;
     font-size: 1.05rem;
-    color: #555;
-}
-
-.info-contato p {
-    font-size: 1.05rem;
-    margin: 10px 0;
-    color: #555;
-}
-
-.info-contato strong {
-    color: #700938;
+    color: #555555;
 }
 
 /* RODAPÉ */
 footer {
     background-color: #ffffff;
-    color: #777;
+    color: #888888;
     text-align: center;
     padding: 25px;
-    margin-top: 40px;
+    font-size: 0.9rem;
     border-top: 1px solid #eaeaea;
 }
 
-/* ADAPTAÇÃO PARA CELULAR (RESPONSIVO) */
+/* RESPONSIVO PARA DISPOSITIVOS MÓVEIS */
+@media (max-width: 900px) {
+    .hero-logo-destaque {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 30px;
+        width: 220px;
+        height: 220px;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 60px 20px 80px;
+    }
+}
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -285,22 +236,20 @@ footer {
     }
 
     nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
+        gap: 15px;
     }
 
     .hero h1 {
         font-size: 2.2rem;
     }
 
-    .grid-produtos, .grid-galeria {
+    .grid-produtos {
         flex-direction: column;
         align-items: center;
     }
 
-    .card-produto, .foto-item, .foto-item .img-placeholder {
+    .card-produto {
         width: 100%;
-        max-width: 300px;
+        max-width: 320px;
     }
 }
