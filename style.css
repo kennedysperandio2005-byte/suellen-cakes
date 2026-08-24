@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -49,45 +49,37 @@ nav a:hover {
     color: #d81b60;
 }
 
-/* HERO / INÍCIO COM LOGO EM CAMADAS */
+/* HERO / INÍCIO COM LOGO GARANTIDA NO FUNDO */
 .hero {
     position: relative;
     background-color: #fcebf2;
     text-align: center;
     padding: 100px 20px;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 380px;
+    min-height: 400px;
+    overflow: hidden;
 }
 
+/* MARCA D'ÁGUA DA LOGO NO FUNDO */
 .hero-bg-logo {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 320px;
-    width: 80%;
+    width: 340px;
+    max-width: 85%;
     height: auto;
-    opacity: 0.18; /* Ajuste a transparência da logo aqui */
-    z-index: 1;
+    opacity: 0.25; /* Transparência da logo (ajuste se preferir mais ou menos visível) */
     pointer-events: none;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(252, 235, 242, 0.4);
-    z-index: 2;
+    z-index: 1;
+    mix-blend-mode: multiply; /* Remove o fundo branco caso a imagem não seja PNG transparente */
 }
 
 .hero-content {
     position: relative;
-    z-index: 3;
+    z-index: 2;
 }
 
 .hero h1 {
