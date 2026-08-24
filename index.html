@@ -12,45 +12,87 @@
     <header>
         <div class="logo">Suellen Cakes</div>
         <nav>
-            <a href="#inicio">Início</a>
-            <a href="#produtos">Produtos</a>
-            <a href="#sobre">Sobre Nós</a>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#eventos">Festas & Casamentos</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- SEÇÃO INICIAL -->
+    <!-- SEÇÃO INÍCIO -->
     <section id="inicio" class="hero">
-        <h1>Doces que tornam seus momentos especiais</h1>
-        <p>Bolos artesanais, doces finos e sobremesas feitas com carinho.</p>
-        <a href="https://wa.me/27995336204?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank" class="btn-whatsapp">FAÇA SEU PEDIDO</a>
+        <div class="hero-content">
+            <h1>Suellen Cakes</h1>
+            <p>Doces que tornam seus momentos ainda mais especiais.</p>
+            <a href="https://wa.me/5500000000000" target="_blank" class="btn-whatsapp">FAÇA SEU PEDIDO</a>
+        </div>
     </section>
 
     <!-- SEÇÃO PRODUTOS -->
-    <section id="produtos" class="produtos">
+    <section id="produtos" class="secao">
         <h2>Nossos Produtos</h2>
-        <div class="cards-container">
-            <div class="card">
-                <h3>Bolos Festivos</h3>
-                <p>Bolos personalizados para aniversários e casamentos.</p>
+        <div class="grid-produtos">
+            <div class="card-produto">
+                <div class="img-placeholder">Foto Bolo</div>
+                <h3>Bolos</h3>
+                <p>Bolos decorados e personalizados para todas as ocasiões.</p>
             </div>
-            <div class="card">
-                <h3>Doces Finos</h3>
-                <p>Brigadeiros gourmet, bombons e copinhos recheados.</p>
+            <div class="card-produto">
+                <div class="img-placeholder">Foto Doce</div>
+                <h3>Doces</h3>
+                <p>Brigadeiros gourmet, doces finos e bombons recheados.</p>
             </div>
-            <div class="card">
+            <div class="card-produto">
+                <div class="img-placeholder">Foto Sobremesa</div>
                 <h3>Sobremesas</h3>
-                <p>Tortas, pudins e taças da felicidade para o seu fim de semana.</p>
+                <p>Taças da felicidade, pudins e tortas irresistíveis.</p>
+            </div>
+            <div class="card-produto">
+                <div class="img-placeholder">Foto Caseiro</div>
+                <h3>Bolos Caseiros</h3>
+                <p>Aquele bolo fofinho e caseiro perfeito para o café da tarde.</p>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO SOBRE -->
-    <section id="sobre" class="sobre">
-        <h2>Sobre a Confeitaria</h2>
-        <p>Na Suellen Cakes, transformamos ingredientes de alta qualidade em memórias inesquecíveis para você e sua família.</p>
+    <!-- SEÇÃO FESTAS E CASAMENTOS -->
+    <section id="eventos" class="secao destaque-eventos">
+        <h2>Festas e Casamentos</h2>
+        <p>Transformamos seu evento em uma experiência inesquecível com mesas de doces personalizadas e bolos cenográficos ou reais de alta confeitaria.</p>
+        <a href="https://wa.me/5500000000000" target="_blank" class="btn-secundario">Solicitar Orçamento de Evento</a>
     </section>
 
-    <!-- RODAPÉ -->
+    <!-- SEÇÃO GALERIA -->
+    <section id="galeria" class="secao">
+        <h2>Galeria de Fotos</h2>
+        <div class="grid-galeria">
+            <div class="foto-item"><div class="img-placeholder">Foto 1</div></div>
+            <div class="foto-item"><div class="img-placeholder">Foto 2</div></div>
+            <div class="foto-item"><div class="img-placeholder">Foto 3</div></div>
+            <div class="foto-item"><div class="img-placeholder">Foto 4</div></div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE NÓS -->
+    <section id="sobre" class="secao sobre-nos">
+        <h2>Sobre Nós</h2>
+        <p>A Suellen Cakes nasceu da paixão por criar momentos doces e inesquecíveis. Cada receita é produzida de forma artesanal, utilizando ingredientes selecionados e muito carinho para levar o melhor sabor à sua mesa.</p>
+    </section>
+
+    <!-- SEÇÃO CONTATO -->
+    <section id="contato" class="secao contato">
+        <h2>Fale Conosco</h2>
+        <div class="info-contato">
+            <p><strong>WhatsApp:</strong> (00) 00000-0000</p>
+            <p><strong>Instagram:</strong> @suellencakes</p>
+            <p><strong>Localização:</strong> Atendimento com encomendas locais</p>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
     </footer>
