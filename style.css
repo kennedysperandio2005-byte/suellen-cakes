@@ -24,10 +24,14 @@ header {
     z-index: 100;
 }
 
-.logo-container span {
+.logo-container {
     font-size: 1.5rem;
     font-weight: 700;
     color: #a8285c;
+}
+
+.logo-img {
+    display: none;
 }
 
 nav ul {
@@ -41,9 +45,14 @@ nav a {
     color: #333333;
     font-weight: 500;
     font-size: 0.95rem;
+    transition: 0.3s;
 }
 
-/* SEÇÃO HERO COM LOGOS DE FUNDO */
+nav a:hover {
+    color: #a8285c;
+}
+
+/* SEÇÃO HERO */
 .hero {
     position: relative;
     min-height: 480px;
@@ -52,11 +61,8 @@ nav a {
     justify-content: center;
     text-align: center;
     padding: 60px 20px;
-    background-color: #fbe6ee;
-    background-image: url('logo.png');
-    background-repeat: repeat;
-    background-size: 260px;
-    background-position: center;
+    background-color: #fce8f0;
+    overflow: visible;
 }
 
 .hero-overlay {
@@ -65,31 +71,35 @@ nav a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(251, 230, 238, 0.75);
+    background: rgba(252, 232, 240, 0.45);
     z-index: 1;
 }
 
+/* LOGO CENTRAL (MARCA-D'ÁGUA SUAVE) */
 .hero-content {
     position: relative;
     z-index: 2;
     max-width: 800px;
 }
 
-/* LOGO CENTRAL ATRÁS DO TEXTO */
 .hero-content::before {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 380px;
-    height: 380px;
+    width: 420px;
+    height: 420px;
     background-image: url('logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
-    opacity: 0.35;
+    border-radius: 50%;
+    opacity: 0.25;
     z-index: -1;
+}
+
+.hero-badge {
+    display: none;
 }
 
 .hero h1 {
@@ -105,6 +115,7 @@ nav a {
     margin-bottom: 30px;
 }
 
+/* BOTÃO VERDE */
 .btn-whatsapp {
     display: inline-block;
     padding: 12px 32px;
@@ -115,57 +126,49 @@ nav a {
     font-size: 0.9rem;
     border-radius: 25px;
     box-shadow: 0 4px 12px rgba(43, 211, 112, 0.3);
+    transition: 0.3s;
 }
 
-/* SELO CIRCULAR QUE SOBREPPÕE A SEÇÃO */
-.hero-floating-seal {
+.btn-whatsapp:hover {
+    transform: scale(1.03);
+}
+
+/* SELO CIRCULAR NO CANTO DIREITO */
+.hero-floating-seal,
+.hero::after {
+    content: "";
     position: absolute;
-    right: 8%;
-    bottom: -70px;
-    width: 240px;
-    height: 240px;
+    right: 6%;
+    bottom: -80px;
+    width: 250px;
+    height: 250px;
     background-image: url('logo.png');
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     z-index: 10;
 }
 
-/* SEÇÃO PRODUTOS */
+/* SEÇÃO DE PRODUTOS */
 .secao {
     position: relative;
     padding: 100px 20px 60px;
     text-align: center;
     background-color: #f7f3ed;
-    background-image: url('logo.png');
-    background-repeat: repeat;
-    background-size: 260px;
-}
-
-.secao::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(247, 243, 237, 0.88);
-    z-index: 1;
-}
-
-.secao h2, .grid-produtos {
-    position: relative;
-    z-index: 2;
 }
 
 .secao h2 {
+    position: relative;
+    z-index: 2;
     font-size: 1.8rem;
     color: #333333;
     margin-bottom: 35px;
 }
 
 .grid-produtos {
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: center;
     gap: 25px;
