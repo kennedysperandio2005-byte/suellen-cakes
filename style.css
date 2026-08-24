@@ -1,4 +1,3 @@
-/* RESET E CONFIGURAÇÕES GERAIS */
 * {
     margin: 0;
     padding: 0;
@@ -10,19 +9,8 @@
 body {
     background-color: #f9f5f7;
     color: #555555;
-    overflow-x: hidden;
 }
 
-/* TÍTULOS DE SEÇÃO */
-.titulo-secao {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #881347;
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-/* MENU DE NAVEGAÇÃO */
 header {
     display: flex;
     justify-content: space-between;
@@ -35,7 +23,7 @@ header {
     z-index: 1000;
 }
 
-.brand-title {
+.logo {
     font-size: 1.6rem;
     font-weight: 700;
     color: #881347;
@@ -51,17 +39,14 @@ nav a {
     text-decoration: none;
     color: #4a3e3d;
     font-weight: 500;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
 }
 
 nav a:hover {
     color: #d81b60;
 }
 
-/* HERO (SEÇÃO PRINCIPAL) */
 .hero {
-    min-height: 400px;
+    min-height: 380px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,44 +57,39 @@ nav a:hover {
 
 .hero h1 {
     font-size: 3rem;
-    font-weight: 700;
     color: #881347;
     margin-bottom: 10px;
 }
 
 .hero p {
     font-size: 1.2rem;
-    color: #666;
     margin-bottom: 25px;
-    font-style: italic;
 }
 
 .btn-whatsapp {
     display: inline-block;
     padding: 14px 36px;
-    background-color: #25d366;
+    background-color: #d81b60;
     color: #ffffff;
     text-decoration: none;
     font-weight: 700;
-    font-size: 1rem;
     border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.btn-whatsapp:hover {
-    transform: translateY(-2px);
-    background-color: #20ba5a;
-}
-
-/* SEÇÃO GERAL */
 .secao {
     padding: 60px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    text-align: center;
 }
 
-/* 1. SEÇÃO PRODUTOS */
+.secao h2 {
+    font-size: 2.2rem;
+    color: #881347;
+    margin-bottom: 35px;
+}
+
+/* PRODUTOS */
 .grid-produtos {
     display: flex;
     justify-content: center;
@@ -122,90 +102,52 @@ nav a:hover {
     border-radius: 20px;
     padding: 20px;
     width: 250px;
-    text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease;
-}
-
-.card-produto:hover {
-    transform: translateY(-5px);
-}
-
-.img-placeholder-produto {
-    width: 100%;
-    height: 180px;
-    background-color: #f7bdcf;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #881347;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
 }
 
 .card-produto h3 {
     color: #d81b60;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 10px;
+    margin: 15px 0 10px 0;
 }
 
-.card-produto p {
-    color: #666666;
-    font-size: 0.9rem;
-    line-height: 1.4;
+/* FORMATO E MOLDURA DAS IMAGENS */
+.img-placeholder {
+    width: 100%;
+    height: 180px;
+    background-color: #f7bdcf;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* 2. SEÇÃO FESTAS E CASAMENTOS */
-.card-evento {
+.img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FESTAS E CASAMENTOS */
+.destaque-eventos .card-evento {
     background-color: #ffffff;
     border-radius: 24px;
     padding: 50px 40px;
-    text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    max-width: 1100px;
-    margin: 0 auto;
 }
 
-.titulo-evento {
-    font-size: 2.3rem;
-    font-weight: 700;
-    color: #881347;
-    margin-bottom: 20px;
-}
-
-.card-evento p {
-    font-size: 1rem;
-    color: #555555;
-    max-width: 850px;
-    margin: 0 auto 30px auto;
-    line-height: 1.6;
-}
-
-.btn-evento {
+.btn-secundario {
     display: inline-block;
+    margin-top: 20px;
     background-color: #d81b60;
     color: #ffffff;
     padding: 14px 32px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 4px 12px rgba(216, 27, 96, 0.25);
-    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.btn-evento:hover {
-    transform: translateY(-2px);
-    background-color: #c21752;
-}
-
-/* 3. SEÇÃO GALERIA DE FOTOS */
+/* GALERIA */
 .grid-galeria {
     display: flex;
     justify-content: center;
@@ -213,109 +155,30 @@ nav a:hover {
     flex-wrap: wrap;
 }
 
-.card-galeria {
+.foto-item {
     background-color: #ffffff;
     border-radius: 20px;
     padding: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
-.img-placeholder-galeria {
+.foto-item .img-placeholder {
     width: 240px;
     height: 170px;
-    background-color: #f7bdcf;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #881347;
-    font-weight: 700;
-    font-size: 1.05rem;
 }
 
 /* SOBRE NÓS & CONTATO */
-.card-simples {
+.sobre-nos, .contato {
     background-color: #ffffff;
     border-radius: 20px;
     padding: 40px;
-    text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    max-width: 900px;
-    margin: 0 auto;
+    margin-bottom: 40px;
 }
 
-.texto-simples {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #555;
-}
-
-.grid-contato {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.card-contato {
-    background-color: #ffffff;
-    padding: 20px 30px;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    text-align: center;
-    min-width: 220px;
-}
-
-.card-contato strong {
-    color: #881347;
-}
-
-/* RODAPÉ */
 footer {
     text-align: center;
     padding: 25px;
     background-color: #ffffff;
-    font-size: 0.85rem;
     color: #888888;
-    margin-top: 40px;
-}
-
-/* RESPONSIVIDADE (CELULAR) */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 15px;
-        gap: 15px;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
-    .grid-produtos, .grid-galeria, .grid-contato {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card-produto, .card-galeria, .img-placeholder-galeria {
-        width: 100%;
-        max-width: 320px;
-    }
-
-    .card-evento {
-        padding: 30px 20px;
-    }
-
-    .titulo-evento {
-        font-size: 1.8rem;
-    }
 }
