@@ -1,115 +1,105 @@
-/* RESET E CONFIGURAÇÕES GERAIS */
+/* RESET E ESTILOS GERAIS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #f9f5f7;
-    color: #555555;
-    overflow-x: hidden;
+    background-color: #faf3f6;
+    color: #4a4a4a;
+    line-height: 1.6;
 }
 
-/* TÍTULOS DE SEÇÃO */
-.titulo-secao {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #881347;
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-/* MENU DE NAVEGAÇÃO */
+/* MENU E CABEÇALHO */
 header {
+    background-color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    padding: 18px 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
-.brand-title {
+.logo {
     font-size: 1.6rem;
-    font-weight: 700;
-    color: #881347;
+    font-weight: bold;
+    color: #700938;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 20px;
 }
 
 nav a {
     text-decoration: none;
-    color: #4a3e3d;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s;
 }
 
 nav a:hover {
     color: #d81b60;
 }
 
-/* HERO (SEÇÃO PRINCIPAL) */
+/* HERO / INÍCIO */
 .hero {
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: #fcebf2;
     text-align: center;
-    padding: 60px 20px;
-    background-color: #f3e5eb;
+    padding: 80px 20px;
 }
 
 .hero h1 {
     font-size: 3rem;
-    font-weight: 700;
-    color: #881347;
-    margin-bottom: 10px;
+    color: #700938;
+    margin-bottom: 15px;
 }
 
 .hero p {
     font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 25px;
-    font-style: italic;
+    color: #555;
+    margin-bottom: 30px;
 }
 
 .btn-whatsapp {
     display: inline-block;
-    padding: 14px 36px;
-    background-color: #25d366;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1rem;
+    background-color: #d81b60;
+    color: white;
+    padding: 14px 32px;
+    font-weight: bold;
     border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.3s;
+    box-shadow: 0 4px 12px rgba(216, 27, 96, 0.25);
 }
 
 .btn-whatsapp:hover {
+    background-color: #b8144f;
     transform: translateY(-2px);
-    background-color: #20ba5a;
 }
 
-/* SEÇÃO GERAL */
+/* SEÇÕES GERAIS */
 .secao {
-    padding: 60px 20px;
-    max-width: 1200px;
+    padding: 60px 5%;
+    text-align: center;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-/* 1. SEÇÃO PRODUTOS */
+.secao h2 {
+    font-size: 2.2rem;
+    color: #700938;
+    margin-bottom: 30px;
+}
+
+/* CARTÕES DE PRODUTOS */
 .grid-produtos {
     display: flex;
     justify-content: center;
@@ -118,94 +108,89 @@ nav a:hover {
 }
 
 .card-produto {
-    background-color: #ffffff;
-    border-radius: 20px;
+    background: white;
     padding: 20px;
-    width: 250px;
-    text-align: center;
+    border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    width: 240px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s;
 }
 
 .card-produto:hover {
     transform: translateY(-5px);
 }
 
-.img-placeholder-produto {
-    width: 100%;
-    height: 180px;
-    background-color: #f7bdcf;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #881347;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
 .card-produto h3 {
     color: #d81b60;
+    margin: 15px 0 8px;
     font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 10px;
 }
 
 .card-produto p {
-    color: #666666;
     font-size: 0.9rem;
-    line-height: 1.4;
+    color: #666;
 }
 
-/* 2. SEÇÃO FESTAS E CASAMENTOS */
-.card-evento {
+/* ESTILO DA ÁREA DE IMAGEM */
+.img-placeholder {
+    width: 100%;
+    height: 180px;
+    background-color: #f7bdcf;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #700938;
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+.img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FESTAS E CASAMENTOS */
+.destaque-eventos {
     background-color: #ffffff;
     border-radius: 24px;
     padding: 50px 40px;
-    text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    max-width: 1100px;
-    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.titulo-evento {
-    font-size: 2.3rem;
-    font-weight: 700;
-    color: #881347;
-    margin-bottom: 20px;
-}
-
-.card-evento p {
-    font-size: 1rem;
-    color: #555555;
+.destaque-eventos p {
     max-width: 850px;
-    margin: 0 auto 30px auto;
-    line-height: 1.6;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #555;
 }
 
-.btn-evento {
+.btn-secundario {
     display: inline-block;
+    margin-top: 25px;
     background-color: #d81b60;
-    color: #ffffff;
+    color: white;
     padding: 14px 32px;
     border-radius: 30px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 4px 12px rgba(216, 27, 96, 0.25);
-    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.btn-evento:hover {
+.btn-secundario:hover {
+    background-color: #b8144f;
     transform: translateY(-2px);
-    background-color: #c21752;
 }
 
-/* 3. SEÇÃO GALERIA DE FOTOS */
+/* GALERIA */
 .grid-galeria {
     display: flex;
     justify-content: center;
@@ -213,82 +198,59 @@ nav a:hover {
     flex-wrap: wrap;
 }
 
-.card-galeria {
-    background-color: #ffffff;
-    border-radius: 20px;
+.foto-item {
+    background: white;
     padding: 12px;
+    border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
-.img-placeholder-galeria {
-    width: 240px;
-    height: 170px;
-    background-color: #f7bdcf;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #881347;
-    font-weight: 700;
-    font-size: 1.05rem;
+.foto-item .img-placeholder {
+    width: 230px;
+    height: 165px;
 }
 
-/* SOBRE NÓS & CONTATO */
-.card-simples {
+/* SOBRE NÓS E CONTATO */
+.sobre-nos, .contato {
     background-color: #ffffff;
     border-radius: 20px;
     padding: 40px;
-    text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    max-width: 900px;
-    margin: 0 auto;
+    margin-bottom: 30px;
 }
 
-.texto-simples {
-    font-size: 1rem;
-    line-height: 1.7;
+.sobre-nos p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.05rem;
     color: #555;
 }
 
-.grid-contato {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+.info-contato p {
+    font-size: 1.05rem;
+    margin: 10px 0;
+    color: #555;
 }
 
-.card-contato {
-    background-color: #ffffff;
-    padding: 20px 30px;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    text-align: center;
-    min-width: 220px;
-}
-
-.card-contato strong {
-    color: #881347;
+.info-contato strong {
+    color: #700938;
 }
 
 /* RODAPÉ */
 footer {
+    background-color: #ffffff;
+    color: #777;
     text-align: center;
     padding: 25px;
-    background-color: #ffffff;
-    font-size: 0.85rem;
-    color: #888888;
     margin-top: 40px;
+    border-top: 1px solid #eaeaea;
 }
 
-/* RESPONSIVIDADE (CELULAR) */
+/* ADAPTAÇÃO PARA CELULAR (RESPONSIVO) */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
-        padding: 15px;
-        gap: 15px;
+        gap: 12px;
     }
 
     nav ul {
@@ -301,21 +263,13 @@ footer {
         font-size: 2.2rem;
     }
 
-    .grid-produtos, .grid-galeria, .grid-contato {
+    .grid-produtos, .grid-galeria {
         flex-direction: column;
         align-items: center;
     }
 
-    .card-produto, .card-galeria, .img-placeholder-galeria {
+    .card-produto, .foto-item, .foto-item .img-placeholder {
         width: 100%;
-        max-width: 320px;
-    }
-
-    .card-evento {
-        padding: 30px 20px;
-    }
-
-    .titulo-evento {
-        font-size: 1.8rem;
+        max-width: 300px;
     }
 }
