@@ -1,218 +1,233 @@
-/* RESET E ESTILOS GERAIS */
+/* RESET BÁSICO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #faf5f7;
-    color: #4a4a4a;
-    line-height: 1.6;
+    background-color: #f7f3ed;
+    color: #4a3e3d;
+    overflow-x: hidden;
 }
 
-/* MENU E CABEÇALHO */
+/* CABEÇALHO */
 header {
-    background-color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 5%;
+    padding: 20px 60px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+}
+
+.logo-container {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #a8285c;
 }
 
 .logo-img {
-    height: 48px;
-    width: auto;
-    display: block;
+    display: none;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 30px;
 }
 
 nav a {
     text-decoration: none;
-    color: #555;
-    font-weight: 600;
-    transition: color 0.3s;
+    color: #333333;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: 0.3s;
 }
 
 nav a:hover {
-    color: #d81b60;
+    color: #a8285c;
 }
 
-/* HERO / INÍCIO COM A LOGO DE FUNDO CENTRALIZADA */
+/* SEÇÃO HERO COM MARCA-D'ÁGUA EM PADRÃO E LOGO NO CANTO */
 .hero {
-    background: linear-gradient(135deg, rgba(252, 228, 236, 0.94) 0%, rgba(248, 187, 208, 0.94) 100%), 
-                url('imagens/logo.png') no-repeat center center;
-    background-size: 350px; /* Tamanho ajustado para não poluir */
-    text-align: center;
-    padding: 110px 20px;
-}
-
-.hero h1 {
-    font-size: 2.8rem;
-    color: #880e4f;
-    margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(255,255,255,0.7);
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: #4a148c;
-    margin-bottom: 30px;
-    font-weight: 600;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.7);
-}
-
-.btn-whatsapp {
-    display: inline-block;
-    background-color: #25d366;
-    color: white;
-    padding: 14px 28px;
-    font-weight: bold;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: transform 0.2s, background-color 0.3s;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-}
-
-.btn-whatsapp:hover {
-    background-color: #1ebc57;
-    transform: translateY(-3px);
-}
-
-/* SEÇÕES GERAIS */
-.secao {
-    padding: 60px 5%;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.secao h2 {
-    font-size: 2.2rem;
-    color: #880e4f;
-    margin-bottom: 30px;
-}
-
-/* CARTÕES DE PRODUTOS */
-.grid-produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;
-}
-
-.card-produto {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s;
-}
-
-.card-produto:hover {
-    transform: translateY(-5px);
-}
-
-.card-produto h3 {
-    color: #d81b60;
-    margin: 15px 0 10px;
-}
-
-/* EVENTOS */
-.destaque-eventos {
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.btn-secundario {
-    display: inline-block;
-    margin-top: 20px;
-    background-color: #d81b60;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.btn-secundario:hover {
-    background-color: #ad1457;
-}
-
-/* GALERIA */
-.grid-galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.foto-item {
-    background: white;
-    padding: 10px;
-    border-radius: 12px;
-}
-
-.img-placeholder {
-    width: 100%;
-    height: 180px;
-    background-color: #f8bbd0;
-    border-radius: 10px;
+    position: relative;
+    min-height: 480px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #880e4f;
-    font-weight: bold;
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #fbe6ee;
+    /* Padrão de logos em marca-d'água nas laterais */
+    background-image: url('logo.png');
+    background-repeat: repeat;
+    background-size: 260px;
+    background-position: center;
+    overflow: visible;
 }
 
-/* CONTATO E SOBRE NÓS */
-.sobre-nos p {
+/* CAMADA ROSA SUAVE */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(251, 230, 238, 0.72);
+    z-index: 1;
+}
+
+/* LOGO CENTRALIZADA ATRÁS DO TEXTO */
+.hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 800px;
+}
+
+.hero-content::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 380px;
+    background-image: url('logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.35;
+    z-index: -1;
+}
+
+.hero-badge {
+    display: none;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    color: #6b123d;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.05rem;
+    color: #4a2d39;
+    margin-bottom: 30px;
+}
+
+/* BOTÃO VERDE */
+.btn-whatsapp {
+    display: inline-block;
+    padding: 12px 32px;
+    background-color: #2bd370;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(43, 211, 112, 0.3);
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.03);
+}
+
+/* LOGO REDONDA FLUTUANTE NO CANTO DIREITO */
+.hero::after {
+    content: "";
+    position: absolute;
+    right: 5%;
+    bottom: -60px;
+    width: 250px;
+    height: 250px;
+    background-image: url('logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+}
+
+/* SEÇÃO DE PRODUTOS */
+.secao {
+    position: relative;
+    padding: 80px 20px 60px;
+    text-align: center;
+    background-color: #f7f3ed;
+    /* Padrão de logos marca-d'água suave no fundo inferior */
+    background-image: url('logo.png');
+    background-repeat: repeat;
+    background-size: 260px;
+}
+
+.secao::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(247, 243, 237, 0.85);
+    z-index: 1;
+}
+
+.secao h2, .grid-produtos {
+    position: relative;
+    z-index: 2;
+}
+
+.secao h2 {
+    font-size: 1.8rem;
+    color: #333333;
+    margin-bottom: 35px;
+}
+
+.grid-produtos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1100px;
     margin: 0 auto;
-    font-size: 1.1rem;
+    flex-wrap: wrap;
 }
 
-.info-contato p {
-    font-size: 1.1rem;
-    margin: 10px 0;
+.card-produto {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 250px;
+    max-width: 320px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    text-align: center;
 }
 
-/* RODAPÉ */
+.card-produto h3 {
+    font-size: 1.1rem;
+    color: #222222;
+    margin-bottom: 8px;
+}
+
+.card-produto p {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.4;
+}
+
 footer {
-    background-color: #880e4f;
-    color: white;
+    position: relative;
+    z-index: 2;
     text-align: center;
     padding: 20px;
-    margin-top: 40px;
-}
-
-/* ADAPTAÇÃO PARA CELULAR (RESPONSIVO) */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    color: #888;
 }
