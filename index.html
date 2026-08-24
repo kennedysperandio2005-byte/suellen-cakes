@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <!-- O ?v=3 força o navegador a carregar o CSS novo imediatamente -->
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=10">
+    <!-- Fonte Google Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- CABEÇALHO / MENU -->
+    <!-- CABEÇALHO E MENU -->
     <header>
         <div class="logo-container">
             <span class="brand-title">Suellen Cakes</span>
@@ -26,60 +29,88 @@
         </nav>
     </header>
 
-    <!-- SEÇÃO PRINCIPAL (HERO) -->
+    <!-- INÍCIO (HERO) -->
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <!-- Logo central em marca-d'água recortada em círculo -->
-            <div class="logo-watermark-center"></div>
-            
-            <h1>Doces que tornam seus momentos inesquecíveis</h1>
-            <p>Bolos artesanais, doces finos e sobremesas feitas com amor e exclusividade.</p>
-            <a href="https://wa.me/5500000000000" target="_blank" class="btn-whatsapp">✨ FAÇA SEU PEDIDO NO WHATSAPP</a>
+            <h1>Suellen Cakes</h1>
+            <p>“Doces que tornam seus momentos ainda mais especiais.”</p>
+            <a href="https://wa.me/5500000000000" target="_blank" class="btn-whatsapp">FAÇA SEU PEDIDO</a>
         </div>
-
-        <!-- Logo flutuante no canto inferior direito recortada em círculo -->
-        <div class="hero-floating-seal"></div>
     </section>
 
-    <!-- SEÇÃO PRODUTOS -->
+    <!-- PRODUTOS -->
     <section id="produtos" class="secao">
         <h2>Nossos Produtos</h2>
         <div class="grid-produtos">
             <div class="card-produto">
-                <h3>Bolos Festivos</h3>
-                <p>Bolos personalizados e decorados para aniversários e casamentos.</p>
+                <div class="card-img-placeholder">🎂</div>
+                <h3>Bolos</h3>
+                <p>Bolos recheados e personalidades para comemorações inesquecíveis.</p>
             </div>
             <div class="card-produto">
-                <h3>Doces Finos</h3>
-                <p>Brigadeiros gourmet, bombons e copinhos recheados.</p>
+                <div class="card-img-placeholder">🍬</div>
+                <h3>Doces</h3>
+                <p>Brigadeiros gourmet, doces finos e bombons artesanais.</p>
             </div>
             <div class="card-produto">
+                <div class="card-img-placeholder">🍮</div>
                 <h3>Sobremesas</h3>
-                <p>Tortas, pudins e taças da felicidade para o seu fim de semana.</p>
+                <p>Taças especiais, pudins e tortas para adoçar o seu dia.</p>
             </div>
             <div class="card-produto">
+                <div class="card-img-placeholder">🥮</div>
                 <h3>Bolos Caseiros</h3>
-                <p>Aquele bolo fofinho e caseiro perfeito para o café da tarde.</p>
+                <p>Bolos fofinhos e tradicionais, perfeitos para o café da tarde.</p>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO SOBRE NÓS -->
-    <section id="sobre" class="secao sobre-nos">
-        <h2>Sobre Nós</h2>
-        <p>A Suellen Cakes nasceu da paixão por criar momentos doces e marcantes. Cada receita é produzida de forma artesanal, utilizando ingredientes selecionados e muito carinho para levar o melhor sabor à sua mesa.</p>
+    <!-- FESTAS E CASAMENTOS -->
+    <section id="eventos" class="secao secao-destaque">
+        <h2>Festas e Casamentos</h2>
+        <p>Transformamos o seu evento em uma experiência inesquecível com mesas de doces personalizadas e alta confeitaria.</p>
+        <a href="https://wa.me/5500000000000" target="_blank" class="btn-secundario">Solicitar Orçamento para Eventos</a>
     </section>
 
-    <!-- SEÇÃO CONTATO -->
-    <section id="contato" class="secao contato">
-        <h2>Fale Conosco</h2>
-        <div class="info-contato">
-            <p><strong>WhatsApp:</strong> (00) 00000-0000</p>
-            <p><strong>Instagram:</strong> @suellencakes</p>
-            <p><strong>Localização:</strong> Atendimento com encomendas locais</p>
+    <!-- GALERIA -->
+    <section id="galeria" class="secao">
+        <h2>Galeria de Fotos</h2>
+        <div class="grid-galeria">
+            <div class="foto-item"><img src="logo.png" alt="Foto Galeria 1"></div>
+            <div class="foto-item"><img src="logo.png" alt="Foto Galeria 2"></div>
+            <div class="foto-item"><img src="logo.png" alt="Foto Galeria 3"></div>
+            <div class="foto-item"><img src="logo.png" alt="Foto Galeria 4"></div>
         </div>
     </section>
 
+    <!-- SOBRE NÓS -->
+    <section id="sobre" class="secao secao-sobre">
+        <h2>Sobre Nós</h2>
+        <div class="conteudo-sobre">
+            <p>A Suellen Cakes nasceu da paixão por criar momentos doces e marcantes. Cada receita é produzida de forma artesanal, utilizando ingredientes selecionados e muito carinho para levar o melhor sabor à sua mesa.</p>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="secao secao-contato">
+        <h2>Contato</h2>
+        <div class="info-contato">
+            <div class="item-contato">
+                <strong>📱 WhatsApp:</strong>
+                <span>(00) 00000-0000</span>
+            </div>
+            <div class="item-contato">
+                <strong>📸 Instagram:</strong>
+                <span>@suellencakes</span>
+            </div>
+            <div class="item-contato">
+                <strong>📍 Localização:</strong>
+                <span>Atendimento sob encomenda com entregas locais</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
     <footer>
         <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
     </footer>
