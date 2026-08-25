@@ -93,7 +93,7 @@
                         <select id="massa-bolo" onchange="calcularTotal()">
                             <option value="Massa de Baunilha">Massa de Baunilha</option>
                             <option value="Massa de Chocolate (Cacau 50%)">Massa de Chocolate (Cacau 50%)</option>
-                            <option value="Red Velvet (+ R$ 20,00)">Red Velvet (+ R$ 20,00)</option>
+                            <option value="Red Velvet (+ R$ 10,00)">Red Velvet (+ R$ 10,00)</option>
                         </select>
                     </div>
 
@@ -105,7 +105,7 @@
                         <select id="recheio-bolo-1" onchange="calcularTotal()">
                             <option value="Brigadeiro">Brigadeiro</option>
                             <option value="Ninho">Ninho</option>
-                            <option value="Nutella (+ R$ 20,00)">Nutella (+ R$ 20,00)</option>
+                            <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
                             <option value="Morango">Morango</option>
                             <option value="Abacaxi">Abacaxi</option>
                             <option value="Doce de leite">Doce de leite</option>
@@ -128,7 +128,7 @@
                             <option value="">-- Nenhum segundo recheio --</option>
                             <option value="Brigadeiro">Brigadeiro</option>
                             <option value="Ninho">Ninho</option>
-                            <option value="Nutella (+ R$ 20,00)">Nutella (+ R$ 20,00)</option>
+                            <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
                             <option value="Morango">Morango</option>
                             <option value="Abacaxi">Abacaxi</option>
                             <option value="Doce de leite">Doce de leite</option>
@@ -151,7 +151,7 @@
                             <option value="">-- Nenhum terceiro recheio --</option>
                             <option value="Brigadeiro">Brigadeiro</option>
                             <option value="Ninho">Ninho</option>
-                            <option value="Nutella (+ R$ 20,00)">Nutella (+ R$ 20,00)</option>
+                            <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
                             <option value="Morango">Morango</option>
                             <option value="Abacaxi">Abacaxi</option>
                             <option value="Doce de leite">Doce de leite</option>
@@ -233,6 +233,28 @@
                 <label><input type="checkbox" id="add-embalagem" value="10" onchange="calcularTotal()"> Embalagem Especial para Presente (+ R$ 10,00)</label>
             </div>
 
+            <!-- FORMA DE ENTREGA E FRETE -->
+            <div class="grupo-campo" style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                <label for="forma-entrega"><strong>Forma de Entrega / Retirada:</strong></label>
+                <select id="forma-entrega" onchange="tratarMudancaEntrega(); calcularTotal();">
+                    <option value="retirada">Retirar na Confeitaria (Grátis)</option>
+                    <option value="entrega">Entrega em Domicílio (Escolha a Região/Taxa)</option>
+                </select>
+
+                <!-- Campo dinâmico para seleção da região/bairro de entrega -->
+                <div id="painel-frete" style="display: none; margin-top: 10px;">
+                    <label for="regiao-entrega"><strong>Selecione a Região de Entrega:</strong></label>
+                    <select id="regiao-entrega" onchange="calcularTotal()">
+                        <option value="10">Região Central / Bairros Próximos - R$ 10,00</option>
+                        <option value="15">Outros Bairros - R$ 15,00</option>
+                        <option value="20">Bairros Afastados / Região Periférica - R$ 20,00</option>
+                    </select>
+
+                    <label for="endereco-cliente" style="font-size: 0.85rem; color: #555; margin-top: 8px; display: block;"><strong>Endereço para entrega (Opcional):</strong></label>
+                    <input type="text" id="endereco-cliente" placeholder="Rua, número e bairro" style="width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
+                </div>
+            </div>
+
             <!-- TOTAL E BOTÃO DE ENVIAR -->
             <div class="resumo-preco">
                 <h3>Valor Total Estimado: <span id="preco-total">R$ 0,00</span></h3>
@@ -294,6 +316,16 @@
             calcularTotal();
         }
 
+        function tratarMudancaEntrega() {
+            const tipoEntrega = document.getElementById('forma-entrega').value;
+            const painelFrete = document.getElementById('painel-frete');
+            if (tipoEntrega === 'entrega') {
+                painelFrete.style.display = 'block';
+            } else {
+                painelFrete.style.display = 'none';
+            }
+        }
+
         function calcularTotal() {
             let total = 0;
 
@@ -324,6 +356,12 @@
 
             if (document.getElementById('add-topper').checked) total += 15;
             if (document.getElementById('add-embalagem').checked) total += 10;
+
+            // Adiciona valor do frete se 'Entrega em Domicílio' estiver ativo
+            const formaEntrega = document.getElementById('forma-entrega').value;
+            if (formaEntrega === 'entrega') {
+                total += parseFloat(document.getElementById('regiao-entrega').value);
+            }
 
             document.getElementById('preco-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
@@ -371,6 +409,20 @@
             if (itensSelecionados.length === 0) {
                 alert("Por favor, selecione pelo menos um item para montar seu pedido!");
                 return;
+            }
+
+            // Tratamento das informações de frete / retirada
+            const formaEntrega = document.getElementById('forma-entrega').value;
+            if (formaEntrega === 'retirada') {
+                itensSelecionados.push(`🚗 *Entrega/Retirada:* Retirar na Confeitaria (Sem taxa de frete)`);
+            } else {
+                const regiaoText = document.getElementById('regiao-entrega').options[document.getElementById('regiao-entrega').selectedIndex].text;
+                const endereco = document.getElementById('endereco-cliente').value.trim();
+                let infoFrete = `🛵 *Entrega em Domicílio:* ${regiaoText}`;
+                if (endereco !== "") {
+                    infoFrete += `\n  - Endereço: ${endereco}`;
+                }
+                itensSelecionados.push(infoFrete);
             }
 
             const total = document.getElementById('preco-total').innerText;
