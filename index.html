@@ -82,9 +82,11 @@
                     <div class="grupo-campo">
                         <label for="tamanho-bolo"><strong>Tamanho do Bolo:</strong></label>
                         <select id="tamanho-bolo" onchange="calcularTotal()">
-                            <option value="60">Pequeno (~10 fatias) - R$ 60,00</option>
-                            <option value="90" selected>Médio (~15 a 20 fatias) - R$ 90,00</option>
-                            <option value="130">Grande (~25 a 30 fatias) - R$ 130,00</option>
+                            <option value="80">10cm (~6 fatias) - R$ 80,00</option>
+                            <option value="130" selected>15cm (~15 fatias) - R$ 130,00</option>
+                            <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                            <option value="270">25cm (~40 fatias) - R$ 270,00</option>
+                            <option value="320">30cm (~50 fatias) - R$ 320,00</option>
                         </select>
                     </div>
 
@@ -351,7 +353,6 @@
             if (document.getElementById('add-topper').checked) total += 15;
             if (document.getElementById('add-embalagem').checked) total += 10;
 
-            // Adiciona a taxa fixa de R$ 50,00 se a opção 'Entrega em Domicílio' estiver selecionada
             const formaEntrega = document.getElementById('forma-entrega').value;
             if (formaEntrega === 'entrega') {
                 total += 50.00;
@@ -405,7 +406,6 @@
                 return;
             }
 
-            // Informações de entrega fixada em R$ 50,00 ou retirada grátis
             const formaEntrega = document.getElementById('forma-entrega').value;
             if (formaEntrega === 'retirada') {
                 itensSelecionados.push(`🚗 *Entrega/Retirada:* Retirar na Confeitaria (Sem taxa de frete)`);
