@@ -80,27 +80,16 @@
                 <div id="opcoes-bolo" class="painel-opcoes" style="display: none;">
                     
                     <div class="grupo-campo">
-                        <label for="tipo-bolo"><strong>Estrutura do Bolo:</strong></label>
-                        <select id="tipo-bolo" onchange="tratarTipoBolo(); calcularTotal();">
-                            <option value="simples">Bolo Simples (1 Andar)</option>
-                            <option value="andar_2">Bolo de 2 Andares (+ R$ 40,00 estruturação)</option>
-                            <option value="andar_3">Bolo de 3 Andares (+ R$ 80,00 estruturação)</option>
+                        <label for="tipo-bolo"><strong>Quantidade de Andares:</strong></label>
+                        <select id="tipo-bolo" onchange="atualizarAndaresBolo(); calcularTotal();">
+                            <option value="1">1 Andar (Bolo Simples)</option>
+                            <option value="2">2 Andares</option>
+                            <option value="3">3 Andares</option>
                         </select>
                     </div>
 
                     <div class="grupo-campo">
-                        <label for="tamanho-bolo"><strong>Tamanho / Diâmetro Base:</strong></label>
-                        <select id="tamanho-bolo" onchange="calcularTotal()">
-                            <option value="80">10cm (~6 fatias) - R$ 80,00</option>
-                            <option value="130" selected>15cm (~15 fatias) - R$ 130,00</option>
-                            <option value="185">20cm (~25 fatias) - R$ 185,00</option>
-                            <option value="270">25cm (~40 fatias) - R$ 270,00</option>
-                            <option value="320">30cm (~50 fatias) - R$ 320,00</option>
-                        </select>
-                    </div>
-
-                    <div class="grupo-campo">
-                        <label for="massa-bolo"><strong>Escolha a Massa:</strong></label>
+                        <label for="massa-bolo"><strong>Escolha a Massa (Geral):</strong></label>
                         <select id="massa-bolo" onchange="calcularTotal()">
                             <option value="Massa de Baunilha">Massa de Baunilha</option>
                             <option value="Massa de Chocolate (Cacau 50%)">Massa de Chocolate (Cacau 50%)</option>
@@ -108,77 +97,66 @@
                         </select>
                     </div>
 
-                    <div class="grupo-campo">
-                        <label><strong>Escolha até 3 Recheios:</strong></label>
-                        
-                        <!-- 1º Recheio (Obrigatório) -->
-                        <label for="recheio-bolo-1" style="font-size: 0.85rem; color: #777; margin-top: 5px;">1º Recheio:</label>
-                        <select id="recheio-bolo-1" onchange="calcularTotal()">
-                            <option value="Brigadeiro">Brigadeiro</option>
-                            <option value="Ninho">Ninho</option>
-                            <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
-                            <option value="Morango">Morango</option>
-                            <option value="Abacaxi">Abacaxi</option>
-                            <option value="Doce de leite">Doce de leite</option>
-                            <option value="Nozes">Nozes</option>
-                            <option value="Café">Café</option>
-                            <option value="Ganache">Ganache</option>
-                            <option value="Coco">Coco</option>
-                            <option value="Amendoim">Amendoim</option>
-                            <option value="Pêssego">Pêssego</option>
-                            <option value="Ameixa">Ameixa</option>
-                            <option value="Brigadeiro branco">Brigadeiro branco</option>
-                            <option value="Oreo">Oreo</option>
-                            <option value="Geleia de morango">Geleia de morango</option>
-                            <option value="Geleia de frutas vermelhas">Geleia de frutas vermelhas</option>
-                        </select>
-
-                        <!-- 2º Recheio (Opcional) -->
-                        <label for="recheio-bolo-2" style="font-size: 0.85rem; color: #777; margin-top: 8px;">2º Recheio (Opcional):</label>
-                        <select id="recheio-bolo-2" onchange="calcularTotal()">
-                            <option value="">-- Nenhum segundo recheio --</option>
-                            <option value="Brigadeiro">Brigadeiro</option>
-                            <option value="Ninho">Ninho</option>
-                            <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
-                            <option value="Morango">Morango</option>
-                            <option value="Abacaxi">Abacaxi</option>
-                            <option value="Doce de leite">Doce de leite</option>
-                            <option value="Nozes">Nozes</option>
-                            <option value="Café">Café</option>
-                            <option value="Ganache">Ganache</option>
-                            <option value="Coco">Coco</option>
-                            <option value="Amendoim">Amendoim</option>
-                            <option value="Pêssego">Pêssego</option>
-                            <option value="Ameixa">Ameixa</option>
-                            <option value="Brigadeiro branco">Brigadeiro branco</option>
-                            <option value="Oreo">Oreo</option>
-                            <option value="Geleia de morango">Geleia de morango</option>
-                            <option value="Geleia de frutas vermelhas">Geleia de frutas vermelhas</option>
-                        </select>
-
-                        <!-- 3º Recheio (Opcional) -->
-                        <label for="recheio-bolo-3" style="font-size: 0.85rem; color: #777; margin-top: 8px;">3º Recheio (Opcional):</label>
-                        <select id="recheio-bolo-3" onchange="calcularTotal()">
-                            <option value="">-- Nenhum terceiro recheio --</option>
-                            <option value="Brigadeiro">Brigadeiro</option>
-                            <option value="Ninho">Ninho</option>
-                            <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
-                            <option value="Morango">Morango</option>
-                            <option value="Abacaxi">Abacaxi</option>
-                            <option value="Doce de leite">Doce de leite</option>
-                            <option value="Nozes">Nozes</option>
-                            <option value="Café">Café</option>
-                            <option value="Ganache">Ganache</option>
-                            <option value="Coco">Coco</option>
-                            <option value="Amendoim">Amendoim</option>
-                            <option value="Pêssego">Pêssego</option>
-                            <option value="Ameixa">Ameixa</option>
-                            <option value="Brigadeiro branco">Brigadeiro branco</option>
-                            <option value="Oreo">Oreo</option>
-                            <option value="Geleia de morango">Geleia de morango</option>
-                            <option value="Geleia de frutas vermelhas">Geleia de frutas vermelhas</option>
-                        </select>
+                    <!-- ANDAR 1 (BASE) -->
+                    <div id="painel-andar-1" style="border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 10px; background-color: #fafafa;">
+                        <h4 style="margin-top: 0; color: #333;">1º Andar (Base)</h4>
+                        <div class="grupo-campo">
+                            <label for="tamanho-andar-1"><strong>Tamanho do 1º Andar:</strong></label>
+                            <select id="tamanho-andar-1" onchange="calcularTotal()">
+                                <option value="80">10cm (~6 fatias) - R$ 80,00</option>
+                                <option value="130" selected>15cm (~15 fatias) - R$ 130,00</option>
+                                <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                                <option value="270">25cm (~40 fatias) - R$ 270,00</option>
+                                <option value="320">30cm (~50 fatias) - R$ 320,00</option>
+                            </select>
+                        </div>
+                        <div class="grupo-campo">
+                            <label><strong>Recheios do 1º Andar (até 3):</strong></label>
+                            <select id="r1-andar-1" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r2-andar-1" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r3-andar-1" onchange="calcularTotal()"></select>
+                        </div>
                     </div>
+
+                    <!-- ANDAR 2 (MEIO OU TOPO) -->
+                    <div id="painel-andar-2" style="display: none; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 10px; background-color: #fafafa;">
+                        <h4 style="margin-top: 0; color: #333;">2º Andar</h4>
+                        <div class="grupo-campo">
+                            <label for="tamanho-andar-2"><strong>Tamanho do 2º Andar:</strong></label>
+                            <select id="tamanho-andar-2" onchange="calcularTotal()">
+                                <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
+                                <option value="130">15cm (~15 fatias) - R$ 130,00</option>
+                                <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                                <option value="270">25cm (~40 fatias) - R$ 270,00</option>
+                            </select>
+                        </div>
+                        <div class="grupo-campo">
+                            <label><strong>Recheios do 2º Andar (até 3):</strong></label>
+                            <select id="r1-andar-2" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r2-andar-2" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r3-andar-2" onchange="calcularTotal()"></select>
+                        </div>
+                    </div>
+
+                    <!-- ANDAR 3 (TOPO) -->
+                    <div id="painel-andar-3" style="display: none; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 10px; background-color: #fafafa;">
+                        <h4 style="margin-top: 0; color: #333;">3º Andar (Topo)</h4>
+                        <div class="grupo-campo">
+                            <label for="tamanho-andar-3"><strong>Tamanho do 3º Andar:</strong></label>
+                            <select id="tamanho-andar-3" onchange="calcularTotal()">
+                                <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
+                                <option value="130">15cm (~15 fatias) - R$ 130,00</option>
+                                <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                            </select>
+                        </div>
+                        <div class="grupo-campo">
+                            <label><strong>Recheios do 3º Andar (até 3):</strong></label>
+                            <select id="r1-andar-3" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r2-andar-3" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r3-andar-3" onchange="calcularTotal()"></select>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -252,7 +230,6 @@
                     <option value="entrega">Entrega em Domicílio (Taxa fixa R$ 50,00)</option>
                 </select>
 
-                <!-- Campo para endereço quando a opção de entrega estiver selecionada -->
                 <div id="painel-frete" style="display: none; margin-top: 10px;">
                     <p style="font-size: 0.9rem; color: #444; margin-bottom: 8px;"><strong>Taxa de entrega:</strong> R$ 50,00 para qualquer localização</p>
                     <label for="endereco-cliente" style="font-size: 0.85rem; color: #555; display: block;"><strong>Endereço para entrega (Opcional):</strong></label>
@@ -311,6 +288,33 @@
 
     <!-- SCRIPT DE CÁLCULO E WHATSAPP -->
     <script>
+        const listaRecheios = [
+            "Brigadeiro", "Ninho", "Nutella (+ R$ 15,00)", "Morango", "Abacaxi", 
+            "Doce de leite", "Nozes", "Café", "Ganache", "Coco", "Amendoim", 
+            "Pêssego", "Ameixa", "Brigadeiro branco", "Oreo", "Geleia de morango", 
+            "Geleia de frutas vermelhas"
+        ];
+
+        function popularSelectsRecheio() {
+            for (let andar = 1; andar <= 3; andar++) {
+                for (let r = 1; r <= 3; r++) {
+                    const select = document.getElementById(`r${r}-andar-${andar}`);
+                    select.innerHTML = '';
+
+                    if (r === 1) {
+                        listaRecheios.forEach(rec => {
+                            select.innerHTML += `<option value="${rec}">${rec}</option>`;
+                        });
+                    } else {
+                        select.innerHTML = `<option value="">-- Nenhum ${r}º recheio --</option>`;
+                        listaRecheios.forEach(rec => {
+                            select.innerHTML += `<option value="${rec}">${rec}</option>`;
+                        });
+                    }
+                }
+            }
+        }
+
         function toggleOpcao(id) {
             const elemento = document.getElementById(id);
             if (elemento.style.display === "none" || elemento.style.display === "") {
@@ -319,6 +323,13 @@
                 elemento.style.display = "none";
             }
             calcularTotal();
+        }
+
+        function atualizarAndaresBolo() {
+            const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+            document.getElementById('painel-andar-1').style.display = 'block';
+            document.getElementById('painel-andar-2').style.display = (qtdAndares >= 2) ? 'block' : 'none';
+            document.getElementById('painel-andar-3').style.display = (qtdAndares >= 3) ? 'block' : 'none';
         }
 
         function tratarMudancaEntrega() {
@@ -335,23 +346,24 @@
             let total = 0;
 
             if (document.getElementById('check-bolo').checked) {
-                // Adiciona o valor do tamanho do bolo
-                total += parseFloat(document.getElementById('tamanho-bolo').value);
-                
-                // Adiciona taxa de estruturação conforme a quantidade de andares
-                const tipoBolo = document.getElementById('tipo-bolo').value;
-                if (tipoBolo === 'andar_2') total += 40;
-                if (tipoBolo === 'andar_3') total += 80;
+                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
 
+                // Red Velvet
                 if (document.getElementById('massa-bolo').value.includes('Red Velvet')) total += 10;
-                
-                const r1 = document.getElementById('recheio-bolo-1').value;
-                const r2 = document.getElementById('recheio-bolo-2').value;
-                const r3 = document.getElementById('recheio-bolo-3').value;
 
-                if (r1.includes('Nutella')) total += 15;
-                if (r2.includes('Nutella')) total += 15;
-                if (r3.includes('Nutella')) total += 15;
+                // Soma os valores dos tamanhos e recheios adicionais de cada andar visível
+                for (let andar = 1; andar <= qtdAndares; andar++) {
+                    const valTamanho = parseFloat(document.getElementById(`tamanho-andar-${andar}`).value);
+                    total += valTamanho;
+
+                    const r1 = document.getElementById(`r1-andar-${andar}`).value;
+                    const r2 = document.getElementById(`r2-andar-${andar}`).value;
+                    const r3 = document.getElementById(`r3-andar-${andar}`).value;
+
+                    if (r1.includes('Nutella')) total += 15;
+                    if (r2.includes('Nutella')) total += 15;
+                    if (r3.includes('Nutella')) total += 15;
+                }
             }
 
             if (document.getElementById('check-doces').checked) {
@@ -381,18 +393,25 @@
             let itensSelecionados = [];
 
             if (document.getElementById('check-bolo').checked) {
-                const tipoBoloTexto = document.getElementById('tipo-bolo').options[document.getElementById('tipo-bolo').selectedIndex].text;
-                const tam = document.getElementById('tamanho-bolo').options[document.getElementById('tamanho-bolo').selectedIndex].text;
+                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
                 const massa = document.getElementById('massa-bolo').value;
-                
-                let recheios = [document.getElementById('recheio-bolo-1').value];
-                const r2 = document.getElementById('recheio-bolo-2').value;
-                const r3 = document.getElementById('recheio-bolo-3').value;
 
-                if (r2 !== "") recheios.push(r2);
-                if (r3 !== "") recheios.push(r3);
+                let textoBolo = `🎂 *Bolo Personalizado (${qtdAndares} ${qtdAndares === 1 ? 'Andar' : 'Andares'}):*\n  - Massa: ${massa}`;
 
-                itensSelecionados.push(`🎂 *Bolo Personalizado:*\n  - Estrutura: ${tipoBoloTexto}\n  - Tamanho: ${tam}\n  - Massa: ${massa}\n  - Recheios: ${recheios.join(", ")}`);
+                for (let andar = 1; andar <= qtdAndares; andar++) {
+                    const tamTexto = document.getElementById(`tamanho-andar-${andar}`).options[document.getElementById(`tamanho-andar-${andar}`).selectedIndex].text;
+                    
+                    let recheios = [document.getElementById(`r1-andar-${andar}`).value];
+                    const r2 = document.getElementById(`r2-andar-${andar}`).value;
+                    const r3 = document.getElementById(`r3-andar-${andar}`).value;
+
+                    if (r2 !== "") recheios.push(r2);
+                    if (r3 !== "") recheios.push(r3);
+
+                    textoBolo += `\n  - *${andar}º Andar:* ${tamTexto} | Recheios: ${recheios.join(", ")}`;
+                }
+
+                itensSelecionados.push(textoBolo);
             }
 
             if (document.getElementById('check-doces').checked) {
@@ -442,6 +461,11 @@
             
             window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagemTexto)}`, '_blank');
         }
+
+        // Inicializar os selects de recheio no carregamento da página
+        window.onload = function() {
+            popularSelectsRecheio();
+        };
     </script>
 </body>
 </html>
