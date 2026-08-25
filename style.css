@@ -73,11 +73,11 @@ nav a:hover {
 }
 
 /* ==========================================================================
-   BARRA SUPERIOR DE NAVEGAÇÃO / CARRINHO
+   BARRA SUPERIOR DE NAVEGAÇÃO / CARRINHO (ÁREA DE MONTAGEM)
    ========================================================================== */
 #barra-top-navegacao {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Seta no canto esquerdo, carrinho no canto direito */
     align-items: center;
     padding: 12px 5%;
     background-color: #ffffff;
@@ -87,11 +87,12 @@ nav a:hover {
     z-index: 999;
 }
 
+/* Botão com seta rosa escuro no canto esquerdo */
 .btn-voltar-seta {
     background: transparent;
     border: none;
-    color: var(--primary-hover);
-    font-size: 2.2rem;
+    color: var(--primary-hover); /* Rosa escuro (#c2185b) */
+    font-size: 2.2rem;          /* Tamanho destacado da seta */
     font-weight: bold;
     cursor: pointer;
     padding: 0;
@@ -100,9 +101,10 @@ nav a:hover {
 }
 
 .btn-voltar-seta:hover {
-    transform: scale(1.2);
+    transform: scale(1.2);      /* Pequeno efeito de zoom ao passar o mouse */
 }
 
+/* Carrinho no canto direito */
 .carrinho-widget {
     font-size: 1.1rem;
     color: var(--text-dark);
@@ -327,7 +329,24 @@ select:focus {
     border-color: var(--primary-color);
 }
 
-/* RESUMO E BOTÃO VER ORÇAMENTO COMPLETO */
+.grupo-adicionais {
+    margin-top: 20px;
+    padding: 15px 0;
+}
+
+.grupo-adicionais label {
+    display: inline-block;
+    margin-top: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.grupo-adicionais input[type="checkbox"] {
+    accent-color: var(--primary-color);
+    margin-right: 8px;
+}
+
+/* RESUMO E PREÇO TOTAL */
 .resumo-preco {
     margin-top: 25px;
     text-align: center;
@@ -337,12 +356,8 @@ select:focus {
 
 .resumo-preco h3 {
     font-size: 1.4rem;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: var(--text-dark);
-}
-
-.total-resumo-texto {
-    font-size: 1.1rem;
 }
 
 #preco-total {
@@ -350,53 +365,9 @@ select:focus {
     font-size: 1.6rem;
 }
 
-.btn-ver-orcamento {
+.btn-calcular {
     width: 100%;
-    margin-top: 15px;
-    padding: 14px 20px;
-    font-size: 1.05rem;
-    cursor: pointer;
-    border: none;
-    text-align: center;
-}
-
-/* TELA DE ORÇAMENTO DETALHADO */
-.lista-detalhes-pedido {
-    margin: 20px 0;
-    padding: 15px;
-    background-color: var(--bg-light);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.item-detalhe-linha {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px dashed var(--border-color);
-    font-size: 1rem;
-}
-
-.item-detalhe-linha:last-child {
-    border-bottom: none;
-}
-
-.resumo-final-detalhes {
-    text-align: right;
-    font-size: 1.3rem;
-    margin: 20px 0;
-    color: var(--text-dark);
-}
-
-.resumo-final-detalhes strong {
-    color: var(--primary-color);
-}
-
-.btn-enviar-final {
-    width: 100%;
-    text-align: center;
-    padding: 15px;
-    font-size: 1.1rem;
+    margin-top: 10px;
 }
 
 /* ==========================================================================
@@ -513,7 +484,9 @@ footer {
     }
 }
 
-/* REMOÇÃO DA SEÇÃO DE ADICIONAIS */
+/* ==========================================================================
+   REMOÇÃO DA SEÇÃO DE ADICIONAIS
+   ========================================================================== */
 .grupo-adicionais {
     display: none !important;
 }
