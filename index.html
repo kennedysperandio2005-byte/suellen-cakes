@@ -80,7 +80,16 @@
                 <div id="opcoes-bolo" class="painel-opcoes" style="display: none;">
                     
                     <div class="grupo-campo">
-                        <label for="tamanho-bolo"><strong>Tamanho do Bolo:</strong></label>
+                        <label for="tipo-bolo"><strong>Estrutura do Bolo:</strong></label>
+                        <select id="tipo-bolo" onchange="tratarTipoBolo(); calcularTotal();">
+                            <option value="simples">Bolo Simples (1 Andar)</option>
+                            <option value="andar_2">Bolo de 2 Andares (+ R$ 40,00 estruturação)</option>
+                            <option value="andar_3">Bolo de 3 Andares (+ R$ 80,00 estruturação)</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="tamanho-bolo"><strong>Tamanho / Diâmetro Base:</strong></label>
                         <select id="tamanho-bolo" onchange="calcularTotal()">
                             <option value="80">10cm (~6 fatias) - R$ 80,00</option>
                             <option value="130" selected>15cm (~15 fatias) - R$ 130,00</option>
@@ -326,7 +335,14 @@
             let total = 0;
 
             if (document.getElementById('check-bolo').checked) {
+                // Adiciona o valor do tamanho do bolo
                 total += parseFloat(document.getElementById('tamanho-bolo').value);
+                
+                // Adiciona taxa de estruturação conforme a quantidade de andares
+                const tipoBolo = document.getElementById('tipo-bolo').value;
+                if (tipoBolo === 'andar_2') total += 40;
+                if (tipoBolo === 'andar_3') total += 80;
+
                 if (document.getElementById('massa-bolo').value.includes('Red Velvet')) total += 10;
                 
                 const r1 = document.getElementById('recheio-bolo-1').value;
@@ -365,6 +381,7 @@
             let itensSelecionados = [];
 
             if (document.getElementById('check-bolo').checked) {
+                const tipoBoloTexto = document.getElementById('tipo-bolo').options[document.getElementById('tipo-bolo').selectedIndex].text;
                 const tam = document.getElementById('tamanho-bolo').options[document.getElementById('tamanho-bolo').selectedIndex].text;
                 const massa = document.getElementById('massa-bolo').value;
                 
@@ -375,7 +392,7 @@
                 if (r2 !== "") recheios.push(r2);
                 if (r3 !== "") recheios.push(r3);
 
-                itensSelecionados.push(`🎂 *Bolo Personalizado:*\n  - Tamanho: ${tam}\n  - Massa: ${massa}\n  - Recheios: ${recheios.join(", ")}`);
+                itensSelecionados.push(`🎂 *Bolo Personalizado:*\n  - Estrutura: ${tipoBoloTexto}\n  - Tamanho: ${tam}\n  - Massa: ${massa}\n  - Recheios: ${recheios.join(", ")}`);
             }
 
             if (document.getElementById('check-doces').checked) {
