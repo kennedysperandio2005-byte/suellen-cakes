@@ -490,3 +490,51 @@ footer {
 .grupo-adicionais {
     display: none !important;
 }
+
+/* ==========================================================================
+   STATUS DA LOJA (ABERTO / FECHADO)
+   ========================================================================== */
+.status-loja {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 15px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+/* Estilos quando a loja estiver ABERTA */
+.aberta {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+.aberta .bolinha-status {
+    background-color: #4caf50;
+    animation: pulse-verde 2s infinite;
+}
+
+/* Estilos quando a loja estiver FECHADA */
+.fechada {
+    background-color: #ffebee;
+    color: #c62828;
+}
+.fechada .bolinha-status {
+    background-color: #f44336;
+}
+
+.bolinha-status {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+@keyframes pulse-verde {
+    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
+    70% { box-shadow: 0 0 0 8px rgba(76, 175, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
