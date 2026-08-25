@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabor & Arte - Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Suellen Cakes | Confeitaria Artesanal</title>
+    <link rel="stylesheet" href="style.css?v=16">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- CABEÇALHO / MENU -->
     <header>
-        <div class="logo">Sabor & Arte</div>
+        <div class="logo">Suellen Cakes</div>
         <nav>
             <ul>
+                <li><a href="#inicio">Início</a></li>
                 <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#calculadora">Faça seu Pedido</a></li>
-                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#monte-seu-bolo">Montar Pedido</a></li>
+                <li><a href="#eventos">Festas & Casamentos</a></li>
                 <li><a href="#galeria">Galeria</a></li>
                 <li><a href="#sobre">Sobre Nós</a></li>
                 <li><a href="#contato">Contato</a></li>
@@ -24,255 +27,284 @@
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
+    <!-- SEÇÃO INÍCIO / HERO -->
+    <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1>Doces & Bolos Artesanais</h1>
-            <p>Transformando seus momentos especiais em memórias inesquecíveis com sabores únicos.</p>
-            <a href="https://wa.me/5527995336204?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank" class="btn-whatsapp">Fazer Pedido no WhatsApp</a>
+            <h1>Doces que tornam seus momentos especiais</h1>
+            <p>Bolos artesanais, doces finos e sobremesas feitas com carinho.</p>
+            <a href="https://wa.me/5527995336204" target="_blank" class="btn-whatsapp">FAÇA SEU PEDIDO</a>
         </div>
+        <img src="logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
     </section>
 
-    <!-- SEÇÃO DE PRODUTOS -->
+    <!-- SEÇÃO PRODUTOS -->
     <section id="produtos" class="secao">
         <h2>Nossos Produtos</h2>
         <div class="grid-produtos">
             <div class="card-produto">
-                <div class="img-placeholder"><img src="bolos.jpg" alt="Bolos Decorados"></div>
-                <h3>Bolos Decorados</h3>
-                <p>Bolos personalizados para aniversários, casamentos e comemorações especiais.</p>
+                <div class="img-placeholder"><img src="logo.png" alt="Bolos Festivos"></div>
+                <h3>Bolos Festivos</h3>
+                <p>Bolos personalizados para aniversários e casamentos com os melhores recheios.</p>
             </div>
             <div class="card-produto">
-                <div class="img-placeholder"><img src="doces.jpg" alt="Doces Finos"></div>
+                <div class="img-placeholder"><img src="logo.png" alt="Doces Finos"></div>
                 <h3>Doces Finos</h3>
-                <p>Brigadeiros gourmet, beijinhos, nozes e opções refinadas para festas.</p>
+                <p>Brigadeiros gourmet, bombons e copinhos recheados para sua festa.</p>
             </div>
             <div class="card-produto">
-                <div class="img-placeholder"><img src="tortas.jpg" alt="Tortas & Sobremesas"></div>
-                <h3>Tortas & Sobremesas</h3>
-                <p>Tortas holandesas, mousses e sobremesas deliciosas para qualquer ocasião.</p>
+                <div class="img-placeholder"><img src="logo.png" alt="Sobremesas"></div>
+                <h3>Sobremesas</h3>
+                <p>Tortas, pudins e taças da felicidade para o seu fim de semana.</p>
             </div>
             <div class="card-produto">
-                <div class="img-placeholder"><img src="kits.jpg" alt="Kits Festa"></div>
-                <h3>Kits Festa</h3>
-                <p>Combos práticos com bolo, doces e salgados para sua celebração.</p>
+                <div class="img-placeholder"><img src="logo.png" alt="Bolos Caseiros"></div>
+                <h3>Bolos Caseiros</h3>
+                <p>Aquele bolo fofinho e caseiro perfeito para o café da tarde.</p>
             </div>
         </div>
     </section>
 
-    <!-- CALCULADORA DE PEDIDOS -->
-    <section id="calculadora" class="secao">
-        <h2>Monte seu Pedido</h2>
-        <p class="subtitulo-secao">Selecione as opções desejadas para calcular uma estimativa do valor do seu pedido:</p>
+    <!-- SEÇÃO MONTE SEU PEDIDO MULTI-SELEÇÃO -->
+    <section id="monte-seu-bolo" class="secao">
+        <h2>Monte Seu Pedido Completo</h2>
+        <p class="subtitulo-secao">Marque as opções desejadas e escolha as massas, recheios e quantidades abaixo:</p>
 
         <div class="calculadora-container">
-            <!-- OPCÃO: BOLO DE ANIVERSÁRIO -->
+            
+            <!-- 1. BOLO PERSONALIZADO -->
             <div class="item-categoria">
                 <label class="checkbox-titulo">
-                    <input type="checkbox" id="check-bolo" onchange="togglePainel('painel-bolo', this.checked)">
-                    <strong>Bolo Decorado / Aniversário</strong>
+                    <input type="checkbox" id="check-bolo" onchange="toggleOpcao('opcoes-bolo'); calcularTotal();">
+                    <strong>1. Montar Bolo Personalizado</strong>
                 </label>
-                <div id="painel-bolo" class="painel-opcoes" style="display: none;">
+                <div id="opcoes-bolo" class="painel-opcoes" style="display: none;">
+                    
                     <div class="grupo-campo">
-                        <label for="tamanho-bolo">Tamanho do Bolo:</label>
+                        <label for="tamanho-bolo"><strong>Tamanho do Bolo:</strong></label>
                         <select id="tamanho-bolo" onchange="calcularTotal()">
-                            <option value="15">Pequeno (15cm - aprox. 10 a 12 fatias)</option>
-                            <option value="20">Médio (20cm - aprox. 20 a 25 fatias)</option>
-                            <option value="25">Grande (25cm - aprox. 35 a 40 fatias)</option>
+                            <option value="60">Pequeno (~10 fatias) - R$ 60,00</option>
+                            <option value="90" selected>Médio (~15 a 20 fatias) - R$ 90,00</option>
+                            <option value="130">Grande (~25 a 30 fatias) - R$ 130,00</option>
                         </select>
                     </div>
 
                     <div class="grupo-campo">
-                        <label for="massa-bolo">Massa do Bolo:</label>
-                        <select id="massa-bolo">
-                            <option value="Baunilha">Baunilha</option>
-                            <option value="Chocolate">Chocolate</option>
-                            <option value="Red Velvet">Red Velvet</option>
+                        <label for="massa-bolo"><strong>Escolha a Massa:</strong></label>
+                        <select id="massa-bolo" onchange="calcularTotal()">
+                            <option value="Massa de Baunilha">Massa de Baunilha</option>
+                            <option value="Massa de Chocolate (Cacau 50%)">Massa de Chocolate (Cacau 50%)</option>
+                            <option value="Red Velvet (+ R$ 10,00)">Red Velvet (+ R$ 10,00)</option>
                         </select>
                     </div>
 
-                    <!-- RECHEIOS ATUALIZADOS -->
                     <div class="grupo-campo">
                         <label for="recheio-bolo"><strong>Escolha o Recheio Principal:</strong></label>
                         <select id="recheio-bolo" onchange="calcularTotal()">
-                            <option value="Brigadeiro">Brigadeiro</option>
-                            <option value="Ninho">Ninho</option>
+                            <option value="Ninho com Morango">Ninho com Morango</option>
+                            <option value="Brigadeiro Gourmet">Brigadeiro Gourmet</option>
+                            <option value="Doce de Leite com Nozes">Doce de Leite com Nozes</option>
+                            <option value="Prestígio / Beijinho">Prestígio / Beijinho</option>
                             <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
-                            <option value="Morango">Morango</option>
-                            <option value="Abacaxi">Abacaxi</option>
-                            <option value="Doce de leite">Doce de leite</option>
-                            <option value="Nozes">Nozes</option>
-                            <option value="Café">Café</option>
-                            <option value="Ganache">Ganache</option>
-                            <option value="Coco">Coco</option>
-                            <option value="Amendoim">Amendoim</option>
-                            <option value="Pêssego">Pêssego</option>
-                            <option value="Ameixa">Ameixa</option>
-                            <option value="Brigadeiro branco">Brigadeiro branco</option>
-                            <option value="Oreo">Oreo</option>
-                            <option value="Geleia de morango">Geleia de morango</option>
-                            <option value="Geleia de frutas vermelhas">Geleia de frutas vermelhas</option>
                         </select>
                     </div>
+
                 </div>
             </div>
 
-            <!-- OPÇÃO: DOCES GOURMET -->
+            <!-- 2. DOCES E BRIGADEIROS -->
             <div class="item-categoria">
                 <label class="checkbox-titulo">
-                    <input type="checkbox" id="check-doces" onchange="togglePainel('painel-doces', this.checked)">
-                    <strong>Doces Gourmet (Cento)</strong>
+                    <input type="checkbox" id="check-doces" onchange="toggleOpcao('opcoes-doces'); calcularTotal();">
+                    <strong>2. Adicionar Doces / Brigadeiros</strong>
                 </label>
-                <div id="painel-doces" class="painel-opcoes" style="display: none;">
+                <div id="opcoes-doces" class="painel-opcoes" style="display: none;">
                     <div class="grupo-campo">
-                        <label for="qtd-doces">Quantidade de Centos:</label>
+                        <label for="qtd-doces"><strong>Quantidade e Tipo:</strong></label>
                         <select id="qtd-doces" onchange="calcularTotal()">
-                            <option value="1">1 Cento (100 unidades)</option>
-                            <option value="2">2 Centos (200 unidades)</option>
-                            <option value="3">3 Centos (300 unidades)</option>
-                            <option value="5">5 Centos (500 unidades)</option>
+                            <option value="45">50 Brigadeiros Tradicionais - R$ 45,00</option>
+                            <option value="85">100 Brigadeiros Tradicionais - R$ 85,00</option>
+                            <option value="120">50 Doces Finos Variados - R$ 120,00</option>
+                            <option value="220">100 Doces Finos Variados - R$ 220,00</option>
                         </select>
                     </div>
                 </div>
             </div>
 
-            <!-- ADICIONAIS DE DECORAÇÃO -->
+            <!-- 3. SOBREMESAS -->
+            <div class="item-categoria">
+                <label class="checkbox-titulo">
+                    <input type="checkbox" id="check-sobremesa" onchange="toggleOpcao('opcoes-sobremesa'); calcularTotal();">
+                    <strong>3. Adicionar Sobremesa</strong>
+                </label>
+                <div id="opcoes-sobremesa" class="painel-opcoes" style="display: none;">
+                    <div class="grupo-campo">
+                        <label for="item-sobremesa"><strong>Escolha a Sobremesa:</strong></label>
+                        <select id="item-sobremesa" onchange="calcularTotal()">
+                            <option value="50">Pudim Cremoso GG - R$ 50,00</option>
+                            <option value="75">Taça da Felicidade (1.5L) - R$ 75,00</option>
+                            <option value="65">Torta Holandesa - R$ 65,00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. BOLOS CASEIROS -->
+            <div class="item-categoria">
+                <label class="checkbox-titulo">
+                    <input type="checkbox" id="check-caseiro" onchange="toggleOpcao('opcoes-caseiro'); calcularTotal();">
+                    <strong>4. Adicionar Bolo Caseiro</strong>
+                </label>
+                <div id="opcoes-caseiro" class="painel-opcoes" style="display: none;">
+                    <div class="grupo-campo">
+                        <label for="item-caseiro"><strong>Escolha o Bolo Caseiro:</strong></label>
+                        <select id="item-caseiro" onchange="calcularTotal()">
+                            <option value="25">Bolo de Cenoura com Vulcão de Chocolate - R$ 25,00</option>
+                            <option value="22">Bolo de Fubá com Goiabada - R$ 22,00</option>
+                            <option value="28">Bolo Ninho com Nutella - R$ 28,00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADICIONAIS GERAIS -->
             <div class="grupo-adicionais">
-                <label>
-                    <input type="checkbox" id="add-topo" onchange="calcularTotal()"> Topo de Bolo Personalizado (+ R$ 25,00)
-                </label>
-                <br>
-                <label>
-                    <input type="checkbox" id="add-embalagem" onchange="calcularTotal()"> Embalagem Especial para Presente (+ R$ 15,00)
-                </label>
+                <p><strong>Adicionais Opcionais:</strong></p>
+                <label><input type="checkbox" id="add-topper" value="15" onchange="calcularTotal()"> Topper Personalizado (+ R$ 15,00)</label><br>
+                <label><input type="checkbox" id="add-embalagem" value="10" onchange="calcularTotal()"> Embalagem Especial para Presente (+ R$ 10,00)</label>
             </div>
 
-            <!-- RESUMO DO PREÇO E BOTÃO DE WHATSAPP -->
+            <!-- TOTAL E BOTÃO DE ENVIAR -->
             <div class="resumo-preco">
-                <h3>Total Estimado: R$ <span id="valor-total">0,00</span></h3>
-                <button type="button" onclick="enviarPedidoWhatsApp()" class="btn-whatsapp btn-calcular">Enviar Pedido pelo WhatsApp</button>
+                <h3>Valor Total Estimado: <span id="preco-total">R$ 0,00</span></h3>
+                <button onclick="enviarPedidoWhatsApp()" class="btn-whatsapp btn-calcular">Enviar Pedido para o WhatsApp</button>
             </div>
         </div>
     </section>
 
-    <!-- EVENTOS & CASAMENTOS (CORRIGIDO PARA O NÚMERO DE SERRA - ES) -->
+    <!-- SEÇÃO FESTAS E CASAMENTOS -->
     <section id="eventos" class="secao destaque-eventos">
-        <h2>Festas & Casamentos</h2>
         <div class="card-evento">
-            <p>Atendemos grandes eventos, casamentos, aniversários corporativos e festas com cardápios exclusivos de doces finos e bolos decorados sob medida.</p>
-            <a href="https://wa.me/5527995336204?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20evento." target="_blank" class="btn-secundario">Solicitar Orçamento para Evento</a>
+            <h2>Festas e Casamentos</h2>
+            <p>Transformamos seu evento em uma experiência inesquecível com mesas de doces personalizadas e bolos de alta confeitaria.</p>
+            <a href="https://wa.me/5527995336204" target="_blank" class="btn-secundario">Solicitar Orçamento de Evento</a>
         </div>
     </section>
 
-    <!-- GALERIA -->
+    <!-- SEÇÃO GALERIA -->
     <section id="galeria" class="secao">
         <h2>Galeria de Fotos</h2>
         <div class="grid-galeria">
-            <div class="foto-item"><div class="img-placeholder"><img src="galeria1.jpg" alt="Foto Galeria 1"></div></div>
-            <div class="foto-item"><div class="img-placeholder"><img src="galeria2.jpg" alt="Foto Galeria 2"></div></div>
-            <div class="foto-item"><div class="img-placeholder"><img src="galeria3.jpg" alt="Foto Galeria 3"></div></div>
-            <div class="foto-item"><div class="img-placeholder"><img src="galeria4.jpg" alt="Foto Galeria 4"></div></div>
+            <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 1"></div></div>
+            <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 2"></div></div>
+            <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 3"></div></div>
+            <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 4"></div></div>
         </div>
     </section>
 
-    <!-- SOBRE NÓS -->
+    <!-- SEÇÃO SOBRE NÓS -->
     <section id="sobre" class="secao sobre-nos">
         <h2>Sobre Nós</h2>
-        <p>Somos uma confeitaria dedicada a produzir doces e bolos com ingredientes selecionados de alta qualidade. Nosso objetivo é levar carinho e sabor para a sua mesa.</p>
+        <p>A Suellen Cakes nasceu da paixão por criar momentos doces e inesquecíveis. Cada receita é produzida de forma artesanal, utilizando ingredientes selecionados e muito carinho.</p>
     </section>
 
-    <!-- CONTATO -->
+    <!-- SEÇÃO CONTATO -->
     <section id="contato" class="secao contato">
-        <h2>Contato</h2>
+        <h2>Fale Conosco</h2>
         <div class="info-contato">
             <p><strong>WhatsApp:</strong> (27) 99533-6204</p>
-            <p><strong>Atendimento:</strong> Segunda a Sábado - 08:00 às 18:00</p>
+            <p><strong>Instagram:</strong> @suellencakes</p>
+            <p><strong>Localização:</strong> Atendimento com encomendas locais</p>
         </div>
     </section>
 
     <!-- RODAPÉ -->
     <footer>
-        <p>&copy; 2026 Sabor & Arte. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
     </footer>
 
     <!-- SCRIPT DE CÁLCULO E WHATSAPP -->
     <script>
-        // Número do WhatsApp configurado para Serra - ES: 5527995336204
-        const NUMERO_WHATSAPP = '5527995336204';
+    function toggleOpcao(id) {
+        const elemento = document.getElementById(id);
+        if (elemento.style.display === "none" || elemento.style.display === "") {
+            elemento.style.display = "block";
+        } else {
+            elemento.style.display = "none";
+        }
+    }
 
-        function togglePainel(id, visivel) {
-            document.getElementById(id).style.display = visivel ? 'block' : 'none';
-            calcularTotal();
+    function calcularTotal() {
+        let total = 0;
+
+        if (document.getElementById('check-bolo').checked) {
+            total += parseFloat(document.getElementById('tamanho-bolo').value);
+            if (document.getElementById('massa-bolo').value.includes('Red Velvet')) total += 10;
+            if (document.getElementById('recheio-bolo').value.includes('Nutella')) total += 15;
         }
 
-        function calcularTotal() {
-            let total = 0;
-
-            // Cálculo do Bolo
-            if (document.getElementById('check-bolo').checked) {
-                const tamanho = document.getElementById('tamanho-bolo').value;
-                if (tamanho === '15') total += 90;
-                else if (tamanho === '20') total += 140;
-                else if (tamanho === '25') total += 190;
-
-                const recheio = document.getElementById('recheio-bolo').value;
-                if (recheio.includes('Nutella')) {
-                    total += 15;
-                }
-            }
-
-            // Cálculo dos Doces
-            if (document.getElementById('check-doces').checked) {
-                const qtdDoces = parseInt(document.getElementById('qtd-doces').value) || 0;
-                total += qtdDoces * 120; // R$ 120,00 por cento
-            }
-
-            // Adicionais
-            if (document.getElementById('add-topo').checked) total += 25;
-            if (document.getElementById('add-embalagem').checked) total += 15;
-
-            document.getElementById('valor-total').innerText = total.toFixed(2).replace('.', ',');
-            return total;
+        if (document.getElementById('check-doces').checked) {
+            total += parseFloat(document.getElementById('qtd-doces').value);
         }
 
-        function enviarPedidoWhatsApp() {
-            let mensagem = "Olá! Gostaria de fazer o seguinte pedido:\n\n";
-
-            let possuiItem = false;
-
-            if (document.getElementById('check-bolo').checked) {
-                possuiItem = true;
-                const tamanho = document.getElementById('tamanho-bolo').options[document.getElementById('tamanho-bolo').selectedIndex].text;
-                const massa = document.getElementById('massa-bolo').value;
-                const recheio = document.getElementById('recheio-bolo').value;
-
-                mensagem += `*Bolo Decorado:*\n- Tamanho: ${tamanho}\n- Massa: ${massa}\n- Recheio: ${recheio}\n\n`;
-            }
-
-            if (document.getElementById('check-doces').checked) {
-                possuiItem = true;
-                const qtdDoces = document.getElementById('qtd-doces').options[document.getElementById('qtd-doces').selectedIndex].text;
-                mensagem += `*Doces Gourmet:*\n- Quantidade: ${qtdDoces}\n\n`;
-            }
-
-            if (document.getElementById('add-topo').checked || document.getElementById('add-embalagem').checked) {
-                mensagem += `*Adicionais:*\n`;
-                if (document.getElementById('add-topo').checked) mensagem += `- Topo de Bolo Personalizado\n`;
-                if (document.getElementById('add-embalagem').checked) mensagem += `- Embalagem Especial\n`;
-                mensagem += `\n`;
-            }
-
-            const total = calcularTotal();
-            mensagem += `*Total Estimado:* R$ ${total.toFixed(2).replace('.', ',')}`;
-
-            if (!possuiItem) {
-                alert('Por favor, selecione pelo menos um item para enviar o pedido.');
-                return;
-            }
-
-            const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
-            window.open(url, '_blank');
+        if (document.getElementById('check-sobremesa').checked) {
+            total += parseFloat(document.getElementById('item-sobremesa').value);
         }
+
+        if (document.getElementById('check-caseiro').checked) {
+            total += parseFloat(document.getElementById('item-caseiro').value);
+        }
+
+        if (document.getElementById('add-topper').checked) total += 15;
+        if (document.getElementById('add-embalagem').checked) total += 10;
+
+        document.getElementById('preco-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    function enviarPedidoWhatsApp() {
+        let itensSelecionados = [];
+
+        if (document.getElementById('check-bolo').checked) {
+            const tam = document.getElementById('tamanho-bolo').options[document.getElementById('tamanho-bolo').selectedIndex].text;
+            const massa = document.getElementById('massa-bolo').value;
+            const recheio = document.getElementById('recheio-bolo').value;
+            itensSelecionados.push(`🎂 *Bolo Personalizado:*\n  - Tamanho: ${tam}\n  - Massa: ${massa}\n  - Recheio: ${recheio}`);
+        }
+
+        if (document.getElementById('check-doces').checked) {
+            const doces = document.getElementById('qtd-doces').options[document.getElementById('qtd-doces').selectedIndex].text;
+            itensSelecionados.push(`🍬 *Doces:* ${doces}`);
+        }
+
+        if (document.getElementById('check-sobremesa').checked) {
+            const sobremesa = document.getElementById('item-sobremesa').options[document.getElementById('item-sobremesa').selectedIndex].text;
+            itensSelecionados.push(`🍮 *Sobremesa:* ${sobremesa}`);
+        }
+
+        if (document.getElementById('check-caseiro').checked) {
+            const caseiro = document.getElementById('item-caseiro').options[document.getElementById('item-caseiro').selectedIndex].text;
+            itensSelecionados.push(`🥮 *Bolo Caseiro:* ${caseiro}`);
+        }
+
+        let adicionais = [];
+        if (document.getElementById('add-topper').checked) adicionais.push("Topper Personalizado");
+        if (document.getElementById('add-embalagem').checked) adicionais.push("Embalagem Especial");
+        
+        if (adicionais.length > 0) {
+            itensSelecionados.push(`🎁 *Adicionais:* ${adicionais.join(", ")}`);
+        }
+
+        if (itensSelecionados.length === 0) {
+            alert("Por favor, selecione pelo menos um item para montar seu pedido!");
+            return;
+        }
+
+        const total = document.getElementById('preco-total').innerText;
+        const mensagemTexto = `Olá! Gostaria de fazer o seguinte pedido:\n\n` + itensSelecionados.join("\n\n") + `\n\n*VALOR TOTAL ESTIMADO:* ${total}`;
+        
+        const numeroWhatsApp = "5527995336204"; 
+        
+        window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagemTexto)}`, '_blank');
+    }
     </script>
 </body>
 </html>
