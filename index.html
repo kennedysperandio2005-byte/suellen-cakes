@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR DE NAVEGAÇÃO / CARRINHO (Aparece ao ir para o orçamento detalhado) -->
+    <!-- BARRA SUPERIOR DE NAVEGAÇÃO / CARRINHO -->
     <div id="barra-top-navegacao" style="display: none;">
         <button type="button" class="btn-voltar-seta" onclick="voltarParaInicio()" aria-label="Voltar">
             &#8592;
@@ -31,6 +31,9 @@
                 <li><a href="#hero">Início</a></li>
                 <li><a href="#produtos">Produtos</a></li>
                 <li><a href="#orcamento">Orçamento</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
@@ -42,6 +45,36 @@
             <h1>Doces & Bolos artesanais feitos com amor</h1>
             <p>Monte seu pedido personalizado de forma rápida e prática.</p>
             <a href="#orcamento" class="btn-secundario">Montar Pedido</a>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PRODUTOS -->
+    <section id="produtos" class="secao">
+        <h2>Nossos Produtos</h2>
+        <p class="subtitulo-secao">Conheça nossas delícias feitas com ingredientes selecionados</p>
+        
+        <div class="grid-produtos">
+            <div class="card-produto">
+                <div class="img-placeholder">
+                    <img src="https://via.placeholder.com/300x180" alt="Bolo Decorado">
+                </div>
+                <h3>Bolos Festivos</h3>
+                <p>Bolos de andares e temáticos personalizados para o seu evento.</p>
+            </div>
+            <div class="card-produto">
+                <div class="img-placeholder">
+                    <img src="https://via.placeholder.com/300x180" alt="Doces Finos">
+                </div>
+                <h3>Doces Finos</h3>
+                <p>Brigadeiros gourmet, beijinhos e opções variadas para festas.</p>
+            </div>
+            <div class="card-produto">
+                <div class="img-placeholder">
+                    <img src="https://via.placeholder.com/300x180" alt="Sobremesas Especial">
+                </div>
+                <h3>Kits Especiais</h3>
+                <p>Combos perfeitos para aniversários e pequenas comemorações.</p>
+            </div>
         </div>
     </section>
 
@@ -104,7 +137,7 @@
             <h2>📋 Detalhes do seu Pedido</h2>
             
             <div id="lista-itens-orcamento" class="lista-detalhes-pedido">
-                <!-- Os itens selecionados serão inseridos aqui dinamicamente pelo JavaScript -->
+                <!-- Os itens selecionados serão inseridos aqui -->
             </div>
             
             <div class="resumo-final-detalhes">
@@ -119,12 +152,44 @@
 
     </section>
 
-    <!-- RODAPÉ -->
+    <!-- SEÇÃO DE EVENTOS -->
+    <section id="eventos" class="secao destaque-eventos">
+        <div class="card-evento">
+            <h2>Festas & Casamentos</h2>
+            <p>Planejando um grande evento? Preparamos degustações e orçamentos corporativos sob medida para que seu momento especial seja inesquecível.</p>
+            <a href="https://wa.me/5527995336204" target="_blank" class="btn-whatsapp">Agendar Degustação</a>
+        </div>
+    </section>
+
+    <!-- SEÇÃO GALERIA -->
+    <section id="galeria" class="secao">
+        <h2>Galeria de Fotos</h2>
+        <p class="subtitulo-secao">Alguns dos nossos trabalhos recentes</p>
+
+        <div class="grid-galeria">
+            <div class="foto-item"><img src="https://via.placeholder.com/200" alt="Bolo 1"></div>
+            <div class="foto-item"><img src="https://via.placeholder.com/200" alt="Bolo 2"></div>
+            <div class="foto-item"><img src="https://via.placeholder.com/200" alt="Doces 1"></div>
+            <div class="foto-item"><img src="https://via.placeholder.com/200" alt="Doces 2"></div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE NÓS -->
+    <section id="sobre" class="secao sobre-nos">
+        <h2>Sobre Nós</h2>
+        <p>Na <strong>Suellen Cakes</strong>, cada bolo e doce é produzido de forma artesanal com o máximo cuidado, carinho e ingredientes de alta qualidade para deixar as suas celebrações ainda mais saborosas.</p>
+    </section>
+
+    <!-- RODAPÉ & CONTATO -->
     <footer id="contato">
-        <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
+        <div class="contato">
+            <p><strong>Suellen Cakes</strong></p>
+            <p>WhatsApp: (27) 99533-6204</p>
+        </div>
+        <p style="margin-top: 15px;">&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Chama o arquivo script.js externo -->
+    <!-- Arquivo JavaScript Externo -->
     <script src="script.js"></script>
 </body>
 </html>
