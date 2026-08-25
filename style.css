@@ -73,6 +73,48 @@ nav a:hover {
 }
 
 /* ==========================================================================
+   BARRA SUPERIOR DE NAVEGAÇÃO / CARRINHO (ÁREA DE MONTAGEM)
+   ========================================================================== */
+#barra-top-navegacao {
+    display: flex;
+    justify-content: space-between; /* Seta no canto esquerdo, carrinho no canto direito */
+    align-items: center;
+    padding: 12px 5%;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+/* Botão com seta rosa escuro no canto esquerdo */
+.btn-voltar-seta {
+    background: transparent;
+    border: none;
+    color: var(--primary-hover); /* Rosa escuro (#c2185b) */
+    font-size: 2.2rem;          /* Tamanho destacado da seta */
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: var(--transition);
+}
+
+.btn-voltar-seta:hover {
+    transform: scale(1.2);      /* Pequeno efeito de zoom ao passar o mouse */
+}
+
+/* Carrinho no canto direito */
+.carrinho-widget {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+#preco-carrinho-top {
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
    SEÇÃO HERO / INÍCIO
    ========================================================================== */
 .hero {
@@ -194,6 +236,7 @@ nav a:hover {
     box-shadow: var(--shadow-soft);
     transition: var(--transition);
     border: 1px solid var(--border-color);
+    cursor: pointer;
 }
 
 .card-produto:hover {
