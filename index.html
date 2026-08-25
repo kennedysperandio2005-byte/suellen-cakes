@@ -395,9 +395,6 @@
             mostrarTela('tela-inicio');
         }
 
-        // ALTERADO: Agora ao clicar em "Montar Pedido" ou nos cards, 
-        // a tela abre limpa e sem marcar nada automaticamente, 
-        // deixando o cliente escolher o que quiser do zero.
         function abrirMontagem(categoria) {
             mostrarTela('tela-montagem');
             
@@ -582,12 +579,12 @@
             mensagem += `💰 *Valor Total Estimado:* ${total}`;
 
             if (!temItem) {
-                alert("Por favor, selecione ao menos um item antes de enviar o pedido.");
+                alert("Por favor, selecione pelo menos um item para o seu pedido antes de enviar.");
                 return;
             }
 
-            const numeroWhatsApp = "5527995336204";
-            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            const telefone = "5527995336204";
+            const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
             window.open(url, '_blank');
         }
     </script>
