@@ -12,6 +12,7 @@ body {
     line-height: 1.6;
 }
 
+/* CABEÇALHO / MENU */
 header {
     background-color: #ffffff;
     display: flex;
@@ -48,6 +49,7 @@ nav a:hover {
     color: #d81b60;
 }
 
+/* HERO SECTION */
 .hero {
     position: relative;
     background-color: #fcebf2;
@@ -125,6 +127,7 @@ nav a:hover {
     background-color: #ffffff;
 }
 
+/* SEÇÕES GERAIS */
 .secao {
     padding: 60px 5%;
     text-align: center;
@@ -139,6 +142,7 @@ nav a:hover {
     font-weight: 700;
 }
 
+/* CARD DE PRODUTOS */
 .grid-produtos {
     display: flex;
     justify-content: center;
@@ -190,6 +194,7 @@ nav a:hover {
     object-fit: cover;
 }
 
+/* CALCULADORA DE PEDIDOS */
 .subtitulo-secao {
     margin-bottom: 25px;
     color: #666;
@@ -288,6 +293,7 @@ nav a:hover {
     font-size: 1rem;
 }
 
+/* EVENTOS E BOTÃO SECUNDÁRIO */
 .destaque-eventos .card-evento {
     background-color: #ffffff;
     border-radius: 24px;
@@ -322,6 +328,7 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
+/* GALERIA */
 .grid-galeria {
     display: flex;
     justify-content: center;
@@ -341,6 +348,7 @@ nav a:hover {
     height: 165px;
 }
 
+/* SOBRE NÓS E CONTATO */
 .sobre-nos, .contato {
     background-color: #ffffff;
     border-radius: 20px;
@@ -364,6 +372,7 @@ nav a:hover {
     color: #700938;
 }
 
+/* RODAPÉ */
 footer {
     background-color: #ffffff;
     color: #777;
@@ -373,6 +382,7 @@ footer {
     border-top: 1px solid #eaeaea;
 }
 
+/* MEDIA QUERIES (MOBILE) */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
