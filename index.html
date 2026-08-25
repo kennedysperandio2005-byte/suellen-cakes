@@ -353,11 +353,11 @@
             }
         }
 
-        // Executar ao carregar a página: limpa todos os checkboxes e calcula zerado
+        // Executar ao carregar a página: limpa TUDO e deixa zerado
         window.onload = function() {
             popularSelectsRecheio();
             
-            // Garante que todas as caixas começam desmarcadas ao abrir o site
+            // Garante que todas as caixas começam desmarcadas
             document.getElementById('check-bolo').checked = false;
             document.getElementById('check-doces').checked = false;
             document.getElementById('check-sobremesa').checked = false;
@@ -365,7 +365,7 @@
             document.getElementById('add-topper').checked = false;
             document.getElementById('add-embalagem').checked = false;
 
-            // Oculta os painéis de opções
+            // Oculta todos os painéis de opções
             document.getElementById('opcoes-bolo').style.display = 'none';
             document.getElementById('opcoes-doces').style.display = 'none';
             document.getElementById('opcoes-sobremesa').style.display = 'none';
@@ -395,19 +395,23 @@
             mostrarTela('tela-inicio');
         }
 
+        // ALTERADO: Agora ao clicar em "Montar Pedido" ou nos cards, 
+        // a tela abre limpa e sem marcar nada automaticamente, 
+        // deixando o cliente escolher o que quiser do zero.
         function abrirMontagem(categoria) {
             mostrarTela('tela-montagem');
-            ativarEExibirCategoria(categoria);
-        }
+            
+            // Reseta todas as seleções ao abrir a tela de montagem
+            document.getElementById('check-bolo').checked = false;
+            document.getElementById('check-doces').checked = false;
+            document.getElementById('check-sobremesa').checked = false;
+            document.getElementById('check-caseiro').checked = false;
+            
+            document.getElementById('opcoes-bolo').style.display = 'none';
+            document.getElementById('opcoes-doces').style.display = 'none';
+            document.getElementById('opcoes-sobremesa').style.display = 'none';
+            document.getElementById('opcoes-caseiro').style.display = 'none';
 
-        function ativarEExibirCategoria(categoria) {
-            const check = document.getElementById(`check-${categoria}`);
-            
-            if (check) {
-                check.checked = true;
-                togglePainel(`opcoes-${categoria}`, true);
-            }
-            
             calcularTotal();
         }
 
@@ -514,7 +518,6 @@
             let mensagem = "✨ *NOVO PEDIDO - SUELLEN CAKES* ✨\n\n";
             let temItem = false;
 
-            // BOLO PERSONALIZADO
             if (document.getElementById('check-bolo').checked) {
                 temItem = true;
                 const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
@@ -540,28 +543,24 @@
                 mensagem += `\n`;
             }
 
-            // DOCES
             if (document.getElementById('check-doces').checked) {
                 temItem = true;
                 const selectDoces = document.getElementById('qtd-doces');
                 mensagem += `🍬 *Doces/Brigadeiros:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
             }
 
-            // SOBREMESA
             if (document.getElementById('check-sobremesa').checked) {
                 temItem = true;
                 const selectSobremesa = document.getElementById('item-sobremesa');
                 mensagem += `🍮 *Sobremesa:* ${selectSobremesa.options[selectSobremesa.selectedIndex].text}\n\n`;
             }
 
-            // BOLO CASEIRO
             if (document.getElementById('check-caseiro').checked) {
                 temItem = true;
                 const selectCaseiro = document.getElementById('item-caseiro');
                 mensagem += `🥮 *Bolo Caseiro:* ${selectCaseiro.options[selectCaseiro.selectedIndex].text}\n\n`;
             }
 
-            // ADICIONAIS
             let adicionais = [];
             if (document.getElementById('add-topper').checked) adicionais.push("Topper Personalizado");
             if (document.getElementById('add-embalagem').checked) adicionais.push("Embalagem Especial");
@@ -570,7 +569,6 @@
                 mensagem += `🎈 *Adicionais:* ${adicionais.join(', ')}\n\n`;
             }
 
-            // ENTREGA / RETIRADA
             const formaEntrega = document.getElementById('forma-entrega').value;
             if (formaEntrega === 'entrega') {
                 const endereco = document.getElementById('endereco-cliente').value.trim();
@@ -580,7 +578,6 @@
                 mensagem += `🛍️ *Forma de Recebimento:* Retirada na Confeitaria\n\n`;
             }
 
-            // TOTAL
             const total = document.getElementById('preco-total').innerText;
             mensagem += `💰 *Valor Total Estimado:* ${total}`;
 
@@ -589,7 +586,6 @@
                 return;
             }
 
-            // REDIRECIONAR PARA O WHATSAPP
             const numeroWhatsApp = "5527995336204";
             const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
             window.open(url, '_blank');
