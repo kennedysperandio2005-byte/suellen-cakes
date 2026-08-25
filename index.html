@@ -3,362 +3,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=17">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Confeitaria Artesanal - Pedidos</title>
     <style>
-        /* Estilos adicionais para as telas de personalização e elementos fixos */
-        .btn-voltar-fixo {
+        :root {
+            --primary-color: #d81b60;
+            --primary-hover: #c2185b;
+            --bg-color: #fff8f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-bottom: 60px;
+        }
+
+        /* BARRA FIXA SUPERIOR (NAVBAR COM SETA E CARRINHO) */
+        .top-bar {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
             background-color: #ffffff;
-            border: 2px solid #e91e63;
-            color: #e91e63;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-        }
-
-        .btn-voltar-fixo:hover {
-            background-color: #e91e63;
-            color: #ffffff;
-        }
-
-        .carrinho-topo-fixo {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+            justify-content: space-between;
+            padding: 0 20px;
             z-index: 1000;
-            background-color: #ffffff;
-            border: 2px solid #25d366;
-            border-radius: 30px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            font-family: 'Poppins', sans-serif;
         }
 
-        .carrinho-topo-fixo button {
-            background-color: #25d366;
-            color: white;
+        .btn-voltar {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            background: none;
             border: none;
-            padding: 6px 12px;
-            border-radius: 20px;
+            font-size: 1.1rem;
             font-weight: 600;
+            color: var(--primary-color);
             cursor: pointer;
         }
 
-        .card-produto {
-            cursor: pointer;
-            transition: transform 0.2s;
+        .btn-voltar:hover {
+            color: var(--primary-hover);
         }
 
-        .card-produto:hover {
-            transform: translateY(-5px);
+        .cart-header-summary {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-total-badge {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .btn-enviar-header {
+            background-color: #25d366;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn-enviar-header:hover {
+            background-color: #1ebc57;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .main-container {
+            max-width: 900px;
+            margin: 80px auto 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-site {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-site h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* GRID DE PRODUTOS DA TELA PRINCIPAL */
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .produto-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        .produto-card .icone {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .produto-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* SEÇÕES E TELAS DE CUSTOMIZAÇÃO */
+        .secao {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        .secao h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 8px;
         }
 
         .tela-customizacao {
             display: none;
-            padding-top: 80px;
+        }
+
+        /* FORMULÁRIOS E CAMPOS */
+        .grupo-campo {
+            margin-bottom: 15px;
+        }
+
+        .grupo-campo label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background-color: #fff;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .painel-andar {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            background-color: #fafafa;
+        }
+
+        .painel-andar h4 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        /* FINALIZAÇÃO */
+        #painel-finalizacao {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- BOTÃO FIXO DE VOLTAR (CANTO SUPERIOR ESQUERDO) -->
-    <button id="btn-voltar" class="btn-voltar-fixo" style="display: none;" onclick="voltarParaInicio()" title="Voltar ao Início">←</button>
-
-    <!-- CARRINHO FIXO (CANTO SUPERIOR DIREITO) -->
-    <div class="carrinho-topo-fixo">
-        <span>🛒 <strong>Total:</strong> <span id="cart-total-header">R$ 0,00</span></span>
-        <button onclick="enviarPedidoWhatsApp()">Enviar Pedido</button>
+    <!-- BARRA FIXA SUPERIOR -->
+    <div class="top-bar">
+        <button id="btn-voltar" class="btn-voltar" onclick="voltarParaInicio()">
+            ← Voltar
+        </button>
+        <div class="cart-header-summary">
+            <span>Total: <strong id="cart-total-header" class="cart-total-badge">R$ 0,00</strong></span>
+            <button class="btn-enviar-header" onclick="enviarPedidoWhatsApp()">
+                📲 Enviar Pedido
+            </button>
+        </div>
     </div>
 
-    <!-- TELA PRINCIPAL / INÍCIO -->
-    <div id="tela-principal">
-        <!-- CABEÇALHO / MENU -->
-        <header>
-            <div class="logo">Suellen Cakes</div>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#eventos">Festas & Casamentos</a></li>
-                    <li><a href="#galeria">Galeria</a></li>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
-        </header>
+    <div class="main-container">
 
-        <!-- SEÇÃO INÍCIO / HERO -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <h1>Doces que tornam seus momentos especiais</h1>
-                <p>Bolos artesanais, doces finos e sobremesas feitas com carinho.</p>
-                <a href="#produtos" class="btn-whatsapp">FAÇA SEU PEDIDO</a>
+        <!-- TELA PRINCIPAL (NOSSOS PRODUTOS) -->
+        <div id="tela-principal">
+            <div class="header-site">
+                <h1>Confeitaria Artesanal</h1>
+                <p>Selecione uma categoria abaixo para personalizar seu pedido</p>
             </div>
-            <img src="logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
-        </section>
 
-        <!-- SEÇÃO PRODUTOS (CARDS CLICÁVEIS) -->
-        <section id="produtos" class="secao">
-            <h2>Nossos Produtos</h2>
-            <p class="subtitulo-secao">Clique em uma categoria abaixo para montar o seu pedido:</p>
-            <div class="grid-produtos">
-                <div class="card-produto" onclick="abrirCustomizacao('bolo')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Festivos"></div>
+            <div class="produtos-grid">
+                <div class="produto-card" onclick="abrirCustomizacao('bolo')">
+                    <div class="icone">🎂</div>
                     <h3>Bolos Festivos</h3>
-                    <p>Bolos personalizados para aniversários e casamentos com os melhores recheios.</p>
+                    <p>Monte seu bolo personalizado por andares e recheios</p>
                 </div>
-                <div class="card-produto" onclick="abrirCustomizacao('doces')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Finos"></div>
+                <div class="produto-card" onclick="abrirCustomizacao('doces')">
+                    <div class="icone">🍬</div>
                     <h3>Doces Finos</h3>
-                    <p>Brigadeiros gourmet, bombons e copinhos recheados para sua festa.</p>
+                    <p>Brigadeiros tradicionais e doces finos variados</p>
                 </div>
-                <div class="card-produto" onclick="abrirCustomizacao('sobremesa')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Sobremesas"></div>
+                <div class="produto-card" onclick="abrirCustomizacao('sobremesa')">
+                    <div class="icone">🍮</div>
                     <h3>Sobremesas</h3>
-                    <p>Tortas, pudins e taças da felicidade para o seu fim de semana.</p>
+                    <p>Pudins, taças da felicidade e tortas especialíssimas</p>
                 </div>
-                <div class="card-produto" onclick="abrirCustomizacao('caseiro')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Caseiros"></div>
+                <div class="produto-card" onclick="abrirCustomizacao('caseiro')">
+                    <div class="icone">🥮</div>
                     <h3>Bolos Caseiros</h3>
-                    <p>Aquele bolo fofinho e caseiro perfeito para o café da tarde.</p>
+                    <p>Bolos fofinhos para o café da tarde</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- SEÇÃO FESTAS E CASAMENTOS -->
-        <section id="eventos" class="secao destaque-eventos">
-            <div class="card-evento">
-                <h2>Festas e Casamentos</h2>
-                <p>Transformamos seu evento em uma experiência inesquecível com mesas de doces personalizadas e bolos de alta confeitaria.</p>
-                <a href="https://wa.me/5527995336204" target="_blank" class="btn-secundario">Solicitar Orçamento de Evento</a>
+        <!-- TELA 1: MONTAR BOLO PERSONALIZADO -->
+        <div id="custom-bolo" class="secao tela-customizacao">
+            <h2>Montar Bolo Personalizado</h2>
+            <div class="calculadora-container">
+                <div style="margin-bottom: 15px;">
+                    <label><input type="checkbox" id="check-bolo" onchange="alternarCamposBolo(); calcularTotal();"> <strong>Desejo incluir um Bolo Personalizado neste pedido</strong></label>
+                </div>
+
+                <div id="campos-bolo" style="display: none;">
+                    <div class="grupo-campo">
+                        <label for="tipo-bolo"><strong>Quantidade de Andares:</strong></label>
+                        <select id="tipo-bolo" onchange="atualizarAndaresBolo(); calcularTotal();">
+                            <option value="1">1 Andar (Bolo Simples)</option>
+                            <option value="2">2 Andares</option>
+                            <option value="3">3 Andares</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="massa-bolo"><strong>Escolha a Massa:</strong></label>
+                        <select id="massa-bolo" onchange="calcularTotal()">
+                            <option value="Massa Branca">Massa Branca</option>
+                            <option value="Massa de Baunilha">Massa de Baunilha</option>
+                            <option value="Massa Amanteigada">Massa Amanteigada</option>
+                            <option value="Massa de Chocolate (Cacau 50%)">Massa de Chocolate (Cacau 50%)</option>
+                            <option value="Red Velvet (+ R$ 10,00)">Red Velvet (+ R$ 10,00)</option>
+                        </select>
+                    </div>
+
+                    <!-- ANDAR 1 -->
+                    <div id="painel-andar-1" class="painel-andar">
+                        <h4>1º Andar (Base)</h4>
+                        <div class="grupo-campo">
+                            <label for="tamanho-andar-1"><strong>Tamanho:</strong></label>
+                            <select id="tamanho-andar-1" onchange="calcularTotal()">
+                                <option value="80">10cm (~6 fatias) - R$ 80,00</option>
+                                <option value="130" selected>15cm (~15 fatias) - R$ 130,00</option>
+                                <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                                <option value="270">25cm (~40 fatias) - R$ 270,00</option>
+                                <option value="320">30cm (~50 fatias) - R$ 320,00</option>
+                            </select>
+                        </div>
+                        <div class="grupo-campo">
+                            <label><strong>Recheios (até 3):</strong></label>
+                            <select id="r1-andar-1" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r2-andar-1" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r3-andar-1" onchange="calcularTotal()"></select>
+                        </div>
+                    </div>
+
+                    <!-- ANDAR 2 -->
+                    <div id="painel-andar-2" class="painel-andar" style="display: none;">
+                        <h4>2º Andar</h4>
+                        <div class="grupo-campo">
+                            <label for="tamanho-andar-2"><strong>Tamanho:</strong></label>
+                            <select id="tamanho-andar-2" onchange="calcularTotal()">
+                                <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
+                                <option value="130">15cm (~15 fatias) - R$ 130,00</option>
+                                <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                                <option value="270">25cm (~40 fatias) - R$ 270,00</option>
+                            </select>
+                        </div>
+                        <div class="grupo-campo">
+                            <label><strong>Recheios (até 3):</strong></label>
+                            <select id="r1-andar-2" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r2-andar-2" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r3-andar-2" onchange="calcularTotal()"></select>
+                        </div>
+                    </div>
+
+                    <!-- ANDAR 3 -->
+                    <div id="painel-andar-3" class="painel-andar" style="display: none;">
+                        <h4>3º Andar (Topo)</h4>
+                        <div class="grupo-campo">
+                            <label for="tamanho-andar-3"><strong>Tamanho:</strong></label>
+                            <select id="tamanho-andar-3" onchange="calcularTotal()">
+                                <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
+                                <option value="130">15cm (~15 fatias) - R$ 130,00</option>
+                                <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                            </select>
+                        </div>
+                        <div class="grupo-campo">
+                            <label><strong>Recheios (até 3):</strong></label>
+                            <select id="r1-andar-3" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r2-andar-3" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
+                            <select id="r3-andar-3" onchange="calcularTotal()"></select>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <!-- SEÇÃO GALERIA -->
-        <section id="galeria" class="secao">
-            <h2>Galeria de Fotos</h2>
-            <div class="grid-galeria">
-                <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 1"></div></div>
-                <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 2"></div></div>
-                <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 3"></div></div>
-                <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 4"></div></div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO SOBRE NÓS -->
-        <section id="sobre" class="secao sobre-nos">
-            <h2>Sobre Nós</h2>
-            <p>A Suellen Cakes nasceu da paixão por criar momentos doces e inesquecíveis. Cada receita é produzida de forma artesanal, utilizando ingredientes selecionados e muito carinho.</p>
-        </section>
-
-        <!-- SEÇÃO CONTATO -->
-        <section id="contato" class="secao contato">
-            <h2>Fale Conosco</h2>
-            <div class="info-contato">
-                <p><strong>WhatsApp:</strong> (27) 99533-6204</p>
-                <p><strong>Instagram:</strong> @suellencakes</p>
-                <p><strong>Localização:</strong> Atendimento com encomendas locais</p>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
-        </footer>
-    </div>
-
-    <!-- TELA 1: MONTAR BOLO PERSONALIZADO -->
-    <div id="custom-bolo" class="secao tela-customizacao">
-        <h2>Montar Bolo Personalizado</h2>
-        <div class="calculadora-container">
-            <div class="grupo-campo">
-                <label for="tipo-bolo"><strong>Quantidade de Andares:</strong></label>
-                <select id="tipo-bolo" onchange="atualizarAndaresBolo(); calcularTotal();">
-                    <option value="1">1 Andar (Bolo Simples)</option>
-                    <option value="2">2 Andares</option>
-                    <option value="3">3 Andares</option>
-                </select>
-            </div>
-
-            <div class="grupo-campo">
-                <label for="massa-bolo"><strong>Escolha a Massa:</strong></label>
-                <select id="massa-bolo" onchange="calcularTotal()">
-                    <option value="Massa Branca">Massa Branca</option>
-                    <option value="Massa de Baunilha">Massa de Baunilha</option>
-                    <option value="Massa Amanteigada">Massa Amanteigada</option>
-                    <option value="Massa de Chocolate (Cacau 50%)">Massa de Chocolate (Cacau 50%)</option>
-                    <option value="Red Velvet (+ R$ 10,00)">Red Velvet (+ R$ 10,00)</option>
-                </select>
-            </div>
-
-            <!-- ANDAR 1 -->
-            <div id="painel-andar-1" style="border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 10px; background-color: #fafafa;">
-                <h4>1º Andar (Base)</h4>
-                <div class="grupo-campo">
-                    <label for="tamanho-andar-1"><strong>Tamanho:</strong></label>
-                    <select id="tamanho-andar-1" onchange="calcularTotal()">
-                        <option value="80">10cm (~6 fatias) - R$ 80,00</option>
-                        <option value="130" selected>15cm (~15 fatias) - R$ 130,00</option>
-                        <option value="185">20cm (~25 fatias) - R$ 185,00</option>
-                        <option value="270">25cm (~40 fatias) - R$ 270,00</option>
-                        <option value="320">30cm (~50 fatias) - R$ 320,00</option>
+        <!-- TELA 2: DOCES FINOS -->
+        <div id="custom-doces" class="secao tela-customizacao">
+            <h2>Adicionar Doces e Brigadeiros</h2>
+            <div class="calculadora-container">
+                <div style="margin-bottom: 15px;">
+                    <label><input type="checkbox" id="check-doces" onchange="alternarCampos('check-doces', 'campos-doces'); calcularTotal();"> <strong>Desejo incluir Doces neste pedido</strong></label>
+                </div>
+                <div id="campos-doces" style="display: none;" class="grupo-campo">
+                    <label for="qtd-doces"><strong>Quantidade e Tipo:</strong></label>
+                    <select id="qtd-doces" onchange="calcularTotal()">
+                        <option value="45">50 Brigadeiros Tradicionais - R$ 45,00</option>
+                        <option value="85">100 Brigadeiros Tradicionais - R$ 85,00</option>
+                        <option value="120">50 Doces Finos Variados - R$ 120,00</option>
+                        <option value="220">100 Doces Finos Variados - R$ 220,00</option>
                     </select>
                 </div>
-                <div class="grupo-campo">
-                    <label><strong>Recheios (até 3):</strong></label>
-                    <select id="r1-andar-1" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                    <select id="r2-andar-1" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                    <select id="r3-andar-1" onchange="calcularTotal()"></select>
-                </div>
             </div>
+        </div>
 
-            <!-- ANDAR 2 -->
-            <div id="painel-andar-2" style="display: none; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 10px; background-color: #fafafa;">
-                <h4>2º Andar</h4>
-                <div class="grupo-campo">
-                    <label for="tamanho-andar-2"><strong>Tamanho:</strong></label>
-                    <select id="tamanho-andar-2" onchange="calcularTotal()">
-                        <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
-                        <option value="130">15cm (~15 fatias) - R$ 130,00</option>
-                        <option value="185">20cm (~25 fatias) - R$ 185,00</option>
-                        <option value="270">25cm (~40 fatias) - R$ 270,00</option>
+        <!-- TELA 3: SOBREMESAS -->
+        <div id="custom-sobremesa" class="secao tela-customizacao">
+            <h2>Adicionar Sobremesas</h2>
+            <div class="calculadora-container">
+                <div style="margin-bottom: 15px;">
+                    <label><input type="checkbox" id="check-sobremesa" onchange="alternarCampos('check-sobremesa', 'campos-sobremesa'); calcularTotal();"> <strong>Desejo incluir Sobremesa neste pedido</strong></label>
+                </div>
+                <div id="campos-sobremesa" style="display: none;" class="grupo-campo">
+                    <label for="item-sobremesa"><strong>Escolha a Sobremesa:</strong></label>
+                    <select id="item-sobremesa" onchange="calcularTotal()">
+                        <option value="50">Pudim Cremoso GG - R$ 50,00</option>
+                        <option value="75">Taça da Felicidade (1.5L) - R$ 75,00</option>
+                        <option value="65">Torta Holandesa - R$ 65,00</option>
                     </select>
                 </div>
-                <div class="grupo-campo">
-                    <label><strong>Recheios (até 3):</strong></label>
-                    <select id="r1-andar-2" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                    <select id="r2-andar-2" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                    <select id="r3-andar-2" onchange="calcularTotal()"></select>
-                </div>
             </div>
+        </div>
 
-            <!-- ANDAR 3 -->
-            <div id="painel-andar-3" style="display: none; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 10px; background-color: #fafafa;">
-                <h4>3º Andar (Topo)</h4>
-                <div class="grupo-campo">
-                    <label for="tamanho-andar-3"><strong>Tamanho:</strong></label>
-                    <select id="tamanho-andar-3" onchange="calcularTotal()">
-                        <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
-                        <option value="130">15cm (~15 fatias) - R$ 130,00</option>
-                        <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+        <!-- TELA 4: BOLOS CASEIROS -->
+        <div id="custom-caseiro" class="secao tela-customizacao">
+            <h2>Adicionar Bolo Caseiro</h2>
+            <div class="calculadora-container">
+                <div style="margin-bottom: 15px;">
+                    <label><input type="checkbox" id="check-caseiro" onchange="alternarCampos('check-caseiro', 'campos-caseiro'); calcularTotal();"> <strong>Desejo incluir Bolo Caseiro neste pedido</strong></label>
+                </div>
+                <div id="campos-caseiro" style="display: none;" class="grupo-campo">
+                    <label for="item-caseiro"><strong>Escolha o Bolo Caseiro:</strong></label>
+                    <select id="item-caseiro" onchange="calcularTotal()">
+                        <option value="25">Bolo de Cenoura com Vulcão de Chocolate - R$ 25,00</option>
+                        <option value="22">Bolo de Fubá com Goiabada - R$ 22,00</option>
+                        <option value="28">Bolo Ninho com Nutella - R$ 28,00</option>
                     </select>
                 </div>
-                <div class="grupo-campo">
-                    <label><strong>Recheios (até 3):</strong></label>
-                    <select id="r1-andar-3" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                    <select id="r2-andar-3" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                    <select id="r3-andar-3" onchange="calcularTotal()"></select>
+            </div>
+        </div>
+
+        <!-- SEÇÃO DE FINALIZAÇÃO DA ENTREGA & OPCIONAIS (EXIBIDA QUANDO UM PRODUTO É ABERTO) -->
+        <div id="painel-finalizacao" class="secao">
+            <h2>Opções Adicionais e Entrega</h2>
+            
+            <div class="grupo-campo">
+                <label><strong>Adicionais para o Pedido:</strong></label>
+                <div style="margin-top: 5px;">
+                    <label><input type="checkbox" id="add-topper" onchange="calcularTotal()"> Topper Personalizado (+ R$ 15,00)</label>
+                </div>
+                <div style="margin-top: 5px;">
+                    <label><input type="checkbox" id="add-embalagem" onchange="calcularTotal()"> Embalagem Especial para Presente (+ R$ 10,00)</label>
                 </div>
             </div>
 
-            <!-- OPÇÃO DE ADICIONAR AO ORÇAMENTO -->
-            <div style="margin-top: 15px;">
-                <label><input type="checkbox" id="check-bolo" checked onchange="calcularTotal()"> Incluir este bolo no orçamento</label>
-            </div>
-        </div>
-    </div>
-
-    <!-- TELA 2: DOCES FINOS -->
-    <div id="custom-doces" class="secao tela-customizacao">
-        <h2>Adicionar Doces e Brigadeiros</h2>
-        <div class="calculadora-container">
-            <div class="grupo-campo">
-                <label for="qtd-doces"><strong>Quantidade e Tipo:</strong></label>
-                <select id="qtd-doces" onchange="calcularTotal()">
-                    <option value="45">50 Brigadeiros Tradicionais - R$ 45,00</option>
-                    <option value="85">100 Brigadeiros Tradicionais - R$ 85,00</option>
-                    <option value="120">50 Doces Finos Variados - R$ 120,00</option>
-                    <option value="220">100 Doces Finos Variados - R$ 220,00</option>
-                </select>
-            </div>
-            <div style="margin-top: 15px;">
-                <label><input type="checkbox" id="check-doces" checked onchange="calcularTotal()"> Incluir doces no orçamento</label>
-            </div>
-        </div>
-    </div>
-
-    <!-- TELA 3: SOBREMESAS -->
-    <div id="custom-sobremesa" class="secao tela-customizacao">
-        <h2>Adicionar Sobremesas</h2>
-        <div class="calculadora-container">
-            <div class="grupo-campo">
-                <label for="item-sobremesa"><strong>Escolha a Sobremesa:</strong></label>
-                <select id="item-sobremesa" onchange="calcularTotal()">
-                    <option value="50">Pudim Cremoso GG - R$ 50,00</option>
-                    <option value="75">Taça da Felicidade (1.5L) - R$ 75,00</option>
-                    <option value="65">Torta Holandesa - R$ 65,00</option>
-                </select>
-            </div>
-            <div style="margin-top: 15px;">
-                <label><input type="checkbox" id="check-sobremesa" checked onchange="calcularTotal()"> Incluir sobremesa no orçamento</label>
-            </div>
-        </div>
-    </div>
-
-    <!-- TELA 4: BOLOS CASEIROS -->
-    <div id="custom-caseiro" class="secao tela-customizacao">
-        <h2>Adicionar Bolo Caseiro</h2>
-        <div class="calculadora-container">
-            <div class="grupo-campo">
-                <label for="item-caseiro"><strong>Escolha o Bolo Caseiro:</strong></label>
-                <select id="item-caseiro" onchange="calcularTotal()">
-                    <option value="25">Bolo de Cenoura com Vulcão de Chocolate - R$ 25,00</option>
-                    <option value="22">Bolo de Fubá com Goiabada - R$ 22,00</option>
-                    <option value="28">Bolo Ninho com Nutella - R$ 28,00</option>
-                </select>
-            </div>
-            <div style="margin-top: 15px;">
-                <label><input type="checkbox" id="check-caseiro" checked onchange="calcularTotal()"> Incluir bolo caseiro no orçamento</label>
-            </div>
-        </div>
-    </div>
-
-    <!-- PAINEL GLOBAL DE OPÇÕES DE ENTREGA / ADICIONAIS -->
-    <div id="painel-finalizacao" class="secao tela-customizacao" style="padding-top: 20px;">
-        <div class="calculadora-container">
-            <div class="grupo-adicionais">
-                <p><strong>Adicionais Opcionais:</strong></p>
-                <label><input type="checkbox" id="add-topper" value="15" onchange="calcularTotal()"> Topper Personalizado (+ R$ 15,00)</label><br>
-                <label><input type="checkbox" id="add-embalagem" value="10" onchange="calcularTotal()"> Embalagem Especial para Presente (+ R$ 10,00)</label>
-            </div>
-
-            <div class="grupo-campo" style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+            <div class="grupo-campo" style="margin-top: 20px;">
                 <label for="forma-entrega"><strong>Forma de Entrega / Retirada:</strong></label>
                 <select id="forma-entrega" onchange="tratarMudancaEntrega(); calcularTotal();">
                     <option value="retirada">Retirar na Confeitaria (Grátis)</option>
-                    <option value="entrega">Entrega em Domicílio (Taxa fixa R$ 50,00)</option>
+                    <option value="entrega">Entrega em Domicílio (Taxa Fixa R$ 50,00)</option>
                 </select>
-
-                <div id="painel-frete" style="display: none; margin-top: 10px;">
-                    <p style="font-size: 0.9rem; color: #444; margin-bottom: 8px;"><strong>Taxa de entrega:</strong> R$ 50,00</p>
-                    <input type="text" id="endereco-cliente" placeholder="Rua, número, bairro e CEP" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                </div>
             </div>
 
-            <div class="resumo-preco" style="margin-top: 20px;">
-                <button onclick="enviarPedidoWhatsApp()" class="btn-whatsapp btn-calcular">Enviar Pedido para o WhatsApp</button>
+            <div id="painel-frete" class="grupo-campo" style="display: none;">
+                <label for="endereco-cliente"><strong>Endereço Completo de Entrega:</strong></label>
+                <input type="text" id="endereco-cliente" placeholder="Rua, número, bairro e complemento">
             </div>
         </div>
+
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- JAVASCRIPT -->
     <script>
         const listaRecheios = [
             "Brigadeiro", "Ninho", "Nutella (+ R$ 15,00)", "Morango", "Abacaxi", 
@@ -394,18 +469,45 @@
             
             document.getElementById('btn-voltar').style.display = 'flex';
 
-            if (tipo === 'bolo') document.getElementById('custom-bolo').style.display = 'block';
-            if (tipo === 'doces') document.getElementById('custom-doces').style.display = 'block';
-            if (tipo === 'sobremesa') document.getElementById('custom-sobremesa').style.display = 'block';
-            if (tipo === 'caseiro') document.getElementById('custom-caseiro').style.display = 'block';
+            if (tipo === 'bolo') {
+                document.getElementById('custom-bolo').style.display = 'block';
+                document.getElementById('check-bolo').checked = true;
+                alternarCamposBolo();
+            }
+            if (tipo === 'doces') {
+                document.getElementById('custom-doces').style.display = 'block';
+                document.getElementById('check-doces').checked = true;
+                alternarCampos('check-doces', 'campos-doces');
+            }
+            if (tipo === 'sobremesa') {
+                document.getElementById('custom-sobremesa').style.display = 'block';
+                document.getElementById('check-sobremesa').checked = true;
+                alternarCampos('check-sobremesa', 'campos-sobremesa');
+            }
+            if (tipo === 'caseiro') {
+                document.getElementById('custom-caseiro').style.display = 'block';
+                document.getElementById('check-caseiro').checked = true;
+                alternarCampos('check-caseiro', 'campos-caseiro');
+            }
 
             document.getElementById('painel-finalizacao').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
             calcularTotal();
         }
 
+        function alternarCamposBolo() {
+            const marcado = document.getElementById('check-bolo').checked;
+            document.getElementById('campos-bolo').style.display = marcado ? 'block' : 'none';
+        }
+
+        function alternarCampos(checkId, camposId) {
+            const marcado = document.getElementById(checkId).checked;
+            document.getElementById(camposId).style.display = marcado ? 'block' : 'none';
+        }
+
         function voltarParaInicio() {
             document.querySelectorAll('.tela-customizacao').forEach(el => el.style.display = 'none');
+            document.getElementById('painel-finalizacao').style.display = 'none';
             document.getElementById('tela-principal').style.display = 'block';
             document.getElementById('btn-voltar').style.display = 'none';
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -426,6 +528,7 @@
         function calcularTotal() {
             let total = 0;
 
+            // 1. Bolo Personalizado
             const checkBolo = document.getElementById('check-bolo');
             if (checkBolo && checkBolo.checked) {
                 const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
@@ -443,28 +546,34 @@
                 }
             }
 
+            // 2. Doces Finos
             const checkDoces = document.getElementById('check-doces');
             if (checkDoces && checkDoces.checked) {
                 total += parseFloat(document.getElementById('qtd-doces').value);
             }
 
+            // 3. Sobremesas
             const checkSobremesa = document.getElementById('check-sobremesa');
             if (checkSobremesa && checkSobremesa.checked) {
                 total += parseFloat(document.getElementById('item-sobremesa').value);
             }
 
+            // 4. Bolos Caseiros
             const checkCaseiro = document.getElementById('check-caseiro');
             if (checkCaseiro && checkCaseiro.checked) {
                 total += parseFloat(document.getElementById('item-caseiro').value);
             }
 
+            // 5. Adicionais
             if (document.getElementById('add-topper').checked) total += 15;
             if (document.getElementById('add-embalagem').checked) total += 10;
 
+            // 6. Frete Único (Calculado uma única vez ao final de todos os itens)
             if (document.getElementById('forma-entrega').value === 'entrega') {
                 total += 50.00;
             }
 
+            // Atualiza o total exibido no cabeçalho fixo
             const textoTotal = `R$ ${total.toFixed(2).replace('.', ',')}`;
             document.getElementById('cart-total-header').innerText = textoTotal;
         }
@@ -543,6 +652,15 @@
 
         window.onload = function() {
             popularSelectsRecheio();
+            
+            // Garantir que todas as opções iniciem desmarcadas e valor zerado
+            document.getElementById('check-bolo').checked = false;
+            document.getElementById('check-doces').checked = false;
+            document.getElementById('check-sobremesa').checked = false;
+            document.getElementById('check-caseiro').checked = false;
+            document.getElementById('add-topper').checked = false;
+            document.getElementById('add-embalagem').checked = false;
+            
             calcularTotal();
         };
     </script>
