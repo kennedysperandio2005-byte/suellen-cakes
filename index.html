@@ -512,81 +512,94 @@
         }
 
         function enviarPedidoWhatsApp() {
-            let mensagem = "✨ *NOVO PEDIDO - SUELLEN CAKES* ✨\n\n";
-            let temItem = false;
+    // 1. Validação inicial: verifica se pelo menos um item principal foi selecionado
+    const temBolo = document.getElementById('check-bolo').checked;
+    const temDoces = document.getElementById('check-doces').checked;
+    const temSobremesa = document.getElementById('check-sobremesa').checked;
+    const temCaseiro = document.getElementById('check-caseiro').checked;
 
-            if (document.getElementById('check-bolo').checked) {
-                temItem = true;
-                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
-                const massa = document.getElementById('massa-bolo').value;
+    if (!temBolo && !temDoces && !temSobremesa && !temCaseiro) {
+        alert("Por favor, selecione pelo menos um item para o seu pedido antes de enviar.");
+        return;
+    }
 
-                mensagem += `🎂 *Bolo Personalizado (${qtdAndares} Andar/es)*\n`;
-                mensagem += `• Massa: ${massa}\n`;
-
-                for (let andar = 1; andar <= qtdAndares; andar++) {
-                    const selectTamanho = document.getElementById(`tamanho-andar-${andar}`);
-                    const textoTamanho = selectTamanho.options[selectTamanho.selectedIndex].text;
-                    
-                    const r1 = document.getElementById(`r1-andar-${andar}`).value;
-                    const r2 = document.getElementById(`r2-andar-${andar}`).value;
-                    const r3 = document.getElementById(`r3-andar-${andar}`).value;
-
-                    mensagem += `  - *${andar}º Andar:* ${textoTamanho}\n`;
-                    mensagem += `    Recheios: ${r1}`;
-                    if (r2) mensagem += `, ${r2}`;
-                    if (r3) mensagem += `, ${r3}`;
-                    mensagem += `\n`;
-                }
-                mensagem += `\n`;
-            }
-
-            if (document.getElementById('check-doces').checked) {
-                temItem = true;
-                const selectDoces = document.getElementById('qtd-doces');
-                mensagem += `🍬 *Doces/Brigadeiros:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
-            }
-
-            if (document.getElementById('check-sobremesa').checked) {
-                temItem = true;
-                const selectSobremesa = document.getElementById('item-sobremesa');
-                mensagem += `🍮 *Sobremesa:* ${selectSobremesa.options[selectSobremesa.selectedIndex].text}\n\n`;
-            }
-
-            if (document.getElementById('check-caseiro').checked) {
-                temItem = true;
-                const selectCaseiro = document.getElementById('item-caseiro');
-                mensagem += `🥮 *Bolo Caseiro:* ${selectCaseiro.options[selectCaseiro.selectedIndex].text}\n\n`;
-            }
-
-            let adicionais = [];
-            if (document.getElementById('add-topper').checked) adicionais.push("Topper Personalizado");
-            if (document.getElementById('add-embalagem').checked) adicionais.push("Embalagem Especial");
-            
-            if (adicionais.length > 0) {
-                mensagem += `🎈 *Adicionais:* ${adicionais.join(', ')}\n\n`;
-            }
-
-            const formaEntrega = document.getElementById('forma-entrega').value;
-            if (formaEntrega === 'entrega') {
-                const endereco = document.getElementById('endereco-cliente').value.trim();
-                mensagem += `🛵 *Forma de Recebimento:* Entrega em Domicílio\n`;
-                mensagem += `📍 *Endereço:* ${endereco ? endereco : 'Não informado'}\n\n`;
-            } else {
-                mensagem += `🛍️ *Forma de Recebimento:* Retirada na Confeitaria\n\n`;
-            }
-
-            const total = document.getElementById('preco-total').innerText;
-            mensagem += `💰 *Valor Total Estimado:* ${total}`;
-
-            if (!temItem) {
-                alert("Por favor, selecione pelo menos um item para o seu pedido antes de enviar.");
-                return;
-            }
-
-            const telefone = "5527995336204";
-            const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-            window.open(url, '_blank');
+    // 2. Validação da forma de entrega (obriga o preenchimento se for entrega)
+    const formaEntrega = document.getElementById('forma-entrega').value;
+    let endereco = "";
+    if (formaEntrega === 'entrega') {
+        endereco = document.getElementById('endereco-cliente').value.trim();
+        if (!endereco) {
+            alert("Por favor, preencha o endereço de entrega.");
+            document.getElementById('endereco-cliente').focus();
+            return;
         }
+    }
+
+    // 3. Montagem da mensagem
+    let mensagem = "✨ *NOVO PEDIDO - SUELLEN CAKES* ✨\n\n";
+
+    if (temBolo) {
+        const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+        const massa = document.getElementById('massa-bolo').value;
+
+        mensagem += `🎂 *Bolo Personalizado (${qtdAndares} Andar/es)*\n`;
+        mensagem += `• Massa: ${massa}\n`;
+
+        for (let andar = 1; andar <= qtdAndares; andar++) {
+            const selectTamanho = document.getElementById(`tamanho-andar-${andar}`);
+            const textoTamanho = selectTamanho.options[selectTamanho.selectedIndex].text;
+            
+            const r1 = document.getElementById(`r1-andar-${andar}`).value;
+            const r2 = document.getElementById(`r2-andar-${andar}`).value;
+            const r3 = document.getElementById(`r3-andar-${andar}`).value;
+
+            mensagem += `  - *${andar}º Andar:* ${textoTamanho}\n`;
+            mensagem += `    Recheios: ${r1}`;
+            if (r2) mensagem += `, ${r2}`;
+            if (r3) mensagem += `, ${r3}`;
+            mensagem += `\n`;
+        }
+        mensagem += `\n`;
+    }
+
+    if (temDoces) {
+        const selectDoces = document.getElementById('qtd-doces');
+        mensagem += `🍬 *Doces/Brigadeiros:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
+    }
+
+    if (temSobremesa) {
+        const selectSobremesa = document.getElementById('item-sobremesa');
+        mensagem += `🍮 *Sobremesa:* ${selectSobremesa.options[selectSobremesa.selectedIndex].text}\n\n`;
+    }
+
+    if (temCaseiro) {
+        const selectCaseiro = document.getElementById('item-caseiro');
+        mensagem += `🥮 *Bolo Caseiro:* ${selectCaseiro.options[selectCaseiro.selectedIndex].text}\n\n`;
+    }
+
+    let adicionais = [];
+    if (document.getElementById('add-topper').checked) adicionais.push("Topper Personalizado");
+    if (document.getElementById('add-embalagem').checked) adicionais.push("Embalagem Especial");
+    
+    if (adicionais.length > 0) {
+        mensagem += `🎈 *Adicionais:* ${adicionais.join(', ')}\n\n`;
+    }
+
+    if (formaEntrega === 'entrega') {
+        mensagem += `🛵 *Forma de Recebimento:* Entrega em Domicílio\n`;
+        mensagem += `📍 *Endereço:* ${endereco}\n\n`;
+    } else {
+        mensagem += `🛍️ *Forma de Recebimento:* Retirada na Confeitaria\n\n`;
+    }
+
+    const total = document.getElementById('preco-total').innerText;
+    mensagem += `💰 *Valor Total Estimado:* ${total}`;
+
+    // 4. Disparo para o WhatsApp
+    const telefone = "5527995336204";
+    const urlWhatsApp = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+    window.open(urlWhatsApp, '_blank');
+}
     </script>
 </body>
 </html>
