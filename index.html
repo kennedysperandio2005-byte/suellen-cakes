@@ -238,20 +238,14 @@
                 <label for="forma-entrega"><strong>Forma de Entrega / Retirada:</strong></label>
                 <select id="forma-entrega" onchange="tratarMudancaEntrega(); calcularTotal();">
                     <option value="retirada">Retirar na Confeitaria (Grátis)</option>
-                    <option value="entrega">Entrega em Domicílio (Escolha a Região/Taxa)</option>
+                    <option value="entrega">Entrega em Domicílio (Taxa fixa R$ 50,00)</option>
                 </select>
 
-                <!-- Campo dinâmico para seleção da região/bairro de entrega -->
+                <!-- Campo para endereço quando a opção de entrega estiver selecionada -->
                 <div id="painel-frete" style="display: none; margin-top: 10px;">
-                    <label for="regiao-entrega"><strong>Selecione a Região de Entrega:</strong></label>
-                    <select id="regiao-entrega" onchange="calcularTotal()">
-                        <option value="10">Região Central / Bairros Próximos - R$ 10,00</option>
-                        <option value="15">Outros Bairros - R$ 15,00</option>
-                        <option value="20">Bairros Afastados / Região Periférica - R$ 20,00</option>
-                    </select>
-
-                    <label for="endereco-cliente" style="font-size: 0.85rem; color: #555; margin-top: 8px; display: block;"><strong>Endereço para entrega (Opcional):</strong></label>
-                    <input type="text" id="endereco-cliente" placeholder="Rua, número e bairro" style="width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
+                    <p style="font-size: 0.9rem; color: #444; margin-bottom: 8px;"><strong>Taxa de entrega:</strong> R$ 50,00 para qualquer localização</p>
+                    <label for="endereco-cliente" style="font-size: 0.85rem; color: #555; display: block;"><strong>Endereço para entrega (Opcional):</strong></label>
+                    <input type="text" id="endereco-cliente" placeholder="Rua, número, bairro e CEP" style="width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
                 </div>
             </div>
 
@@ -357,10 +351,10 @@
             if (document.getElementById('add-topper').checked) total += 15;
             if (document.getElementById('add-embalagem').checked) total += 10;
 
-            // Adiciona valor do frete se 'Entrega em Domicílio' estiver ativo
+            // Adiciona a taxa fixa de R$ 50,00 se a opção 'Entrega em Domicílio' estiver selecionada
             const formaEntrega = document.getElementById('forma-entrega').value;
             if (formaEntrega === 'entrega') {
-                total += parseFloat(document.getElementById('regiao-entrega').value);
+                total += 50.00;
             }
 
             document.getElementById('preco-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
@@ -411,14 +405,13 @@
                 return;
             }
 
-            // Tratamento das informações de frete / retirada
+            // Informações de entrega fixada em R$ 50,00 ou retirada grátis
             const formaEntrega = document.getElementById('forma-entrega').value;
             if (formaEntrega === 'retirada') {
                 itensSelecionados.push(`🚗 *Entrega/Retirada:* Retirar na Confeitaria (Sem taxa de frete)`);
             } else {
-                const regiaoText = document.getElementById('regiao-entrega').options[document.getElementById('regiao-entrega').selectedIndex].text;
                 const endereco = document.getElementById('endereco-cliente').value.trim();
-                let infoFrete = `🛵 *Entrega em Domicílio:* ${regiaoText}`;
+                let infoFrete = `🛵 *Entrega em Domicílio:* Taxa fixa R$ 50,00`;
                 if (endereco !== "") {
                     infoFrete += `\n  - Endereço: ${endereco}`;
                 }
