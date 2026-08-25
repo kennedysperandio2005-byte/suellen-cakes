@@ -502,24 +502,27 @@ footer {
     font-size: 14px;
     font-weight: bold;
     margin: 15px 0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
 }
 
-/* Estilos quando a loja estiver ABERTA */
+/* Estilos quando a loja estiver ABERTA (com contorno verde sutil) */
 .aberta {
     background-color: #e8f5e9;
     color: #2e7d32;
+    border: 1.5px solid #a5d6a7; /* Borda verde suave */
+    box-shadow: 0 2px 6px rgba(76, 175, 80, 0.15);
 }
 .aberta .bolinha-status {
     background-color: #4caf50;
     animation: pulse-verde 2s infinite;
 }
 
-/* Estilos quando a loja estiver FECHADA */
+/* Estilos quando a loja estiver FECHADA (com contorno vermelho sutil) */
 .fechada {
     background-color: #ffebee;
     color: #c62828;
+    border: 1.5px solid #ef9a9a; /* Borda vermelha suave */
+    box-shadow: 0 2px 6px rgba(244, 67, 54, 0.15);
 }
 .fechada .bolinha-status {
     background-color: #f44336;
