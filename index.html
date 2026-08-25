@@ -271,17 +271,6 @@
                         </div>
                     </div>
 
-                    <!-- OUTRAS OPÇÕES RÁPIDAS / NAVEGAÇÃO ENTRE ITENS -->
-                    <div class="adicionar-outros-itens">
-                        <p><strong>Deseja adicionar algo mais ao pedido?</strong></p>
-                        <div class="botoes-outros-itens">
-                            <button type="button" class="btn-sub-item" onclick="ativarEExibirCategoria('bolo')">+ Bolo</button>
-                            <button type="button" class="btn-sub-item" onclick="ativarEExibirCategoria('doces')">+ Doces</button>
-                            <button type="button" class="btn-sub-item" onclick="ativarEExibirCategoria('sobremesa')">+ Sobremesa</button>
-                            <button type="button" class="btn-sub-item" onclick="ativarEExibirCategoria('caseiro')">+ Caseiro</button>
-                        </div>
-                    </div>
-
                     <!-- ADICIONAIS GERAIS -->
                     <div class="grupo-adicionais">
                         <p><strong>Adicionais Opcionais:</strong></p>
@@ -362,6 +351,11 @@
                 }
             }
         }
+
+        // Executar ao carregar a página
+        window.onload = function() {
+            popularSelectsRecheio();
+        };
 
         // CONTROLADOR DE TELAS
         function mostrarTela(idTela) {
@@ -584,13 +578,6 @@
             const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
             window.open(url, '_blank');
         }
-
-        // INICIALIZAÇÃO AO CARREGAR A PÁGINA
-        window.onload = function() {
-            popularSelectsRecheio();
-            atualizarAndaresBolo();
-            calcularTotal();
-        };
     </script>
 </body>
 </html>
