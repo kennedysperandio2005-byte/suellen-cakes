@@ -1,195 +1,542 @@
-<!DOCTYPE html>
+# Let's create an updated single file index.html containing the complete HTML, CSS, and JS structure that matches the exact visual style from the user screenshots provided.
+# The user wants the interface to match their screenshots:
+# - Header with logo "Suellen Cakes" and menu links (Início, Produtos, Festas & Casamentos, Galeria, Sobre Nós, Contato)
+# - Hero section with pink gradient/background, title "Doces que tornam seus momentos especiais", subtitle, green button "FAÇA SEU PEDIDO" and circular badge/logo on the bottom right.
+# - "Nossos Produtos" section with 4 white cards (Bolos Festivos, Doces Finos, Sobremesas, Bolos Caseiros) with pink rounded images.
+# - "Festas e Casamentos" section with white card and pink button "Solicitar Orçamento de Evento".
+# - "Sobre Nós" and "Fale Conosco" sections inside white cards.
+# - Interactive order simulator / modal or section where the user can customize and generate WhatsApp orders with the corrected function.
+
+html_content = """<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suellen Cakes - Faça seu Pedido</title>
-    <!-- Fonte Google Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Arquivo CSS -->
-    <link rel="stylesheet" href="style.css">
+    <title>Suellen Cakes | Confeitaria Artesanal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fcf8f8;
+            color: #4a2e35;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4a1525;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #5c3a42;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e23d72;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fce8ec 0%, #f9dbe3 100%);
+            padding: 80px 20px 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #4a1525;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #6b444f;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .btn-green {
+            background-color: #25d366;
+            color: white;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-green:hover {
+            background-color: #20ba59;
+            transform: translateY(-2px);
+        }
+
+        .btn-pink {
+            background-color: #e23d72;
+            color: white;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(226, 61, 114, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-pink:hover {
+            background-color: #cb3263;
+            transform: translateY(-2px);
+        }
+
+        .hero-badge {
+            position: absolute;
+            right: 5%;
+            bottom: -30px;
+            width: 180px;
+            height: 180px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 15px;
+            border: 5px solid #f9dbe3;
+        }
+
+        .hero-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        /* Container sections */
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #4a1525;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img-box {
+            width: 100%;
+            height: 200px;
+            background: #fce8ec;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .product-img-box img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            color: #e23d72;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-card p {
+            font-size: 14px;
+            color: #7a5c64;
+            line-height: 1.5;
+        }
+
+        /* Big Card Sections (Festas, Sobre, Contato) */
+        .big-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .big-card h2 {
+            font-size: 28px;
+            color: #4a1525;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .big-card p {
+            font-size: 16px;
+            color: #7a5c64;
+            max-width: 700px;
+            margin: 0 auto 25px auto;
+            line-height: 1.6;
+        }
+
+        /* Order Simulator Modal / Section */
+        .order-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            margin-top: 50px;
+        }
+
+        .order-section h2 {
+            color: #4a1525;
+            margin-bottom: 25px;
+            font-size: 26px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #4a1525;
+            margin-bottom: 8px;
+        }
+
+        .form-group select, .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2c5cd;
+            border-radius: 10px;
+            font-size: 15px;
+            background: #fff8f9;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            accent-color: #e23d72;
+        }
+
+        .price-box {
+            font-size: 20px;
+            font-weight: 700;
+            color: #4a1525;
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        /* Footer */
+        footer {
+            background: #ffffff;
+            text-align: center;
+            padding: 30px;
+            color: #7a5c64;
+            font-size: 14px;
+            border-top: 1px solid #f2e3e7;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav ul { display: none; }
+            .hero h1 { font-size: 30px; }
+            .hero-badge { display: none; }
+            .big-card { padding: 30px 20px; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR DE NAVEGAÇÃO / CARRINHO -->
-    <div id="barra-top-navegacao" style="display: none;">
-        <button type="button" class="btn-voltar-seta" onclick="voltarParaInicio()" aria-label="Voltar">
-            &#8592;
-        </button>
-        <div class="carrinho-widget">
-            <span>🛒 <strong id="preco-carrinho-top">R$ 0,00</strong></span>
-        </div>
-    </div>
-
-    <!-- CABEÇALHO & NAVEGAÇÃO PRINCIPAL -->
+    <!-- Header -->
     <header>
-        <div class="logo">Suellen Cakes</div>
+        <a href="#" class="logo">Suellen Cakes</a>
         <nav>
             <ul>
-                <li><a href="#hero">Início</a></li>
+                <li><a href="#inicio">Início</a></li>
                 <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#orcamento">Orçamento</a></li>
-                <li><a href="#eventos">Eventos</a></li>
-                <li><a href="#galeria">Galeria</a></li>
-                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#festas">Festas & Casamentos</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- SEÇÃO HERO / APRESENTAÇÃO -->
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>Doces & Bolos artesanais feitos com amor</h1>
-            <p>Monte seu pedido personalizado de forma rápida e prática.</p>
-            <a href="#orcamento" class="btn-secundario">Montar Pedido</a>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <h1>Doces que tornam seus momentos especiais</h1>
+        <p>Bolos artesanais, doces finos e sobremesas feitas com carinho.</p>
+        <a href="#montar-pedido" class="btn-green">FAÇA SEU PEDIDO</a>
+        
+        <div class="hero-badge">
+            <div style="font-size: 40px; font-weight: bold; color: #e23d72;">SC</div>
         </div>
     </section>
 
-    <!-- SEÇÃO PRODUTOS -->
-    <section id="produtos" class="secao">
-        <h2>Nossos Produtos</h2>
-        <p class="subtitulo-secao">Conheça nossas delícias feitas com ingredientes selecionados</p>
+    <div class="container">
         
-        <div class="grid-produtos">
-            <div class="card-produto">
-                <div class="img-placeholder">
-                    <img src="https://via.placeholder.com/300x180" alt="Bolo Decorado">
+        <!-- Nossos Produtos -->
+        <h2 id="produtos" class="section-title">Nossos Produtos</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img-box">
+                    <div style="font-size: 45px;">🎂</div>
                 </div>
                 <h3>Bolos Festivos</h3>
-                <p>Bolos de andares e temáticos personalizados para o seu evento.</p>
+                <p>Bolos personalizados para aniversários e casamentos com os melhores recheios.</p>
             </div>
-            <div class="card-produto">
-                <div class="img-placeholder">
-                    <img src="https://via.placeholder.com/300x180" alt="Doces Finos">
+            <div class="product-card">
+                <div class="product-img-box">
+                    <div style="font-size: 45px;">🍬</div>
                 </div>
                 <h3>Doces Finos</h3>
-                <p>Brigadeiros gourmet, beijinhos e opções variadas para festas.</p>
+                <p>Brigadeiros gourmet, bombons e copinhos recheados para sua festa.</p>
             </div>
-            <div class="card-produto">
-                <div class="img-placeholder">
-                    <img src="https://via.placeholder.com/300x180" alt="Sobremesas Especial">
+            <div class="product-card">
+                <div class="product-img-box">
+                    <div style="font-size: 45px;">🍮</div>
                 </div>
-                <h3>Kits Especiais</h3>
-                <p>Combos perfeitos para aniversários e pequenas comemorações.</p>
+                <h3>Sobremesas</h3>
+                <p>Tortas, pudins e taças da felicidade para o seu fim de semana.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO MONTE SEU PEDIDO / CALCULADORA -->
-    <section id="orcamento" class="secao">
-        
-        <!-- TELA 1: SELEÇÃO DOS ITENS -->
-        <div class="calculadora-container" id="painel-calculadora">
-            <h2>Monte seu Pedido</h2>
-            <p class="subtitulo-secao">Selecione as opções desejadas para calcular o orçamento</p>
-
-            <!-- Categoria: Bolos -->
-            <div class="item-categoria">
-                <label class="checkbox-titulo">
-                    <input type="checkbox" id="check-bolo" onchange="calcularTotal()">
-                    <strong>🎂 Bolos Personalizados</strong>
-                </label>
-                <div class="painel-opcoes">
-                    <div class="grupo-campo">
-                        <label for="select-andares">Quantidade de Andares:</label>
-                        <select id="select-andares" onchange="calcularTotal()">
-                            <option value="1">1 Andar (R$ 130,00)</option>
-                            <option value="2">2 Andares (R$ 220,00)</option>
-                            <option value="3">3 Andares (R$ 310,00)</option>
-                        </select>
-                    </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <div style="font-size: 45px;">🥮</div>
                 </div>
-            </div>
-
-            <!-- Categoria: Doces -->
-            <div class="item-categoria">
-                <label class="checkbox-titulo">
-                    <input type="checkbox" id="check-doces" onchange="calcularTotal()">
-                    <strong>🍬 Doces Finos & Tradicionais</strong>
-                </label>
-                <div class="painel-opcoes">
-                    <div class="grupo-campo">
-                        <label for="select-doces-qtd">Quantidade de Doces:</label>
-                        <select id="select-doces-qtd" onchange="calcularTotal()">
-                            <option value="50">50 Unidades (R$ 60,00)</option>
-                            <option value="100">100 Unidades (R$ 110,00)</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RESUMO DO PREÇO E BOTÃO PARA VER ORÇAMENTO COMPLETO -->
-            <div class="resumo-preco">
-                <h3>🛒 Seu Orçamento</h3>
-                <p class="total-resumo-texto">Total Estimado: <strong id="preco-total">R$ 0,00</strong></p>
-                
-                <button type="button" class="btn-secundario btn-ver-orcamento" onclick="irParaResumoOrcamento()">
-                    Ver Orçamento Completo ➔
-                </button>
+                <h3>Bolos Caseiros</h3>
+                <p>Aquele bolo fofinho e caseiro perfeito para o café da tarde.</p>
             </div>
         </div>
 
-        <!-- TELA 2: RESUMO DETALHADO E ENVIO PARA O WHATSAPP -->
-        <div id="secao-orcamento-detalhado" style="display: none;" class="calculadora-container">
-            <h2>📋 Detalhes do seu Pedido</h2>
+        <!-- Festas e Casamentos -->
+        <div id="festas" class="big-card" style="margin-top: 60px;">
+            <h2>Festas e Casamentos</h2>
+            <p>Transformamos seu evento em uma experiência inesquecível com mesas de doces personalizadas e bolos de alta confeitaria.</p>
+            <a href="https://wa.me/5527995336204?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Festas%20e%20Casamentos." target="_blank" class="btn-pink">Solicitar Orçamento de Evento</a>
+        </div>
+
+        <!-- Monte seu Pedido / Simulador WhatsApp -->
+        <div id="montar-pedido" class="order-section">
+            <h2>Monte seu Pedido Online</h2>
             
-            <div id="lista-itens-orcamento" class="lista-detalhes-pedido">
-                <!-- Os itens selecionados serão inseridos aqui -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="check-bolo">
+                <label for="check-bolo" style="margin-bottom:0; cursor:pointer;">🎂 Quero incluir Bolo Personalizado</label>
             </div>
-            
-            <div class="resumo-final-detalhes">
-                <p>Total Estimado: <strong id="preco-total-detalhado">R$ 0,00</strong></p>
+            <div class="form-group">
+                <label>Quantidade de Andares:</label>
+                <select id="tipo-bolo">
+                    <option value="1">1 Andar</option>
+                    <option value="2">2 Andares</option>
+                    <option value="3">3 Andares</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Massa do Bolo:</label>
+                <input type="text" id="massa-bolo" value="Massa Branca Tradicional / Chocolate">
+            </div>
+            <div class="form-group">
+                <label>Recheio do 1º Andar (Ex: Ninho com Nutella):</label>
+                <input type="text" id="r1-andar-1" placeholder="Ex: Brigadeiro gourmet e Ninho">
             </div>
 
-            <!-- Botão para enviar pedido pelo WhatsApp -->
-            <button type="button" class="btn-whatsapp btn-enviar-final" onclick="enviarPedidoWhatsApp()">
-                Enviar Pedido via WhatsApp
-            </button>
+            <hr style="border:0; border-top:1px solid #f2e3e7; margin:25px 0;">
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="check-doces">
+                <label for="check-doces" style="margin-bottom:0; cursor:pointer;">🍬 Quero incluir Doces / Brigadeiros</label>
+            </div>
+            <div class="form-group">
+                <label>Seleção de Doces:</label>
+                <select id="qtd-doces">
+                    <option value="50">Kit 50 Brigadeiros Gourmet</option>
+                    <option value="100">Kit 100 Brigadeiros Gourmet</option>
+                    <option value="200">Kit 200 Doces Finos Variados</option>
+                </select>
+            </div>
+
+            <hr style="border:0; border-top:1px solid #f2e3e7; margin:25px 0;">
+
+            <div class="form-group">
+                <label>Forma de Recebimento:</label>
+                <select id="forma-entrega" onchange="alternarEndereco()">
+                    <option value="retirada">Retirada na Confeitaria</option>
+                    <option value="entrega">Entrega em Domicílio</option>
+                </select>
+            </div>
+            <div class="form-group" id="grupo-endereco" style="display:none;">
+                <label>Endereço Completo:</label>
+                <input type="text" id="endereco-cliente" placeholder="Rua, número, bairro">
+            </div>
+
+            <div class="price-box">
+                Valor Total Estimado: <span id="preco-total">R$ 150,00</span>
+            </div>
+
+            <button onclick="enviarPedidoWhatsApp()" class="btn-green" style="width: 100%; text-align: center;">Enviar Pedido via WhatsApp</button>
         </div>
 
-    </section>
-
-    <!-- SEÇÃO DE EVENTOS -->
-    <section id="eventos" class="secao destaque-eventos">
-        <div class="card-evento">
-            <h2>Festas & Casamentos</h2>
-            <p>Planejando um grande evento? Preparamos degustações e orçamentos corporativos sob medida para que seu momento especial seja inesquecível.</p>
-            <a href="https://wa.me/5527995336204" target="_blank" class="btn-whatsapp">Agendar Degustação</a>
+        <!-- Sobre Nós -->
+        <div id="sobre" class="big-card" style="margin-top: 60px;">
+            <h2>Sobre Nós</h2>
+            <p>A Suellen Cakes nasceu da paixão por criar momentos doces e inesquecíveis. Cada receita é produzida de forma artesanal, utilizando ingredientes selecionados e muito carinho.</p>
         </div>
-    </section>
 
-    <!-- SEÇÃO GALERIA -->
-    <section id="galeria" class="secao">
-        <h2>Galeria de Fotos</h2>
-        <p class="subtitulo-secao">Alguns dos nossos trabalhos recentes</p>
-
-        <div class="grid-galeria">
-            <div class="foto-item"><img src="https://via.placeholder.com/200" alt="Bolo 1"></div>
-            <div class="foto-item"><img src="https://via.placeholder.com/200" alt="Bolo 2"></div>
-            <div class="foto-item"><img src="https://via.placeholder.com/200" alt="Doces 1"></div>
-            <div class="foto-item"><img src="https://via.placeholder.com/200" alt="Doces 2"></div>
+        <!-- Fale Conosco -->
+        <div id="contato" class="big-card">
+            <h2>Fale Conosco</h2>
+            <p>
+                <strong>WhatsApp:</strong> (27) 99533-6204<br>
+                <strong>Instagram:</strong> @suellencakes<br>
+                <strong>Localização:</strong> Atendimento com encomendas locais
+            </p>
         </div>
-    </section>
 
-    <!-- SEÇÃO SOBRE NÓS -->
-    <section id="sobre" class="secao sobre-nos">
-        <h2>Sobre Nós</h2>
-        <p>Na <strong>Suellen Cakes</strong>, cada bolo e doce é produzido de forma artesanal com o máximo cuidado, carinho e ingredientes de alta qualidade para deixar as suas celebrações ainda mais saborosas.</p>
-    </section>
+    </div>
 
-    <!-- RODAPÉ & CONTATO -->
-    <footer id="contato">
-        <div class="contato">
-            <p><strong>Suellen Cakes</strong></p>
-            <p>WhatsApp: (27) 99533-6204</p>
-        </div>
-        <p style="margin-top: 15px;">&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 Suellen Cakes. Todos os direitos reservados.
     </footer>
 
-    <!-- Arquivo JavaScript Externo -->
-    <script src="script.js"></script>
+    <script>
+        function alternarEndereco() {
+            const forma = document.getElementById('forma-entrega').value;
+            const grupoEnd = document.getElementById('grupo-endereco');
+            grupoEnd.style.display = (forma === 'entrega') ? 'block' : 'none';
+        }
+
+        function enviarPedidoWhatsApp() {
+            let mensagem = "✨ *NOVO PEDIDO - SUELLEN CAKES* ✨\\n\\n";
+            let temItem = false;
+
+            // BOLO PERSONALIZADO
+            if (document.getElementById('check-bolo').checked) {
+                temItem = true;
+                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+                const massa = document.getElementById('massa-bolo').value;
+                const r1 = document.getElementById('r1-andar-1').value;
+
+                mensagem += `🎂 *Bolo Personalizado (${qtdAndares} Andar/es)*\\n`;
+                mensagem += `• Massa: ${massa}\\n`;
+                mensagem += `• Recheios: ${r1}\\n\\n`;
+            }
+
+            // DOCES
+            if (document.getElementById('check-doces').checked) {
+                temItem = true;
+                const selectDoces = document.getElementById('qtd-doces');
+                mensagem += `🍬 *Doces/Brigadeiros:* ${selectDoces.options[selectDoces.selectedIndex].text}\\n\\n`;
+            }
+
+            // ENTREGA / RETIRADA
+            const formaEntrega = document.getElementById('forma-entrega').value;
+            if (formaEntrega === 'entrega') {
+                const endereco = document.getElementById('endereco-cliente').value.trim();
+                mensagem += `🛵 *Forma de Recebimento:* Entrega em Domicílio\\n`;
+                mensagem += `📍 *Endereço:* ${endereco ? endereco : 'Não informado'}\\n\\n`;
+            } else {
+                mensagem += `🛍️ *Forma de Recebimento:* Retirada na Confeitaria\\n\\n`;
+            }
+
+            // TOTAL 
+            const total = document.getElementById('preco-total').innerText;
+            mensagem += `💰 *Valor Total Estimado:* ${total}`;
+
+            if (!temItem) {
+                alert("Por favor, selecione pelo menos um item para o seu pedido (Bolo ou Doces).");
+                return;
+            }
+
+            const numeroWhatsApp = "5527995336204";
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
 </body>
 </html>
+"""
+
+with open("suellen_cakes.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Arquivo gerado com sucesso: suellen_cakes.html")
