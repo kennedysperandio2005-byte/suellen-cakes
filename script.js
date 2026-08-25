@@ -1,5 +1,5 @@
 // Alterne para o número de WhatsApp da sua loja (somente números com DDD)
-const NUMERO_WHATSAPP = "5531999999999"; 
+const NUMERO_WHATSAPP = "5527995336204"; 
 
 function irParaResumoOrcamento() {
     const painelCalculadora = document.getElementById('painel-calculadora');
