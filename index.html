@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=16">
+    <link rel="stylesheet" href="style.css?v=17">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -64,7 +64,7 @@
         </div>
     </section>
 
-    <!-- SEÇÃO MONTE SEU PEDIDO MULTI-SELEÇÃO -->
+    <!-- SEÇÃO MONTE SEU PEDIDO -->
     <section id="monte-seu-bolo" class="secao">
         <h2>Monte Seu Pedido Completo</h2>
         <p class="subtitulo-secao">Marque as opções desejadas e escolha as massas, recheios e quantidades abaixo:</p>
@@ -99,9 +99,9 @@
                         </select>
                     </div>
 
-                    <!-- ANDAR 1 (BASE) -->
-                    <div id="painel-andar-1" style="border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 10px; background-color: #fafafa;">
-                        <h4 style="margin-top: 0; color: #333;">1º Andar (Base)</h4>
+                    <!-- ANDAR 1 -->
+                    <div id="painel-andar-1" class="card-andar">
+                        <h4>1º Andar (Base)</h4>
                         <div class="grupo-campo">
                             <label for="tamanho-andar-1"><strong>Tamanho do 1º Andar:</strong></label>
                             <select id="tamanho-andar-1" onchange="calcularTotal()">
@@ -114,15 +114,15 @@
                         </div>
                         <div class="grupo-campo">
                             <label><strong>Recheios do 1º Andar (até 3):</strong></label>
-                            <select id="r1-andar-1" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                            <select id="r2-andar-1" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                            <select id="r3-andar-1" onchange="calcularTotal()"></select>
+                            <select id="r1-andar-1" aria-label="1º recheio do 1º andar" onchange="calcularTotal()"></select>
+                            <select id="r2-andar-1" aria-label="2º recheio do 1º andar" onchange="calcularTotal()"></select>
+                            <select id="r3-andar-1" aria-label="3º recheio do 1º andar" onchange="calcularTotal()"></select>
                         </div>
                     </div>
 
-                    <!-- ANDAR 2 (MEIO OU TOPO) -->
-                    <div id="painel-andar-2" style="display: none; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 10px; background-color: #fafafa;">
-                        <h4 style="margin-top: 0; color: #333;">2º Andar</h4>
+                    <!-- ANDAR 2 -->
+                    <div id="painel-andar-2" class="card-andar" style="display: none;">
+                        <h4>2º Andar</h4>
                         <div class="grupo-campo">
                             <label for="tamanho-andar-2"><strong>Tamanho do 2º Andar:</strong></label>
                             <select id="tamanho-andar-2" onchange="calcularTotal()">
@@ -134,15 +134,15 @@
                         </div>
                         <div class="grupo-campo">
                             <label><strong>Recheios do 2º Andar (até 3):</strong></label>
-                            <select id="r1-andar-2" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                            <select id="r2-andar-2" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                            <select id="r3-andar-2" onchange="calcularTotal()"></select>
+                            <select id="r1-andar-2" aria-label="1º recheio do 2º andar" onchange="calcularTotal()"></select>
+                            <select id="r2-andar-2" aria-label="2º recheio do 2º andar" onchange="calcularTotal()"></select>
+                            <select id="r3-andar-2" aria-label="3º recheio do 2º andar" onchange="calcularTotal()"></select>
                         </div>
                     </div>
 
-                    <!-- ANDAR 3 (TOPO) -->
-                    <div id="painel-andar-3" style="display: none; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-top: 10px; background-color: #fafafa;">
-                        <h4 style="margin-top: 0; color: #333;">3º Andar (Topo)</h4>
+                    <!-- ANDAR 3 -->
+                    <div id="painel-andar-3" class="card-andar" style="display: none;">
+                        <h4>3º Andar (Topo)</h4>
                         <div class="grupo-campo">
                             <label for="tamanho-andar-3"><strong>Tamanho do 3º Andar:</strong></label>
                             <select id="tamanho-andar-3" onchange="calcularTotal()">
@@ -153,9 +153,9 @@
                         </div>
                         <div class="grupo-campo">
                             <label><strong>Recheios do 3º Andar (até 3):</strong></label>
-                            <select id="r1-andar-3" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                            <select id="r2-andar-3" onchange="calcularTotal()" style="margin-bottom: 5px;"></select>
-                            <select id="r3-andar-3" onchange="calcularTotal()"></select>
+                            <select id="r1-andar-3" aria-label="1º recheio do 3º andar" onchange="calcularTotal()"></select>
+                            <select id="r2-andar-3" aria-label="2º recheio do 3º andar" onchange="calcularTotal()"></select>
+                            <select id="r3-andar-3" aria-label="3º recheio do 3º andar" onchange="calcularTotal()"></select>
                         </div>
                     </div>
 
@@ -225,7 +225,7 @@
             </div>
 
             <!-- FORMA DE ENTREGA E FRETE -->
-            <div class="grupo-campo" style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+            <div class="grupo-campo secao-entrega">
                 <label for="forma-entrega"><strong>Forma de Entrega / Retirada:</strong></label>
                 <select id="forma-entrega" onchange="tratarMudancaEntrega(); calcularTotal();">
                     <option value="retirada">Retirar na Confeitaria (Grátis)</option>
@@ -233,13 +233,13 @@
                 </select>
 
                 <div id="painel-frete" style="display: none; margin-top: 10px;">
-                    <p style="font-size: 0.9rem; color: #444; margin-bottom: 8px;"><strong>Taxa de entrega:</strong> R$ 50,00 para qualquer localização</p>
-                    <label for="endereco-cliente" style="font-size: 0.85rem; color: #555; display: block;"><strong>Endereço para entrega (Opcional):</strong></label>
-                    <input type="text" id="endereco-cliente" placeholder="Rua, número, bairro e CEP" style="width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
+                    <p class="txt-frete"><strong>Taxa de entrega:</strong> R$ 50,00 para qualquer localização</p>
+                    <label for="endereco-cliente" class="lbl-endereco"><strong>Endereço para entrega (Opcional):</strong></label>
+                    <input type="text" id="endereco-cliente" placeholder="Rua, número, bairro e CEP">
                 </div>
             </div>
 
-            <!-- TOTAL E BOTÃO DE ENVIAR -->
+            <!-- TOTAL E BOTÃO -->
             <div class="resumo-preco">
                 <h3>Valor Total Estimado: <span id="preco-total">R$ 0,00</span></h3>
                 <button onclick="enviarPedidoWhatsApp()" class="btn-whatsapp btn-calcular">Enviar Pedido para o WhatsApp</button>
@@ -290,45 +290,43 @@
 
     <!-- SCRIPT DE CÁLCULO E WHATSAPP -->
     <script>
-        const listaRecheios = [
-            "Brigadeiro", "Ninho", "Nutella (+ R$ 15,00)", "Morango", "Abacaxi", 
-            "Doce de leite", "Nozes", "Café", "Ganache", "Coco", "Amendoim", 
-            "Pêssego", "Ameixa", "Brigadeiro branco", "Oreo", "Geleia de morango", 
-            "Geleia de frutas vermelhas"
-        ];
+        const recheiosCategorizados = {
+            "Tradicionais": ["Brigadeiro", "Brigadeiro branco", "Doce de leite", "Coco", "Café"],
+            "Especiais": ["Ninho", "Nutella (+ R$ 15,00)", "Nozes", "Ganache", "Oreo"],
+            "Frutas & Geleias": ["Morango", "Abacaxi", "Pêssego", "Ameixa", "Geleia de morango", "Geleia de frutas vermelhas"]
+        };
 
         function popularSelectsRecheio() {
             for (let andar = 1; andar <= 3; andar++) {
                 for (let r = 1; r <= 3; r++) {
                     const select = document.getElementById(`r${r}-andar-${andar}`);
-                    select.innerHTML = '';
+                    select.innerHTML = r === 1 ? '' : `<option value="">-- Nenhum ${r}º recheio --</option>`;
 
-                    if (r === 1) {
-                        listaRecheios.forEach(rec => {
-                            select.innerHTML += `<option value="${rec}">${rec}</option>`;
+                    Object.keys(recheiosCategorizados).forEach(categoria => {
+                        const optgroup = document.createElement('optgroup');
+                        optgroup.label = categoria;
+                        
+                        recheiosCategorizados[categoria].forEach(rec => {
+                            const option = document.createElement('option');
+                            option.value = rec;
+                            option.textContent = rec;
+                            optgroup.appendChild(option);
                         });
-                    } else {
-                        select.innerHTML = `<option value="">-- Nenhum ${r}º recheio --</option>`;
-                        listaRecheios.forEach(rec => {
-                            select.innerHTML += `<option value="${rec}">${rec}</option>`;
-                        });
-                    }
+
+                        select.appendChild(optgroup);
+                    });
                 }
             }
         }
 
         function toggleOpcao(id) {
             const elemento = document.getElementById(id);
-            if (elemento.style.display === "none" || elemento.style.display === "") {
-                elemento.style.display = "block";
-            } else {
-                elemento.style.display = "none";
-            }
+            elemento.style.display = (elemento.style.display === "none" || elemento.style.display === "") ? "block" : "none";
             calcularTotal();
         }
 
         function atualizarAndaresBolo() {
-            const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+            const qtdAndares = parseInt(document.getElementById('tipo-bolo').value, 10);
             document.getElementById('painel-andar-1').style.display = 'block';
             document.getElementById('painel-andar-2').style.display = (qtdAndares >= 2) ? 'block' : 'none';
             document.getElementById('painel-andar-3').style.display = (qtdAndares >= 3) ? 'block' : 'none';
@@ -336,27 +334,19 @@
 
         function tratarMudancaEntrega() {
             const tipoEntrega = document.getElementById('forma-entrega').value;
-            const painelFrete = document.getElementById('painel-frete');
-            if (tipoEntrega === 'entrega') {
-                painelFrete.style.display = 'block';
-            } else {
-                painelFrete.style.display = 'none';
-            }
+            document.getElementById('painel-frete').style.display = (tipoEntrega === 'entrega') ? 'block' : 'none';
         }
 
         function calcularTotal() {
             let total = 0;
 
             if (document.getElementById('check-bolo').checked) {
-                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value, 10);
 
-                // Red Velvet
                 if (document.getElementById('massa-bolo').value.includes('Red Velvet')) total += 10;
 
-                // Soma os valores dos tamanhos e recheios adicionais de cada andar visível
                 for (let andar = 1; andar <= qtdAndares; andar++) {
-                    const valTamanho = parseFloat(document.getElementById(`tamanho-andar-${andar}`).value);
-                    total += valTamanho;
+                    total += parseFloat(document.getElementById(`tamanho-andar-${andar}`).value);
 
                     const r1 = document.getElementById(`r1-andar-${andar}`).value;
                     const r2 = document.getElementById(`r2-andar-${andar}`).value;
@@ -383,25 +373,25 @@
             if (document.getElementById('add-topper').checked) total += 15;
             if (document.getElementById('add-embalagem').checked) total += 10;
 
-            const formaEntrega = document.getElementById('forma-entrega').value;
-            if (formaEntrega === 'entrega') {
+            if (document.getElementById('forma-entrega').value === 'entrega') {
                 total += 50.00;
             }
 
-            document.getElementById('preco-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            document.getElementById('preco-total').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
         function enviarPedidoWhatsApp() {
             let itensSelecionados = [];
 
             if (document.getElementById('check-bolo').checked) {
-                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value, 10);
                 const massa = document.getElementById('massa-bolo').value;
 
                 let textoBolo = `🎂 *Bolo Personalizado (${qtdAndares} ${qtdAndares === 1 ? 'Andar' : 'Andares'}):*\n  - Massa: ${massa}`;
 
                 for (let andar = 1; andar <= qtdAndares; andar++) {
-                    const tamTexto = document.getElementById(`tamanho-andar-${andar}`).options[document.getElementById(`tamanho-andar-${andar}`).selectedIndex].text;
+                    const selectTam = document.getElementById(`tamanho-andar-${andar}`);
+                    const tamTexto = selectTam.options[selectTam.selectedIndex].text;
                     
                     let recheios = [document.getElementById(`r1-andar-${andar}`).value];
                     const r2 = document.getElementById(`r2-andar-${andar}`).value;
@@ -417,18 +407,18 @@
             }
 
             if (document.getElementById('check-doces').checked) {
-                const doces = document.getElementById('qtd-doces').options[document.getElementById('qtd-doces').selectedIndex].text;
-                itensSelecionados.push(`🍬 *Doces:* ${doces}`);
+                const sel = document.getElementById('qtd-doces');
+                itensSelecionados.push(`🍬 *Doces:* ${sel.options[sel.selectedIndex].text}`);
             }
 
             if (document.getElementById('check-sobremesa').checked) {
-                const sobremesa = document.getElementById('item-sobremesa').options[document.getElementById('item-sobremesa').selectedIndex].text;
-                itensSelecionados.push(`🍮 *Sobremesa:* ${sobremesa}`);
+                const sel = document.getElementById('item-sobremesa');
+                itensSelecionados.push(`🍮 *Sobremesa:* ${sel.options[sel.selectedIndex].text}`);
             }
 
             if (document.getElementById('check-caseiro').checked) {
-                const caseiro = document.getElementById('item-caseiro').options[document.getElementById('item-caseiro').selectedIndex].text;
-                itensSelecionados.push(`🥮 *Bolo Caseiro:* ${caseiro}`);
+                const sel = document.getElementById('item-caseiro');
+                itensSelecionados.push(`🥮 *Bolo Caseiro:* ${sel.options[sel.selectedIndex].text}`);
             }
 
             let adicionais = [];
@@ -444,8 +434,7 @@
                 return;
             }
 
-            const formaEntrega = document.getElementById('forma-entrega').value;
-            if (formaEntrega === 'retirada') {
+            if (document.getElementById('forma-entrega').value === 'retirada') {
                 itensSelecionados.push(`🚗 *Entrega/Retirada:* Retirar na Confeitaria (Sem taxa de frete)`);
             } else {
                 const endereco = document.getElementById('endereco-cliente').value.trim();
@@ -458,13 +447,11 @@
 
             const total = document.getElementById('preco-total').innerText;
             const mensagemTexto = `Olá! Gostaria de fazer o seguinte pedido:\n\n` + itensSelecionados.join("\n\n") + `\n\n*VALOR TOTAL ESTIMADO:* ${total}`;
-            
             const numeroWhatsApp = "5527995336204"; 
             
             window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagemTexto)}`, '_blank');
         }
 
-        // Inicializar os selects de recheio no carregamento da página
         window.onload = function() {
             popularSelectsRecheio();
         };
