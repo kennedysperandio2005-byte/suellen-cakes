@@ -78,6 +78,7 @@
                 </div>
             </div>
         </section>
+
         <!-- SEÇÃO FESTAS E CASAMENTOS -->
         <section id="eventos" class="secao destaque-eventos">
             <div class="card-evento">
@@ -128,7 +129,7 @@
                 <div class="calculadora-container">
 
                     <!-- 1. BOLO PERSONALIZADO -->
-                    <div id="painel-montar-bolo" class="item-categoria" style="display: none;">
+                    <div id="painel-montar-bolo" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-bolo" onchange="togglePainel('opcoes-bolo', this.checked);">
                             <strong>1. Montar Bolo Personalizado</strong>
@@ -217,7 +218,7 @@
                     </div>
 
                     <!-- 2. DOCES E BRIGADEIROS -->
-                    <div id="painel-montar-doces" class="item-categoria" style="display: none;">
+                    <div id="painel-montar-doces" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-doces" onchange="togglePainel('opcoes-doces', this.checked);">
                             <strong>2. Adicionar Doces / Brigadeiros</strong>
@@ -236,7 +237,7 @@
                     </div>
 
                     <!-- 3. SOBREMESAS -->
-                    <div id="painel-montar-sobremesa" class="item-categoria" style="display: none;">
+                    <div id="painel-montar-sobremesa" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-sobremesa" onchange="togglePainel('opcoes-sobremesa', this.checked);">
                             <strong>3. Adicionar Sobremesa</strong>
@@ -254,7 +255,7 @@
                     </div>
 
                     <!-- 4. BOLOS CASEIROS -->
-                    <div id="painel-montar-caseiro" class="item-categoria" style="display: none;">
+                    <div id="painel-montar-caseiro" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-caseiro" onchange="togglePainel('opcoes-caseiro', this.checked);">
                             <strong>4. Adicionar Bolo Caseiro</strong>
@@ -352,9 +353,26 @@
             }
         }
 
-        // Executar ao carregar a página
+        // Executar ao carregar a página: limpa todos os checkboxes e calcula zerado
         window.onload = function() {
             popularSelectsRecheio();
+            
+            // Garante que todas as caixas começam desmarcadas ao abrir o site
+            document.getElementById('check-bolo').checked = false;
+            document.getElementById('check-doces').checked = false;
+            document.getElementById('check-sobremesa').checked = false;
+            document.getElementById('check-caseiro').checked = false;
+            document.getElementById('add-topper').checked = false;
+            document.getElementById('add-embalagem').checked = false;
+
+            // Oculta os painéis de opções
+            document.getElementById('opcoes-bolo').style.display = 'none';
+            document.getElementById('opcoes-doces').style.display = 'none';
+            document.getElementById('opcoes-sobremesa').style.display = 'none';
+            document.getElementById('opcoes-caseiro').style.display = 'none';
+
+            // Zera o cálculo inicial
+            calcularTotal();
         };
 
         // CONTROLADOR DE TELAS
@@ -383,10 +401,8 @@
         }
 
         function ativarEExibirCategoria(categoria) {
-            const painel = document.getElementById(`painel-montar-${categoria}`);
             const check = document.getElementById(`check-${categoria}`);
             
-            if (painel) painel.style.display = 'block';
             if (check) {
                 check.checked = true;
                 togglePainel(`opcoes-${categoria}`, true);
