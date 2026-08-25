@@ -74,7 +74,7 @@
             <!-- 1. BOLO PERSONALIZADO -->
             <div class="item-categoria">
                 <label class="checkbox-titulo">
-                    <input type="checkbox" id="check-bolo" onchange="toggleOpcao('opcoes-bolo'); calcularTotal();">
+                    <input type="checkbox" id="check-bolo" onchange="toggleOpcao('opcoes-bolo');">
                     <strong>1. Montar Bolo Personalizado</strong>
                 </label>
                 <div id="opcoes-bolo" class="painel-opcoes" style="display: none;">
@@ -98,35 +98,83 @@
                     </div>
 
                     <div class="grupo-campo">
-    <label for="recheio-bolo"><strong>Escolha o Recheio Principal:</strong></label>
-    <select id="recheio-bolo" onchange="calcularTotal()">
-        <option value="Brigadeiro">Brigadeiro</option>
-        <option value="Ninho">Ninho</option>
-        <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
-        <option value="Morango">Morango</option>
-        <option value="Abacaxi">Abacaxi</option>
-        <option value="Doce de leite">Doce de leite</option>
-        <option value="Nozes">Nozes</option>
-        <option value="Café">Café</option>
-        <option value="Ganache">Ganache</option>
-        <option value="Coco">Coco</option>
-        <option value="Amendoim">Amendoim</option>
-        <option value="Pêssego">Pêssego</option>
-        <option value="Ameixa">Ameixa</option>
-        <option value="Brigadeiro branco">Brigadeiro branco</option>
-        <option value="Oreo">Oreo</option>
-        <option value="Geleia de morango">Geleia de morango</option>
-        <option value="Geleia de frutas vermelhas">Geleia de frutas vermelhas</option>
-    </select>
-</div>
+                        <label><strong>Escolha até 3 Recheios:</strong></label>
+                        
+                        <!-- 1º Recheio (Obrigatório) -->
+                        <label for="recheio-bolo-1" style="font-size: 0.85rem; color: #777; margin-top: 5px;">1º Recheio:</label>
+                        <select id="recheio-bolo-1" onchange="calcularTotal()">
+                            <option value="Brigadeiro">Brigadeiro</option>
+                            <option value="Ninho">Ninho</option>
+                            <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
+                            <option value="Morango">Morango</option>
+                            <option value="Abacaxi">Abacaxi</option>
+                            <option value="Doce de leite">Doce de leite</option>
+                            <option value="Nozes">Nozes</option>
+                            <option value="Café">Café</option>
+                            <option value="Ganache">Ganache</option>
+                            <option value="Coco">Coco</option>
+                            <option value="Amendoim">Amendoim</option>
+                            <option value="Pêssego">Pêssego</option>
+                            <option value="Ameixa">Ameixa</option>
+                            <option value="Brigadeiro branco">Brigadeiro branco</option>
+                            <option value="Oreo">Oreo</option>
+                            <option value="Geleia de morango">Geleia de morango</option>
+                            <option value="Geleia de frutas vermelhas">Geleia de frutas vermelhas</option>
+                        </select>
 
+                        <!-- 2º Recheio (Opcional) -->
+                        <label for="recheio-bolo-2" style="font-size: 0.85rem; color: #777; margin-top: 8px;">2º Recheio (Opcional):</label>
+                        <select id="recheio-bolo-2" onchange="calcularTotal()">
+                            <option value="">-- Nenhum segundo recheio --</option>
+                            <option value="Brigadeiro">Brigadeiro</option>
+                            <option value="Ninho">Ninho</option>
+                            <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
+                            <option value="Morango">Morango</option>
+                            <option value="Abacaxi">Abacaxi</option>
+                            <option value="Doce de leite">Doce de leite</option>
+                            <option value="Nozes">Nozes</option>
+                            <option value="Café">Café</option>
+                            <option value="Ganache">Ganache</option>
+                            <option value="Coco">Coco</option>
+                            <option value="Amendoim">Amendoim</option>
+                            <option value="Pêssego">Pêssego</option>
+                            <option value="Ameixa">Ameixa</option>
+                            <option value="Brigadeiro branco">Brigadeiro branco</option>
+                            <option value="Oreo">Oreo</option>
+                            <option value="Geleia de morango">Geleia de morango</option>
+                            <option value="Geleia de frutas vermelhas">Geleia de frutas vermelhas</option>
+                        </select>
+
+                        <!-- 3º Recheio (Opcional) -->
+                        <label for="recheio-bolo-3" style="font-size: 0.85rem; color: #777; margin-top: 8px;">3º Recheio (Opcional):</label>
+                        <select id="recheio-bolo-3" onchange="calcularTotal()">
+                            <option value="">-- Nenhum terceiro recheio --</option>
+                            <option value="Brigadeiro">Brigadeiro</option>
+                            <option value="Ninho">Ninho</option>
+                            <option value="Nutella (+ R$ 15,00)">Nutella (+ R$ 15,00)</option>
+                            <option value="Morango">Morango</option>
+                            <option value="Abacaxi">Abacaxi</option>
+                            <option value="Doce de leite">Doce de leite</option>
+                            <option value="Nozes">Nozes</option>
+                            <option value="Café">Café</option>
+                            <option value="Ganache">Ganache</option>
+                            <option value="Coco">Coco</option>
+                            <option value="Amendoim">Amendoim</option>
+                            <option value="Pêssego">Pêssego</option>
+                            <option value="Ameixa">Ameixa</option>
+                            <option value="Brigadeiro branco">Brigadeiro branco</option>
+                            <option value="Oreo">Oreo</option>
+                            <option value="Geleia de morango">Geleia de morango</option>
+                            <option value="Geleia de frutas vermelhas">Geleia de frutas vermelhas</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <!-- 2. DOCES E BRIGADEIROS -->
             <div class="item-categoria">
                 <label class="checkbox-titulo">
-                    <input type="checkbox" id="check-doces" onchange="toggleOpcao('opcoes-doces'); calcularTotal();">
+                    <input type="checkbox" id="check-doces" onchange="toggleOpcao('opcoes-doces');">
                     <strong>2. Adicionar Doces / Brigadeiros</strong>
                 </label>
                 <div id="opcoes-doces" class="painel-opcoes" style="display: none;">
@@ -145,7 +193,7 @@
             <!-- 3. SOBREMESAS -->
             <div class="item-categoria">
                 <label class="checkbox-titulo">
-                    <input type="checkbox" id="check-sobremesa" onchange="toggleOpcao('opcoes-sobremesa'); calcularTotal();">
+                    <input type="checkbox" id="check-sobremesa" onchange="toggleOpcao('opcoes-sobremesa');">
                     <strong>3. Adicionar Sobremesa</strong>
                 </label>
                 <div id="opcoes-sobremesa" class="painel-opcoes" style="display: none;">
@@ -163,7 +211,7 @@
             <!-- 4. BOLOS CASEIROS -->
             <div class="item-categoria">
                 <label class="checkbox-titulo">
-                    <input type="checkbox" id="check-caseiro" onchange="toggleOpcao('opcoes-caseiro'); calcularTotal();">
+                    <input type="checkbox" id="check-caseiro" onchange="toggleOpcao('opcoes-caseiro');">
                     <strong>4. Adicionar Bolo Caseiro</strong>
                 </label>
                 <div id="opcoes-caseiro" class="painel-opcoes" style="display: none;">
@@ -236,87 +284,102 @@
 
     <!-- SCRIPT DE CÁLCULO E WHATSAPP -->
     <script>
-    function toggleOpcao(id) {
-        const elemento = document.getElementById(id);
-        if (elemento.style.display === "none" || elemento.style.display === "") {
-            elemento.style.display = "block";
-        } else {
-            elemento.style.display = "none";
-        }
-    }
-
-    function calcularTotal() {
-        let total = 0;
-
-        if (document.getElementById('check-bolo').checked) {
-            total += parseFloat(document.getElementById('tamanho-bolo').value);
-            if (document.getElementById('massa-bolo').value.includes('Red Velvet')) total += 10;
-            if (document.getElementById('recheio-bolo').value.includes('Nutella')) total += 15;
+        function toggleOpcao(id) {
+            const elemento = document.getElementById(id);
+            if (elemento.style.display === "none" || elemento.style.display === "") {
+                elemento.style.display = "block";
+            } else {
+                elemento.style.display = "none";
+            }
+            calcularTotal();
         }
 
-        if (document.getElementById('check-doces').checked) {
-            total += parseFloat(document.getElementById('qtd-doces').value);
+        function calcularTotal() {
+            let total = 0;
+
+            if (document.getElementById('check-bolo').checked) {
+                total += parseFloat(document.getElementById('tamanho-bolo').value);
+                if (document.getElementById('massa-bolo').value.includes('Red Velvet')) total += 10;
+                
+                const r1 = document.getElementById('recheio-bolo-1').value;
+                const r2 = document.getElementById('recheio-bolo-2').value;
+                const r3 = document.getElementById('recheio-bolo-3').value;
+
+                if (r1.includes('Nutella')) total += 15;
+                if (r2.includes('Nutella')) total += 15;
+                if (r3.includes('Nutella')) total += 15;
+            }
+
+            if (document.getElementById('check-doces').checked) {
+                total += parseFloat(document.getElementById('qtd-doces').value);
+            }
+
+            if (document.getElementById('check-sobremesa').checked) {
+                total += parseFloat(document.getElementById('item-sobremesa').value);
+            }
+
+            if (document.getElementById('check-caseiro').checked) {
+                total += parseFloat(document.getElementById('item-caseiro').value);
+            }
+
+            if (document.getElementById('add-topper').checked) total += 15;
+            if (document.getElementById('add-embalagem').checked) total += 10;
+
+            document.getElementById('preco-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
 
-        if (document.getElementById('check-sobremesa').checked) {
-            total += parseFloat(document.getElementById('item-sobremesa').value);
+        function enviarPedidoWhatsApp() {
+            let itensSelecionados = [];
+
+            if (document.getElementById('check-bolo').checked) {
+                const tam = document.getElementById('tamanho-bolo').options[document.getElementById('tamanho-bolo').selectedIndex].text;
+                const massa = document.getElementById('massa-bolo').value;
+                
+                let recheios = [document.getElementById('recheio-bolo-1').value];
+                const r2 = document.getElementById('recheio-bolo-2').value;
+                const r3 = document.getElementById('recheio-bolo-3').value;
+
+                if (r2 !== "") recheios.push(r2);
+                if (r3 !== "") recheios.push(r3);
+
+                itensSelecionados.push(`🎂 *Bolo Personalizado:*\n  - Tamanho: ${tam}\n  - Massa: ${massa}\n  - Recheios: ${recheios.join(", ")}`);
+            }
+
+            if (document.getElementById('check-doces').checked) {
+                const doces = document.getElementById('qtd-doces').options[document.getElementById('qtd-doces').selectedIndex].text;
+                itensSelecionados.push(`🍬 *Doces:* ${doces}`);
+            }
+
+            if (document.getElementById('check-sobremesa').checked) {
+                const sobremesa = document.getElementById('item-sobremesa').options[document.getElementById('item-sobremesa').selectedIndex].text;
+                itensSelecionados.push(`🍮 *Sobremesa:* ${sobremesa}`);
+            }
+
+            if (document.getElementById('check-caseiro').checked) {
+                const caseiro = document.getElementById('item-caseiro').options[document.getElementById('item-caseiro').selectedIndex].text;
+                itensSelecionados.push(`🥮 *Bolo Caseiro:* ${caseiro}`);
+            }
+
+            let adicionais = [];
+            if (document.getElementById('add-topper').checked) adicionais.push("Topper Personalizado");
+            if (document.getElementById('add-embalagem').checked) adicionais.push("Embalagem Especial");
+            
+            if (adicionais.length > 0) {
+                itensSelecionados.push(`🎁 *Adicionais:* ${adicionais.join(", ")}`);
+            }
+
+            if (itensSelecionados.length === 0) {
+                alert("Por favor, selecione pelo menos um item para montar seu pedido!");
+                return;
+            }
+
+            const total = document.getElementById('preco-total').innerText;
+            const mensagemTexto = `Olá! Gostaria de fazer o seguinte pedido:\n\n` + itensSelecionados.join("\n\n") + `\n\n*VALOR TOTAL ESTIMADO:* ${total}`;
+            
+            const numeroWhatsApp = "5527995336204"; 
+            
+            window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagemTexto)}`, '_blank');
         }
-
-        if (document.getElementById('check-caseiro').checked) {
-            total += parseFloat(document.getElementById('item-caseiro').value);
-        }
-
-        if (document.getElementById('add-topper').checked) total += 15;
-        if (document.getElementById('add-embalagem').checked) total += 10;
-
-        document.getElementById('preco-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-    }
-
-    function enviarPedidoWhatsApp() {
-        let itensSelecionados = [];
-
-        if (document.getElementById('check-bolo').checked) {
-            const tam = document.getElementById('tamanho-bolo').options[document.getElementById('tamanho-bolo').selectedIndex].text;
-            const massa = document.getElementById('massa-bolo').value;
-            const recheio = document.getElementById('recheio-bolo').value;
-            itensSelecionados.push(`🎂 *Bolo Personalizado:*\n  - Tamanho: ${tam}\n  - Massa: ${massa}\n  - Recheio: ${recheio}`);
-        }
-
-        if (document.getElementById('check-doces').checked) {
-            const doces = document.getElementById('qtd-doces').options[document.getElementById('qtd-doces').selectedIndex].text;
-            itensSelecionados.push(`🍬 *Doces:* ${doces}`);
-        }
-
-        if (document.getElementById('check-sobremesa').checked) {
-            const sobremesa = document.getElementById('item-sobremesa').options[document.getElementById('item-sobremesa').selectedIndex].text;
-            itensSelecionados.push(`🍮 *Sobremesa:* ${sobremesa}`);
-        }
-
-        if (document.getElementById('check-caseiro').checked) {
-            const caseiro = document.getElementById('item-caseiro').options[document.getElementById('item-caseiro').selectedIndex].text;
-            itensSelecionados.push(`🥮 *Bolo Caseiro:* ${caseiro}`);
-        }
-
-        let adicionais = [];
-        if (document.getElementById('add-topper').checked) adicionais.push("Topper Personalizado");
-        if (document.getElementById('add-embalagem').checked) adicionais.push("Embalagem Especial");
-        
-        if (adicionais.length > 0) {
-            itensSelecionados.push(`🎁 *Adicionais:* ${adicionais.join(", ")}`);
-        }
-
-        if (itensSelecionados.length === 0) {
-            alert("Por favor, selecione pelo menos um item para montar seu pedido!");
-            return;
-        }
-
-        const total = document.getElementById('preco-total').innerText;
-        const mensagemTexto = `Olá! Gostaria de fazer o seguinte pedido:\n\n` + itensSelecionados.join("\n\n") + `\n\n*VALOR TOTAL ESTIMADO:* ${total}`;
-        
-        const numeroWhatsApp = "5527995336204"; 
-        
-        window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagemTexto)}`, '_blank');
-    }
     </script>
 </body>
 </html>
