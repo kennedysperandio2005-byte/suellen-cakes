@@ -602,7 +602,44 @@
     const telefone = "5527995336204";
     const urlWhatsApp = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
     window.open(urlWhatsApp, '_blank');
+} // <-- Este fecha certinho a função "enviarPedidoWhatsApp"
+
+// A partir daqui começam as outras funções soltas dentro do <script>:
+
+function verificarHorarioLoja() {
+    const agora = new Date();
+    const diaSemana = agora.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
+    const horaAtual = agora.getHours();
+    const minutoAtual = agora.getMinutes();
+    const horaEmMinutos = horaAtual * 60 + minutoAtual;
+
+    const horaAbertura = 8 * 60;  // 08:00
+    const horaFechamento = 19 * 60; // 19:00
+
+    let estaAberto = false;
+
+    if (diaSemana !== 0) { 
+        if (horaEmMinutos >= horaAbertura && horaEmMinutos < horaFechamento) {
+            estaAberto = true;
+        }
+    }
+
+    const container = document.getElementById('status-loja-container');
+    const texto = document.getElementById('texto-status');
+
+    if (estaAberto) {
+        container.className = "status-loja aberta";
+        texto.innerText = "Estamos abertos! Faça seu pedido 🎂✨";
+    } else {
+        container.className = "status-loja fechada";
+        texto.innerText = "Estamos fechados no momento 🌙";
+    }
 }
-    </script>
+
+// Executa a verificação assim que a página carrega
+window.onload = function() {
+    verificarHorarioLoja();
+};
+</script>
 </body>
 </html>
