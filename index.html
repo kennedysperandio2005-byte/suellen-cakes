@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -153,7 +153,7 @@
             <p class="subtitulo-secao">Confira alguns dos nossos trabalhos realizados:</p>
 
             <div class="grid-galeria" id="grid-fotos-categoria">
-                <!-- As fotos serão injetadas dinamicamente aqui conforme a categoria -->
+                <!-- As fotos serão injetadas dinamicamente aqui -->
             </div>
         </section>
     </main>
@@ -263,7 +263,7 @@
                     <div id="painel-montar-doces" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-doces" onchange="togglePainel('opcoes-doces', this.checked);">
-                            <strong>2. Adicionar Doces / Brigadeiros</strong>
+                            <strong>2. Doces / Brigadeiros</strong>
                         </label>
                         <div id="opcoes-doces" class="painel-opcoes" style="display: none;">
                             <div class="grupo-campo">
@@ -282,7 +282,7 @@
                     <div id="painel-montar-sobremesa" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-sobremesa" onchange="togglePainel('opcoes-sobremesa', this.checked);">
-                            <strong>3. Adicionar Sobremesa</strong>
+                            <strong>3. Sobremesa</strong>
                         </label>
                         <div id="opcoes-sobremesa" class="painel-opcoes" style="display: none;">
                             <div class="grupo-campo">
@@ -300,7 +300,7 @@
                     <div id="painel-montar-caseiro" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-caseiro" onchange="togglePainel('opcoes-caseiro', this.checked);">
-                            <strong>4. Adicionar Bolo Caseiro</strong>
+                            <strong>4. Bolo Caseiro</strong>
                         </label>
                         <div id="opcoes-caseiro" class="painel-opcoes" style="display: none;">
                             <div class="grupo-campo">
@@ -436,7 +436,6 @@
             document.getElementById('titulo-categoria-galeria').innerText = nomeTitulo;
             const gridFotos = document.getElementById('grid-fotos-categoria');
             
-            // Gerando exemplos de fotos para a categoria (você pode substituir pelas imagens reais depois)
             let fotosHTML = '';
             for (let i = 1; i <= 4; i++) {
                 fotosHTML += `
