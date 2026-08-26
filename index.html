@@ -1,581 +1,654 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=20">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suellen Cakes | Confeitaria Artesanal</title>
+    <link rel="stylesheet" href="style.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- CABEÇALHO / MENU -->
-    <header>
-        <div class="logo">Suellen Cakes</div>
-        <nav id="nav-principal">
-            <ul>
-                <li><a href="#" onclick="mostrarTela('tela-inicio')">Início</a></li>
-                <li><a href="#produtos" onclick="mostrarTela('tela-inicio')">Produtos</a></li>
-                <li><a href="#" onclick="abrirMontagem('bolo')">Montar Pedido</a></li>
-                <li><a href="#eventos" onclick="mostrarTela('tela-inicio')">Festas & Casamentos</a></li>
-                <li><a href="#galeria" onclick="mostrarTela('tela-inicio')">Galeria</a></li>
-                <li><a href="#sobre" onclick="mostrarTela('tela-inicio')">Sobre Nós</a></li>
-                <li><a href="#contato" onclick="mostrarTela('tela-inicio')">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- CABEÇALHO / MENU -->
+    <header>
+        <div class="logo">Suellen Cakes</div>
+        <nav id="nav-principal">
+            <ul>
+                <li><a href="#" onclick="mostrarTela('tela-inicio')">Início</a></li>
+                <li><a href="#produtos" onclick="mostrarTela('tela-inicio')">Produtos</a></li>
+                <li><a href="#" onclick="abrirMontagem('bolo')">Montar Pedido</a></li>
+                <li><a href="#eventos" onclick="mostrarTela('tela-inicio')">Festas & Casamentos</a></li>
+                <li><a href="#galeria" onclick="mostrarTela('tela-inicio')">Galeria</a></li>
+                <li><a href="#sobre" onclick="mostrarTela('tela-inicio')">Sobre Nós</a></li>
+                <li><a href="#contato" onclick="mostrarTela('tela-inicio')">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- BARRA SUPERIOR DE NAVEGAÇÃO / CARRINHO -->
-    <div id="barra-top-navegacao" style="display: none;">
-        <button class="btn-voltar-seta" onclick="voltarParaInicio()" aria-label="Voltar">
-            &#8592;
-        </button>
-        <div class="carrinho-widget">
-            <span>🛒 <strong id="preco-carrinho-top">R$ 0,00</strong></span>
-        </div>
-    </div>
+    <!-- BARRA SUPERIOR DE NAVEGAÇÃO / CARRINHO -->
+    <div id="barra-top-navegacao" style="display: none;">
+        <button class="btn-voltar-seta" onclick="voltarParaInicio()" aria-label="Voltar">
+            &#8592;
+        </button>
+        <div class="carrinho-widget">
+            <span>🛒 <strong id="preco-carrinho-top">R$ 0,00</strong></span>
+        </div>
+    </div>
 
-    <!-- =======================================================
-         TELA 1: PÁGINA INICIAL (HOME)
-         ======================================================= -->
-    <main id="tela-inicio" class="tela-pagina ativa">
-        <!-- SEÇÃO INÍCIO / HERO -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <h1>Doces que tornam seus momentos especiais</h1>
-                <p>Bolos artesanais, doces finos e sobremesas feitas com carinho.</p>
-                <div class="status-loja" id="status-loja-container">
-                    <span class="bolinha-status" id="bolinha-status"></span> 
-                    <span id="texto-status">Verificando horário...</span>
-                </div>
-            </div>
-            <img src="logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
-        </section>
+    <!-- =======================================================
+         TELA 1: PÁGINA INICIAL (HOME)
+         ======================================================= -->
+    <main id="tela-inicio" class="tela-pagina ativa">
+        <!-- SEÇÃO INÍCIO / HERO -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>Doces que tornam seus momentos especiais</h1>
+                <p>Bolos artesanais, doces finos e sobremesas feitas com carinho.</p>
+                <div class="status-loja" id="status-loja-container">
+                    <span class="bolinha-status" id="bolinha-status"></span> 
+                    <span id="texto-status">Verificando horário...</span>
+                </div>
+            </div>
+            <img src="logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
+        </section>
 
-        <!-- SEÇÃO PRODUTOS (CARDS INTERATIVOS) -->
-        <section id="produtos" class="secao">
-            <h2>Nossos Produtos</h2>
-            <p class="subtitulo-secao">Clique em uma categoria para personalizar seu pedido:</p>
-            <div class="grid-produtos">
-                <div class="card-produto" onclick="abrirMontagem('bolo')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Festivos"></div>
-                    <h3>Bolos Festivos</h3>
-                    <p>Bolos personalizados para aniversários e casamentos com os melhores recheios.</p>
-                </div>
-                <div class="card-produto" onclick="abrirMontagem('doces')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Finos"></div>
-                    <h3>Doces Finos & Brigadeiros</h3>
-                    <p>Brigadeiros gourmet, bombons e copinhos recheados para sua festa.</p>
-                </div>
-                <div class="card-produto" onclick="abrirMontagem('sobremesa')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Sobremesas"></div>
-                    <h3>Sobremesas</h3>
-                    <p>Tortas, pudins e taças da felicidade para o seu fim de semana.</p>
-                </div>
-                <div class="card-produto" onclick="abrirMontagem('caseiro')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Caseiros"></div>
-                    <h3>Bolos Caseiros</h3>
-                    <p>Aquele bolo fofinho e caseiro perfeito para o café da tarde.</p>
-                </div>
-            </div>
-        </section>
+        <!-- SEÇÃO PRODUTOS (CARDS INTERATIVOS) -->
+        <section id="produtos" class="secao">
+            <h2>Nossos Produtos</h2>
+            <p class="subtitulo-secao">Clique em uma categoria para personalizar seu pedido:</p>
+            <div class="grid-produtos">
+                <div class="card-produto" onclick="abrirMontagem('bolo')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Festivos"></div>
+                    <h3>Bolos Festivos</h3>
+                    <p>Bolos personalizados para aniversários e casamentos com os melhores recheios.</p>
+                </div>
+                <div class="card-produto" onclick="abrirMontagem('doces')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Doces Finos"></div>
+                    <h3>Doces Finos & Brigadeiros</h3>
+                    <p>Brigadeiros gourmet, bombons e copinhos recheados para sua festa.</p>
+                </div>
+                <div class="card-produto" onclick="abrirMontagem('sobremesa')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Sobremesas"></div>
+                    <h3>Sobremesas</h3>
+                    <p>Tortas, pudins e taças da felicidade para o seu fim de semana.</p>
+                </div>
+                <div class="card-produto" onclick="abrirMontagem('caseiro')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Caseiros"></div>
+                    <h3>Bolos Caseiros</h3>
+                    <p>Aquele bolo fofinho e caseiro perfeito para o café da tarde.</p>
+                </div>
+            </div>
+        </section>
 
-        <!-- SEÇÃO FESTAS E CASAMENTOS -->
-        <section id="eventos" class="secao destaque-eventos">
-            <div class="card-evento">
-                <h2>Festas e Casamentos</h2>
-                <p>Transformamos seu evento em uma experiência inesquecível com mesas de doces personalizadas e bolos de alta confeitaria.</p>
-                <a href="https://wa.me/5527995336204" target="_blank" class="btn-secundario">Solicitar Orçamento de Evento</a>
-            </div>
-        </section>
+        <!-- SEÇÃO FESTAS E CASAMENTOS -->
+        <section id="eventos" class="secao destaque-eventos">
+            <div class="card-evento">
+                <h2>Festas e Casamentos</h2>
+                <p>Transformamos seu evento em uma experiência inesquecível com mesas de doces personalizadas e bolos de alta confeitaria.</p>
+                <a href="https://wa.me/5527995336204" target="_blank" class="btn-secundario">Solicitar Orçamento de Evento</a>
+            </div>
+        </section>
 
-        <!-- SEÇÃO GALERIA DE FOTOS (COM AS 6 CATEGORIAS) -->
-        <section id="galeria" class="secao">
-            <h2>Galeria de Fotos</h2>
-            <p class="subtitulo-secao">Escolha uma categoria para ver as fotos dos nossos produtos:</p>
-            
-            <div class="grid-galeria">
-                <div class="card-produto" onclick="abrirCategoriaGaleria('tradicionais', 'Doces Tradicionais')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Tradicionais"></div>
-                    <h3>Doces Tradicionais</h3>
-                </div>
-                <div class="card-produto" onclick="abrirCategoriaGaleria('finos', 'Doces Finos')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Finos"></div>
-                    <h3>Doces Finos</h3>
-                </div>
-                <div class="card-produto" onclick="abrirCategoriaGaleria('gourmet', 'Doces Gourmet')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Gourmet"></div>
-                    <h3>Doces Gourmet</h3>
-                </div>
-                <div class="card-produto" onclick="abrirCategoriaGaleria('festivos', 'Bolos Festivos')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Festivos"></div>
-                    <h3>Bolos Festivos</h3>
-                </div>
-                <div class="card-produto" onclick="abrirCategoriaGaleria('caseiros', 'Bolos Caseiros')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Caseiros"></div>
-                    <h3>Bolos Caseiros</h3>
-                </div>
-                <div class="card-produto" onclick="abrirCategoriaGaleria('sobremesas', 'Sobremesas')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Sobremesas"></div>
-                    <h3>Sobremesas</h3>
-                </div>
-            </div>
-        </section>
+        <!-- SEÇÃO GALERIA DE FOTOS (COM AS 6 CATEGORIAS) -->
+        <section id="galeria" class="secao">
+            <h2>Galeria de Fotos</h2>
+            <p class="subtitulo-secao">Escolha uma categoria para ver as fotos dos nossos produtos:</p>
+            
+            <div class="grid-galeria">
+                <div class="card-produto" onclick="abrirCategoriaGaleria('tradicionais', 'Doces Tradicionais')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Doces Tradicionais"></div>
+                    <h3>Doces Tradicionais</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('finos', 'Doces Finos')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Doces Finos"></div>
+                    <h3>Doces Finos</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('gourmet', 'Doces Gourmet')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Doces Gourmet"></div>
+                    <h3>Doces Gourmet</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('festivos', 'Bolos Festivos')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Festivos"></div>
+                    <h3>Bolos Festivos</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('caseiros', 'Bolos Caseiros')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Caseiros"></div>
+                    <h3>Bolos Caseiros</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('sobremesas', 'Sobremesas')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Sobremesas"></div>
+                    <h3>Sobremesas</h3>
+                </div>
+            </div>
+        </section>
 
-        <!-- SEÇÃO SOBRE NÓS -->
-        <section id="sobre" class="secao sobre-nos">
-            <h2>Sobre Nós</h2>
-            <p>A Suellen Cakes nasceu da paixão por criar momentos doces e inesquecíveis. Cada receita é produzida de forma artesanal, utilizando ingredientes selecionados e muito carinho.</p>
-        </section>
+        <!-- SEÇÃO SOBRE NÓS -->
+        <section id="sobre" class="secao sobre-nos">
+            <h2>Sobre Nós</h2>
+            <p>A Suellen Cakes nasceu da paixão por criar momentos doces e inesquecíveis. Cada receita é produzida de forma artesanal, utilizando ingredientes selecionados e muito carinho.</p>
+        </section>
 
-        <!-- SEÇÃO CONTATO -->
-        <section id="contato" class="secao contato">
-            <h2>Fale Conosco</h2>
-            <div class="info-contato">
-                <p><strong>WhatsApp:</strong> (27) 99533-6204</p>
-                <p><strong>Instagram:</strong> @suellencakes</p>
-                <p><strong>Localização:</strong> Atendimento com encomendas locais</p>
-            </div>
-        </section>
-    </main>
+        <!-- SEÇÃO CONTATO -->
+        <section id="contato" class="secao contato">
+            <h2>Fale Conosco</h2>
+            <div class="info-contato">
+                <p><strong>WhatsApp:</strong> (27) 99533-6204</p>
+                <p><strong>Instagram:</strong> @suellencakes</p>
+                <p><strong>Localização:</strong> Atendimento com encomendas locais</p>
+            </div>
+        </section>
+    </main>
 
-    <!-- =======================================================
-         TELA 1-B: ABA DE FOTOS DA CATEGORIA DA GALERIA
-         ======================================================= -->
-    <main id="tela-detalhe-galeria" class="tela-pagina" style="display: none;">
-        <section class="secao">
-            <button onclick="voltarParaGaleriaPrincipal()" class="btn-secundario" style="margin-bottom: 20px; width: auto; padding: 8px 16px;">
-                &#8592; Voltar para a Galeria
-            </button>
-            <h2 id="titulo-categoria-galeria">Fotos da Categoria</h2>
-            <p class="subtitulo-secao">Confira alguns dos nossos trabalhos realizados:</p>
+    <!-- =======================================================
+         TELA 1-B: ABA DE FOTOS DA CATEGORIA DA GALERIA
+         ======================================================= -->
+    <main id="tela-detalhe-galeria" class="tela-pagina" style="display: none;">
+        <section class="secao">
+            <button onclick="voltarParaGaleriaPrincipal()" class="btn-secundario" style="margin-bottom: 20px; width: auto; padding: 8px 16px;">
+                &#8592; Voltar para a Galeria
+            </button>
+            <h2 id="titulo-categoria-galeria">Fotos da Categoria</h2>
+            <p class="subtitulo-secao">Confira alguns dos nossos trabalhos realizados:</p>
 
-            <div class="grid-galeria" id="grid-fotos-categoria">
-                <!-- As fotos serão injetadas dinamicamente aqui -->
-            </div>
-        </section>
-    </main>
+            <div class="grid-galeria" id="grid-fotos-categoria">
+                <!-- As fotos serão injetadas dinamicamente aqui -->
+            </div>
+        </section>
+    </main>
 
-    <!-- =======================================================
-         TELA 2: ÁREA DE MONTAGEM E FINALIZAÇÃO DO PEDIDO
-         ======================================================= -->
-    <main id="tela-montagem" class="tela-pagina" style="display: none;">
-        <section class="secao">
-            <h2 id="titulo-tela-montagem">Monte Seu Pedido</h2>
-            <p class="subtitulo-secao">Selecione suas opções abaixo e veja o orçamento atualizar em tempo real:</p>
+    <!-- =======================================================
+         TELA 2: ÁREA DE MONTAGEM E FINALIZAÇÃO DO PEDIDO
+         ======================================================= -->
+    <main id="tela-montagem" class="tela-pagina" style="display: none;">
+        <section class="secao">
+            <h2 id="titulo-tela-montagem">Monte Seu Pedido</h2>
+            <p class="subtitulo-secao">Selecione suas opções abaixo e veja o orçamento atualizar em tempo real:</p>
 
-            <div class="layout-montagem">
-                <!-- FORMULÁRIO DE SELEÇÃO -->
-                <div class="calculadora-container">
+            <div class="layout-montagem">
+                <!-- FORMULÁRIO DE SELEÇÃO -->
+                <div class="calculadora-container">
 
-                    <!-- 1. BOLO PERSONALIZADO -->
-                    <div id="painel-montar-bolo" class="item-categoria">
-                        <label class="checkbox-titulo">
-                            <input type="checkbox" id="check-bolo" onchange="togglePainel('opcoes-bolo', this.checked);">
-                            <strong>1. Montar Bolo Personalizado</strong>
-                        </label>
-                        <div id="opcoes-bolo" class="painel-opcoes" style="display: none;">
-                            <div class="grupo-campo">
-                                <label for="tipo-bolo"><strong>Quantidade de Andares:</strong></label>
-                                <select id="tipo-bolo" onchange="atualizarAndaresBolo(); calcularTotal();">
-                                    <option value="1">1 Andar (Bolo Simples)</option>
-                                    <option value="2">2 Andares</option>
-                                    <option value="3">3 Andares</option>
-                                </select>
-                            </div>
+                    <!-- 1. BOLO PERSONALIZADO -->
+                    <div id="painel-montar-bolo" class="item-categoria">
+                        <label class="checkbox-titulo">
+                            <input type="checkbox" id="check-bolo" onchange="togglePainel('opcoes-bolo', this.checked);">
+                            <strong>1. Montar Bolo Personalizado</strong>
+                        </label>
+                        <div id="opcoes-bolo" class="painel-opcoes" style="display: none;">
+                            <div class="grupo-campo">
+                                <label for="tipo-bolo"><strong>Quantidade de Andares:</strong></label>
+                                <select id="tipo-bolo" onchange="atualizarAndaresBolo(); calcularTotal();">
+                                    <option value="1">1 Andar (Bolo Simples)</option>
+                                    <option value="2">2 Andares</option>
+                                    <option value="3">3 Andares</option>
+                                </select>
+                            </div>
 
-                            <div class="grupo-campo">
-                                <label for="massa-bolo"><strong>Escolha a Massa:</strong></label>
-                                <select id="massa-bolo" onchange="calcularTotal()">
-                                    <option value="Massa Branca">Massa Branca</option>
-                                    <option value="Massa de Baunilha">Massa de Baunilha</option>
-                                    <option value="Massa Amanteigada">Massa Amanteigada</option>
-                                    <option value="Massa de Chocolate (Cacau 50%)">Massa de Chocolate (Cacau 50%)</option>
-                                    <option value="Red Velvet (+ R$ 10,00)">Red Velvet (+ R$ 10,00)</option>
-                                </select>
-                            </div>
+                            <div class="grupo-campo">
+                                <label for="massa-bolo"><strong>Escolha a Massa:</strong></label>
+                                <select id="massa-bolo" onchange="calcularTotal()">
+                                    <option value="Massa Branca">Massa Branca</option>
+                                    <option value="Massa de Baunilha">Massa de Baunilha</option>
+                                    <option value="Massa Amanteigada">Massa Amanteigada</option>
+                                    <option value="Massa de Chocolate (Cacau 50%)">Massa de Chocolate (Cacau 50%)</option>
+                                    <option value="Red Velvet (+ R$ 10,00)">Red Velvet (+ R$ 10,00)</option>
+                                </select>
+                            </div>
 
-                            <!-- ANDAR 1 -->
-                            <div id="painel-andar-1" class="box-andar">
-                                <h4>1º Andar (Base)</h4>
-                                <div class="grupo-campo">
-                                    <label for="tamanho-andar-1"><strong>Tamanho do 1º Andar:</strong></label>
-                                    <select id="tamanho-andar-1" onchange="calcularTotal()">
-                                        <option value="80">10cm (~6 fatias) - R$ 80,00</option>
-                                        <option value="130" selected>15cm (~15 fatias) - R$ 130,00</option>
-                                        <option value="185">20cm (~25 fatias) - R$ 185,00</option>
-                                        <option value="270">25cm (~40 fatias) - R$ 270,00</option>
-                                        <option value="320">30cm (~50 fatias) - R$ 320,00</option>
-                                    </select>
-                                </div>
-                                <div class="grupo-campo">
-                                    <label><strong>Recheios do 1º Andar (até 3):</strong></label>
-                                    <select id="r1-andar-1" onchange="calcularTotal()"></select>
-                                    <select id="r2-andar-1" onchange="calcularTotal()"></select>
-                                    <select id="r3-andar-1" onchange="calcularTotal()"></select>
-                                </div>
-                            </div>
+                            <!-- ANDAR 1 -->
+                            <div id="painel-andar-1" class="box-andar">
+                                <h4>1º Andar (Base)</h4>
+                                <div class="grupo-campo">
+                                    <label for="tamanho-andar-1"><strong>Tamanho do 1º Andar:</strong></label>
+                                    <select id="tamanho-andar-1" onchange="calcularTotal()">
+                                        <option value="80">10cm (~6 fatias) - R$ 80,00</option>
+                                        <option value="130" selected>15cm (~15 fatias) - R$ 130,00</option>
+                                        <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                                        <option value="270">25cm (~40 fatias) - R$ 270,00</option>
+                                        <option value="320">30cm (~50 fatias) - R$ 320,00</option>
+                                    </select>
+                                </div>
+                                <div class="grupo-campo">
+                                    <label><strong>Recheios do 1º Andar (até 3):</strong></label>
+                                    <select id="r1-andar-1" onchange="calcularTotal()"></select>
+                                    <select id="r2-andar-1" onchange="calcularTotal()"></select>
+                                    <select id="r3-andar-1" onchange="calcularTotal()"></select>
+                                </div>
+                            </div>
 
-                            <!-- ANDAR 2 -->
-                            <div id="painel-andar-2" class="box-andar" style="display: none;">
-                                <h4>2º Andar</h4>
-                                <div class="grupo-campo">
-                                    <label for="tamanho-andar-2"><strong>Tamanho do 2º Andar:</strong></label>
-                                    <select id="tamanho-andar-2" onchange="calcularTotal()">
-                                        <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
-                                        <option value="130">15cm (~15 fatias) - R$ 130,00</option>
-                                        <option value="185">20cm (~25 fatias) - R$ 185,00</option>
-                                        <option value="270">25cm (~40 fatias) - R$ 270,00</option>
-                                    </select>
-                                </div>
-                                <div class="grupo-campo">
-                                    <label><strong>Recheios do 2º Andar (até 3):</strong></label>
-                                    <select id="r1-andar-2" onchange="calcularTotal()"></select>
-                                    <select id="r2-andar-2" onchange="calcularTotal()"></select>
-                                    <select id="r3-andar-2" onchange="calcularTotal()"></select>
-                                </div>
-                            </div>
+                            <!-- ANDAR 2 -->
+                            <div id="painel-andar-2" class="box-andar" style="display: none;">
+                                <h4>2º Andar</h4>
+                                <div class="grupo-campo">
+                                    <label for="tamanho-andar-2"><strong>Tamanho do 2º Andar:</strong></label>
+                                    <select id="tamanho-andar-2" onchange="calcularTotal()">
+                                        <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
+                                        <option value="130">15cm (~15 fatias) - R$ 130,00</option>
+                                        <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                                        <option value="270">25cm (~40 fatias) - R$ 270,00</option>
+                                    </select>
+                                </div>
+                                <div class="grupo-campo">
+                                    <label><strong>Recheios do 2º Andar (até 3):</strong></label>
+                                    <select id="r1-andar-2" onchange="calcularTotal()"></select>
+                                    <select id="r2-andar-2" onchange="calcularTotal()"></select>
+                                    <select id="r3-andar-2" onchange="calcularTotal()"></select>
+                                </div>
+                            </div>
 
-                            <!-- ANDAR 3 -->
-                            <div id="painel-andar-3" class="box-andar" style="display: none;">
-                                <h4>3º Andar (Topo)</h4>
-                                <div class="grupo-campo">
-                                    <label for="tamanho-andar-3"><strong>Tamanho do 3º Andar:</strong></label>
-                                    <select id="tamanho-andar-3" onchange="calcularTotal()">
-                                        <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
-                                        <option value="130">15cm (~15 fatias) - R$ 130,00</option>
-                                        <option value="185">20cm (~25 fatias) - R$ 185,00</option>
-                                    </select>
-                                </div>
-                                <div class="grupo-campo">
-                                    <label><strong>Recheios do 3º Andar (até 3):</strong></label>
-                                    <select id="r1-andar-3" onchange="calcularTotal()"></select>
-                                    <select id="r2-andar-3" onchange="calcularTotal()"></select>
-                                    <select id="r3-andar-3" onchange="calcularTotal()"></select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <!-- ANDAR 3 -->
+                            <div id="painel-andar-3" class="box-andar" style="display: none;">
+                                <h4>3º Andar (Topo)</h4>
+                                <div class="grupo-campo">
+                                    <label for="tamanho-andar-3"><strong>Tamanho do 3º Andar:</strong></label>
+                                    <select id="tamanho-andar-3" onchange="calcularTotal()">
+                                        <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
+                                        <option value="130">15cm (~15 fatias) - R$ 130,00</option>
+                                        <option value="185">20cm (~25 fatias) - R$ 185,00</option>
+                                    </select>
+                                </div>
+                                <div class="grupo-campo">
+                                    <label><strong>Recheios do 3º Andar (até 3):</strong></label>
+                                    <select id="r1-andar-3" onchange="calcularTotal()"></select>
+                                    <select id="r2-andar-3" onchange="calcularTotal()"></select>
+                                    <select id="r3-andar-3" onchange="calcularTotal()"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- 2. DOCES E BRIGADEIROS -->
-                    <div id="painel-montar-doces" class="item-categoria">
-                        <label class="checkbox-titulo">
-                            <input type="checkbox" id="check-doces" onchange="togglePainel('opcoes-doces', this.checked);">
-                            <strong>2. Doces / Brigadeiros</strong>
-                        </label>
-                        <div id="opcoes-doces" class="painel-opcoes" style="display: none;">
-                            <div class="grupo-campo">
-                                <label for="qtd-doces"><strong>Quantidade e Tipo:</strong></label>
-                                <select id="qtd-doces" onchange="calcularTotal()">
-                                    <option value="45">50 Brigadeiros Tradicionais - R$ 45,00</option>
-                                    <option value="85">100 Brigadeiros Tradicionais - R$ 85,00</option>
-                                    <option value="120">50 Doces Finos Variados - R$ 120,00</option>
-                                    <option value="220">100 Doces Finos Variados - R$ 220,00</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- 2. DOCES E BRIGADEIROS -->
+                    <div id="painel-montar-doces" class="item-categoria">
+                        <label class="checkbox-titulo">
+                            <input type="checkbox" id="check-doces" onchange="togglePainel('opcoes-doces', this.checked);">
+                            <strong>2. Doces / Brigadeiros</strong>
+                        </label>
+                        <div id="opcoes-doces" class="painel-opcoes" style="display: none;">
+                            <div class="grupo-campo">
+                                <label for="qtd-doces"><strong>Quantidade e Tipo:</strong></label>
+                                <select id="qtd-doces" onchange="calcularTotal()">
+                                    <option value="45">50 Brigadeiros Tradicionais - R$ 45,00</option>
+                                    <option value="85">100 Brigadeiros Tradicionais - R$ 85,00</option>
+                                    <option value="120">50 Doces Finos Variados - R$ 120,00</option>
+                                    <option value="220">100 Doces Finos Variados - R$ 220,00</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- 3. SOBREMESAS -->
-                    <div id="painel-montar-sobremesa" class="item-categoria">
-                        <label class="checkbox-titulo">
-                            <input type="checkbox" id="check-sobremesa" onchange="togglePainel('opcoes-sobremesa', this.checked);">
-                            <strong>3. Sobremesa</strong>
-                        </label>
-                        <div id="opcoes-sobremesa" class="painel-opcoes" style="display: none;">
-                            <div class="grupo-campo">
-                                <label for="item-sobremesa"><strong>Escolha a Sobremesa:</strong></label>
-                                <select id="item-sobremesa" onchange="calcularTotal()">
-                                    <option value="50">Pudim Cremoso GG - R$ 50,00</option>
-                                    <option value="75">Taça da Felicidade (1.5L) - R$ 75,00</option>
-                                    <option value="65">Torta Holandesa - R$ 65,00</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- 3. SOBREMESAS -->
+                    <div id="painel-montar-sobremesa" class="item-categoria">
+                        <label class="checkbox-titulo">
+                            <input type="checkbox" id="check-sobremesa" onchange="togglePainel('opcoes-sobremesa', this.checked);">
+                            <strong>3. Sobremesa</strong>
+                        </label>
+                        <div id="opcoes-sobremesa" class="painel-opcoes" style="display: none;">
+                            <div class="grupo-campo">
+                                <label for="item-sobremesa"><strong>Escolha a Sobremesa:</strong></label>
+                                <select id="item-sobremesa" onchange="calcularTotal()">
+                                    <option value="50">Pudim Cremoso GG - R$ 50,00</option>
+                                    <option value="75">Taça da Felicidade (1.5L) - R$ 75,00</option>
+                                    <option value="65">Torta Holandesa - R$ 65,00</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- 4. BOLOS CASEIROS -->
-                    <div id="painel-montar-caseiro" class="item-categoria">
-                        <label class="checkbox-titulo">
-                            <input type="checkbox" id="check-caseiro" onchange="togglePainel('opcoes-caseiro', this.checked);">
-                            <strong>4. Bolo Caseiro</strong>
-                        </label>
-                        <div id="opcoes-caseiro" class="painel-opcoes" style="display: none;">
-                            <div class="grupo-campo">
-                                <label for="item-caseiro"><strong>Escolha o Bolo Caseiro:</strong></label>
-                                <select id="item-caseiro" onchange="calcularTotal()">
-                                    <option value="25">Bolo de Cenoura com Vulcão de Chocolate - R$ 25,00</option>
-                                    <option value="22">Bolo de Fubá com Goiabada - R$ 22,00</option>
-                                    <option value="28">Bolo Ninho com Nutella - R$ 28,00</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- 4. BOLOS CASEIROS -->
+                    <div id="painel-montar-caseiro" class="item-categoria">
+                        <label class="checkbox-titulo">
+                            <input type="checkbox" id="check-caseiro" onchange="togglePainel('opcoes-caseiro', this.checked);">
+                            <strong>4. Bolo Caseiro</strong>
+                        </label>
+                        <div id="opcoes-caseiro" class="painel-opcoes" style="display: none;">
+                            <div class="grupo-campo">
+                                <label for="item-caseiro"><strong>Escolha o Bolo Caseiro:</strong></label>
+                                <select id="item-caseiro" onchange="calcularTotal()">
+                                    <option value="25">Bolo de Cenoura com Vulcão de Chocolate - R$ 25,00</option>
+                                    <option value="22">Bolo de Fubá com Goiabada - R$ 22,00</option>
+                                    <option value="28">Bolo Ninho com Nutella - R$ 28,00</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- ADICIONAIS GERAIS -->
-                    <div class="grupo-adicionais">
-                        <p><strong>Adicionais Opcionais:</strong></p>
-                        <label><input type="checkbox" id="add-topper" value="15" onchange="calcularTotal()"> Topper Personalizado (+ R$ 15,00)</label><br>
-                        <label><input type="checkbox" id="add-embalagem" value="10" onchange="calcularTotal()"> Embalagem Especial para Presente (+ R$ 10,00)</label>
-                    </div>
+                    <!-- ADICIONAIS GERAIS -->
+                    <div class="grupo-adicionais">
+                        <p><strong>Adicionais Opcionais:</strong></p>
+                        <label><input type="checkbox" id="add-topper" value="15" onchange="calcularTotal()"> Topper Personalizado (+ R$ 15,00)</label><br>
+                        <label><input type="checkbox" id="add-embalagem" value="10" onchange="calcularTotal()"> Embalagem Especial para Presente (+ R$ 10,00)</label>
+                    </div>
 
-                    <!-- FORMA DE ENTREGA -->
-                    <div class="grupo-campo box-entrega">
-                        <label for="forma-entrega"><strong>Forma de Entrega / Retirada:</strong></label>
-                        <select id="forma-entrega" onchange="tratarMudancaEntrega(); calcularTotal();">
-                            <option value="retirada">Retirar na Confeitaria (Grátis)</option>
-                            <option value="entrega">Entrega em Domicílio (Taxa fixa R$ 50,00)</option>
-                        </select>
+                    <!-- FORMA DE ENTREGA -->
+                    <div class="grupo-campo box-entrega">
+                        <label for="forma-entrega"><strong>Forma de Entrega / Retirada:</strong></label>
+                        <select id="forma-entrega" onchange="tratarMudancaEntrega(); calcularTotal();">
+                            <option value="retirada">Retirar na Confeitaria (Grátis)</option>
+                            <option value="entrega">Entrega em Domicílio (Taxa fixa R$ 50,00)</option>
+                        </select>
 
-                        <div id="painel-frete" style="display: none; margin-top: 10px;">
-                            <p style="font-size: 0.85rem; color: #444; margin-bottom: 6px;"><strong>Taxa de entrega:</strong> R$ 50,00 para qualquer localização</p>
-                            <input type="text" id="endereco-cliente" placeholder="Endereço (Rua, nº, bairro e CEP)" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                        </div>
-                    </div>
-                </div>
+                        <div id="painel-frete" style="display: none; margin-top: 10px;">
+                            <p style="font-size: 0.85rem; color: #444; margin-bottom: 6px;"><strong>Taxa de entrega:</strong> R$ 50,00 para qualquer localização</p>
+                            <input type="text" id="endereco-cliente" placeholder="Endereço (Rua, nº, bairro e CEP)" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+                </div>
 
-                <!-- PAINEL FIXO DO CARRINHO DE COMPRAS / RESUMO -->
-                <div class="carrinho-lateral-container">
-                    <div class="carrinho-box">
-                        <h3>🛒 Seu Orçamento</h3>
-                        <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
-                        
-                        <div id="carrinho-lista-itens" class="carrinho-lista-itens">
-                            <p class="carrinho-vazio">Nenhum item selecionado no momento.</p>
-                        </div>
+                <!-- PAINEL FIXO DO CARRINHO DE COMPRAS / RESUMO -->
+                <div class="carrinho-lateral-container">
+                    <div class="carrinho-box">
+                        <h3>🛒 Seu Orçamento</h3>
+                        <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
+                        
+                        <div id="carrinho-lista-itens" class="carrinho-lista-itens">
+                            <p class="carrinho-vazio">Nenhum item selecionado no momento.</p>
+                        </div>
 
-                        <div class="carrinho-total-box">
-                            <span>Total Estimado:</span>
-                            <span id="preco-total" class="preco-destaque">R$ 0,00</span>
-                        </div>
+                        <div class="carrinho-total-box">
+                            <span>Total Estimado:</span>
+                            <span id="preco-total" class="preco-destaque">R$ 0,00</span>
+                        </div>
 
-                        <button onclick="enviarPedidoWhatsApp()" class="btn-whatsapp btn-enviar-pedido">
-                            Enviar Pedido via WhatsApp
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+                        <button onclick="enviarPedidoWhatsApp()" class="btn-whatsapp btn-enviar-pedido">
+                            Enviar Pedido via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- RODAPÉ -->
-    <footer>
-        <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
-    </footer>
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
+    </footer>
 
-    <!-- JAVASCRIPT DINÂMICO E NAVEGAÇÃO DA GALERIA -->
-    <script>
-        const listaRecheios = [
-            "Brigadeiro", "Ninho", "Nutella (+ R$ 15,00)", "Morango", "Abacaxi", 
-            "Doce de leite", "Nozes", "Café", "Ganache", "Coco", "Amendoim", 
-            "Pêssego", "Ameixa", "Brigadeiro branco", "Oreo", "Geleia de morango", 
-            "Geleia de frutas vermelhas"
-        ];
+    <!-- JAVASCRIPT DINÂMICO E NAVEGAÇÃO DA GALERIA -->
+    <script>
+        const listaRecheios = [
+            "Brigadeiro", "Ninho", "Nutella (+ R$ 15,00)", "Morango", "Abacaxi", 
+            "Doce de leite", "Nozes", "Café", "Ganache", "Coco", "Amendoim", 
+            "Pêssego", "Ameixa", "Brigadeiro branco", "Oreo", "Geleia de morango", 
+            "Geleia de frutas vermelhas"
+        ];
 
-        function popularSelectsRecheio() {
-            for (let andar = 1; andar <= 3; andar++) {
-                for (let r = 1; r <= 3; r++) {
-                    const select = document.getElementById(`r${r}-andar-${andar}`);
-                    if (!select) continue;
-                    select.innerHTML = '';
+        function popularSelectsRecheio() {
+            for (let andar = 1; andar <= 3; andar++) {
+                for (let r = 1; r <= 3; r++) {
+                    const select = document.getElementById(`r${r}-andar-${andar}`);
+                    if (!select) continue;
+                    select.innerHTML = '';
 
-                    if (r === 1) {
-                        listaRecheios.forEach(rec => {
-                            select.innerHTML += `<option value="${rec}">${rec}</option>`;
-                        });
-                    } else {
-                        select.innerHTML = `<option value="">-- Nenhum ${r}º recheio --</option>`;
-                        listaRecheios.forEach(rec => {
-                            select.innerHTML += `<option value="${rec}">${rec}</option>`;
-                        });
-                    }
-                }
-            }
-        }
+                    if (r === 1) {
+                        listaRecheios.forEach(rec => {
+                            select.innerHTML += `<option value="${rec}">${rec}</option>`;
+                        });
+                    } else {
+                        select.innerHTML = `<option value="">-- Nenhum ${r}º recheio --</option>`;
+                        listaRecheios.forEach(rec => {
+                            select.innerHTML += `<option value="${rec}">${rec}</option>`;
+                        });
+                    }
+                }
+            }
+        }
 
-        window.onload = function() {
-            popularSelectsRecheio();
-            
-            document.getElementById('check-bolo').checked = false;
-            document.getElementById('check-doces').checked = false;
-            document.getElementById('check-sobremesa').checked = false;
-            document.getElementById('check-caseiro').checked = false;
-            document.getElementById('add-topper').checked = false;
-            document.getElementById('add-embalagem').checked = false;
+        window.onload = function() {
+            popularSelectsRecheio();
+            
+            document.getElementById('check-bolo').checked = false;
+            document.getElementById('check-doces').checked = false;
+            document.getElementById('check-sobremesa').checked = false;
+            document.getElementById('check-caseiro').checked = false;
+            document.getElementById('add-topper').checked = false;
+            document.getElementById('add-embalagem').checked = false;
 
-            document.getElementById('opcoes-bolo').style.display = 'none';
-            document.getElementById('opcoes-doces').style.display = 'none';
-            document.getElementById('opcoes-sobremesa').style.display = 'none';
-            document.getElementById('opcoes-caseiro').style.display = 'none';
+            document.getElementById('opcoes-bolo').style.display = 'none';
+            document.getElementById('opcoes-doces').style.display = 'none';
+            document.getElementById('opcoes-sobremesa').style.display = 'none';
+            document.getElementById('opcoes-caseiro').style.display = 'none';
 
-            calcularTotal();
-        };
+            calcularTotal();
+        };
 
-        function mostrarTela(idTela) {
-            document.querySelectorAll('.tela-pagina').forEach(tela => {
-                tela.style.display = 'none';
-            });
-            document.getElementById(idTela).style.display = 'block';
+        function mostrarTela(idTela) {
+            document.querySelectorAll('.tela-pagina').forEach(tela => {
+                tela.style.display = 'none';
+            });
+            document.getElementById(idTela).style.display = 'block';
 
-            const barraNav = document.getElementById('barra-top-navegacao');
-            if (idTela === 'tela-montagem') {
-                barraNav.style.display = 'flex';
-            } else {
-                barraNav.style.display = 'none';
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+            const barraNav = document.getElementById('barra-top-navegacao');
+            if (idTela === 'tela-montagem') {
+                barraNav.style.display = 'flex';
+            } else {
+                barraNav.style.display = 'none';
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-        function voltarParaInicio() {
-            mostrarTela('tela-inicio');
-        }
+        function voltarParaInicio() {
+            mostrarTela('tela-inicio');
+        }
 
-        function abrirCategoriaGaleria(categoriaKey, nomeTitulo) {
-            document.getElementById('titulo-categoria-galeria').innerText = nomeTitulo;
-            const gridFotos = document.getElementById('grid-fotos-categoria');
-            
-            let fotosHTML = '';
-            for (let i = 1; i <= 4; i++) {
-                fotosHTML += `
-                    <div class="foto-item">
-                        <div class="img-placeholder"><img src="logo.png" alt="${nomeTitulo} ${i}"></div>
-                        <h4 style="margin-top: 8px; color: #444; font-size: 0.95rem;">${nomeTitulo} - Exemplo ${i}</h4>
-                    </div>
-                `;
-            }
-            gridFotos.innerHTML = fotosHTML;
-            mostrarTela('tela-detalhe-galeria');
-        }
+        function abrirCategoriaGaleria(categoriaKey, nomeTitulo) {
+            document.getElementById('titulo-categoria-galeria').innerText = nomeTitulo;
+            const gridFotos = document.getElementById('grid-fotos-categoria');
+            
+            let fotosHTML = '';
+            for (let i = 1; i <= 4; i++) {
+                fotosHTML += `
+                    <div class="foto-item">
+                        <div class="img-placeholder"><img src="logo.png" alt="${nomeTitulo} ${i}"></div>
+                        <h4 style="margin-top: 8px; color: #444; font-size: 0.95rem;">${nomeTitulo} - Exemplo ${i}</h4>
+                    </div>
+                `;
+            }
+            gridFotos.innerHTML = fotosHTML;
+            mostrarTela('tela-detalhe-galeria');
+        }
 
-        function voltarParaGaleriaPrincipal() {
-            mostrarTela('tela-inicio');
-            setTimeout(() => {
-                document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
+        function voltarParaGaleriaPrincipal() {
+            mostrarTela('tela-inicio');
+            setTimeout(() => {
+                document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
 
-        function abrirMontagem(categoria) {
-            mostrarTela('tela-montagem');
-            
-            document.getElementById('check-bolo').checked = false;
-            document.getElementById('check-doces').checked = false;
-            document.getElementById('check-sobremesa').checked = false;
-            document.getElementById('check-caseiro').checked = false;
-            
-            document.getElementById('opcoes-bolo').style.display = 'none';
-            document.getElementById('opcoes-doces').style.display = 'none';
-            document.getElementById('opcoes-sobremesa').style.display = 'none';
-            document.getElementById('opcoes-caseiro').style.display = 'none';
+        function abrirMontagem(categoria) {
+            mostrarTela('tela-montagem');
+            
+            document.getElementById('check-bolo').checked = false;
+            document.getElementById('check-doces').checked = false;
+            document.getElementById('check-sobremesa').checked = false;
+            document.getElementById('check-caseiro').checked = false;
+            
+            document.getElementById('opcoes-bolo').style.display = 'none';
+            document.getElementById('opcoes-doces').style.display = 'none';
+            document.getElementById('opcoes-sobremesa').style.display = 'none';
+            document.getElementById('opcoes-caseiro').style.display = 'none';
 
-            calcularTotal();
-        }
+            calcularTotal();
+        }
 
-        function togglePainel(idOpcoes, visivel) {
-            const elemento = document.getElementById(idOpcoes);
-            if (elemento) {
-                elemento.style.display = visivel ? "block" : "none";
-            }
-            calcularTotal();
-        }
+        function togglePainel(idOpcoes, visivel) {
+            const elemento = document.getElementById(idOpcoes);
+            if (elemento) {
+                elemento.style.display = visivel ? "block" : "none";
+            }
+            calcularTotal();
+        }
 
-        function atualizarAndaresBolo() {
-            const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
-            document.getElementById('painel-andar-1').style.display = 'block';
-            document.getElementById('painel-andar-2').style.display = (qtdAndares >= 2) ? 'block' : 'none';
-            document.getElementById('painel-andar-3').style.display = (qtdAndares >= 3) ? 'block' : 'none';
-        }
+        function atualizarAndaresBolo() {
+            const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+            document.getElementById('painel-andar-1').style.display = 'block';
+            document.getElementById('painel-andar-2').style.display = (qtdAndares >= 2) ? 'block' : 'none';
+            document.getElementById('painel-andar-3').style.display = (qtdAndares >= 3) ? 'block' : 'none';
+        }
 
-        function tratarMudancaEntrega() {
-            const tipoEntrega = document.getElementById('forma-entrega').value;
-            const painelFrete = document.getElementById('painel-frete');
-            painelFrete.style.display = (tipoEntrega === 'entrega') ? 'block' : 'none';
-        }
+        function tratarMudancaEntrega() {
+            const tipoEntrega = document.getElementById('forma-entrega').value;
+            const painelFrete = document.getElementById('painel-frete');
+            painelFrete.style.display = (tipoEntrega === 'entrega') ? 'block' : 'none';
+        }
 
-        function calcularTotal() {
-            let total = 0;
-            let resumoItensHTML = '';
+        function calcularTotal() {
+            let total = 0;
+            let resumoItensHTML = '';
 
-            if (document.getElementById('check-bolo').checked) {
-                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
-                let subtotalBolo = 0;
+            if (document.getElementById('check-bolo').checked) {
+                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+                let subtotalBolo = 0;
 
-                if (document.getElementById('massa-bolo').value.includes('Red Velvet')) subtotalBolo += 10;
+                if (document.getElementById('massa-bolo').value.includes('Red Velvet')) subtotalBolo += 10;
 
-                for (let andar = 1; andar <= qtdAndares; andar++) {
-                    const valTamanho = parseFloat(document.getElementById(`tamanho-andar-${andar}`).value);
-                    subtotalBolo += valTamanho;
+                for (let andar = 1; andar <= qtdAndares; andar++) {
+                    const valTamanho = parseFloat(document.getElementById(`tamanho-andar-${andar}`).value);
+                    subtotalBolo += valTamanho;
 
-                    const r1 = document.getElementById(`r1-andar-${andar}`).value;
-                    const r2 = document.getElementById(`r2-andar-${andar}`).value;
-                    const r3 = document.getElementById(`r3-andar-${andar}`).value;
+                    const r1 = document.getElementById(`r1-andar-${andar}`).value;
+                    const r2 = document.getElementById(`r2-andar-${andar}`).value;
+                    const r3 = document.getElementById(`r3-andar-${andar}`).value;
 
-                    if (r1.includes('Nutella')) subtotalBolo += 15;
-                    if (r2.includes('Nutella')) subtotalBolo += 15;
-                    if (r3.includes('Nutella')) subtotalBolo += 15;
-                }
-                total += subtotalBolo;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎂 Bolo Personalizado (${qtdAndares} Andar/es)</span> <strong>R$ ${subtotalBolo.toFixed(2).replace('.', ',')}</strong></div>`;
-            }
+                    if (r1.includes('Nutella')) subtotalBolo += 15;
+                    if (r2.includes('Nutella')) subtotalBolo += 15;
+                    if (r3.includes('Nutella')) subtotalBolo += 15;
+                }
+                total += subtotalBolo;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎂 Bolo Personalizado (${qtdAndares} Andar/es)</span> <strong>R$ ${subtotalBolo.toFixed(2).replace('.', ',')}</strong></div>`;
+            }
 
-            if (document.getElementById('check-doces').checked) {
-                const valDoces = parseFloat(document.getElementById('qtd-doces').value);
-                total += valDoces;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces / Brigadeiros</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
-            }
+            if (document.getElementById('check-doces').checked) {
+                const valDoces = parseFloat(document.getElementById('qtd-doces').value);
+                total += valDoces;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces / Brigadeiros</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
+            }
 
-            if (document.getElementById('check-sobremesa').checked) {
-                const valSobremesa = parseFloat(document.getElementById('item-sobremesa').value);
-                total += valSobremesa;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 Sobremesa</span> <strong>R$ ${valSobremesa.toFixed(2).replace('.', ',')}</strong></div>`;
-            }
+            if (document.getElementById('check-sobremesa').checked) {
+                const valSobremesa = parseFloat(document.getElementById('item-sobremesa').value);
+                total += valSobremesa;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 Sobremesa</span> <strong>R$ ${valSobremesa.toFixed(2).replace('.', ',')}</strong></div>`;
+            }
 
-            if (document.getElementById('check-caseiro').checked) {
-                const valCaseiro = parseFloat(document.getElementById('item-caseiro').value);
-                total += valCaseiro;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro</span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
-            }
+            if (document.getElementById('check-caseiro').checked) {
+                const valCaseiro = parseFloat(document.getElementById('item-caseiro').value);
+                total += valCaseiro;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro</span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
+            }
 
-            if (document.getElementById('add-topper').checked) {
-                total += 15;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎈 Topper Personalizado</span> <strong>R$ 15,00</strong></div>`;
-            }
-            if (document.getElementById('add-embalagem').checked) {
-                total += 10;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎁 Embalagem Presente</span> <strong>R$ 10,00</strong></div>`;
-            }
+            if (document.getElementById('add-topper').checked) {
+                total += 15;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎈 Topper Personalizado</span> <strong>R$ 15,00</strong></div>`;
+            }
+            if (document.getElementById('add-embalagem').checked) {
+                total += 10;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎁 Embalagem Presente</span> <strong>R$ 10,00</strong></div>`;
+            }
 
-            const formaEntrega = document.getElementById('forma-entrega').value;
-            if (formaEntrega === 'entrega') {
-                total += 50.00;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🛵 Taxa de Entrega</span> <strong>R$ 50,00</strong></div>`;
-            }
+            const formaEntrega = document.getElementById('forma-entrega').value;
+            if (formaEntrega === 'entrega') {
+                total += 50.00;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🛵 Taxa de Entrega</span> <strong>R$ 50,00</strong></div>`;
+            }
 
-            const textoTotalFormatado = `R$ ${total.toFixed(2).replace('.', ',')}`;
-            document.getElementById('preco-total').innerText = textoTotalFormatado;
-            document.getElementById('preco-carrinho-top').innerText = textoTotalFormatado;
+            const textoTotalFormatado = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            document.getElementById('preco-total').innerText = textoTotalFormatado;
+            document.getElementById('preco-carrinho-top').innerText = textoTotalFormatado;
 
-            const conteinerLista = document.getElementById('carrinho-lista-itens');
-            if (resumoItensHTML === '') {
-                conteinerLista.innerHTML = '<p class="carrinho-vazio">Nenhum item selecionado no momento.</p>';
-            } else {
-                conteinerLista.innerHTML = resumoItensHTML;
-            }
-        }
+            const conteinerLista = document.getElementById('carrinho-lista-itens');
+            if (resumoItensHTML === '') {
+                conteinerLista.innerHTML = '<p class="carrinho-vazio">Nenhum item selecionado no momento.</p>';
+            } else {
+                conteinerLista.innerHTML = resumoItensHTML;
+            }
+        }
 
-        function enviarPedidoWhatsApp() {
-            const temBolo = document.getElementById('check-bolo').checked;
-            const temDoces = document.getElementById('check-doces').checked;
-            const temSobremesa = document.getElementById('check-sobremesa').checked;
-            const temCaseiro = document.getElementById('check-caseiro').checked;
+        function enviarPedidoWhatsApp() {
+            const temBolo = document.getElementById('check-bolo').checked;
+            const temDoces = document.getElementById('check-doces').checked;
+            const temSobremesa = document.getElementById('check-sobremesa').checked;
+            const temCaseiro = document.getElementById('check-caseiro').checked;
 
-            if (!temBolo && !temDoces && !temSobremesa && !temCaseiro) {
-                alert("Por favor, selecione pelo menos um item para o seu pedido antes de enviar.");
-                return;
-            }
+            if (!temBolo && !temDoces && !temSobremesa && !temCaseiro) {
+                alert("Por favor, selecione pelo menos um item para o seu pedido antes de enviar.");
+                return;
+            }
 
-            const formaEntrega = document.getElementById('forma-entrega').value;
-            let endereco = "";
-            if (formaEntrega === 'entrega') {
-                endereco = document.getElementById('endereco-cliente').val
+            const formaEntrega = document.getElementById('forma-entrega').value;
+            let endereco = "";
+            if (formaEntrega === 'entrega') {
+                endereco = document.getElementById('endereco-cliente').value.trim();
+                if (!endereco) {
+                    alert("Por favor, preencha o endereço de entrega.");
+                    document.getElementById('endereco-cliente').focus();
+                    return;
+                }
+            }
+
+            let mensagem = "✨ *NOVO PEDIDO - SUELLEN CAKES* ✨\n\n";
+
+            if (temBolo) {
+                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+                const massa = document.getElementById('massa-bolo').value;
+
+                mensagem += `🎂 *Bolo Personalizado (${qtdAndares} Andar/es)*\n`;
+                mensagem += `• Massa: ${massa}\n`;
+
+                for (let andar = 1; andar <= qtdAndares; andar++) {
+                    const selectTamanho = document.getElementById(`tamanho-andar-${andar}`);
+                    const textoTamanho = selectTamanho.options[selectTamanho.selectedIndex].text;
+                    
+                    const r1 = document.getElementById(`r1-andar-${andar}`).value;
+                    const r2 = document.getElementById(`r2-andar-${andar}`).value;
+                    const r3 = document.getElementById(`r3-andar-${andar}`).value;
+
+                    mensagem += `  - *${andar}º Andar:* ${textoTamanho}\n`;
+                    mensagem += `    Recheios: ${r1}`;
+                    if (r2) mensagem += `, ${r2}`;
+                    if (r3) mensagem += `, ${r3}`;
+                    mensagem += `\n`;
+                }
+                mensagem += `\n`;
+            }
+
+            if (temDoces) {
+                const selectDoces = document.getElementById('qtd-doces');
+                mensagem += `🍬 *Doces/Brigadeiros:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
+            }
+
+            if (temSobremesa) {
+                const selectSobremesa = document.getElementById('item-sobremesa');
+                mensagem += `🍮 *Sobremesa:* ${selectSobremesa.options[selectSobremesa.selectedIndex].text}\n\n`;
+            }
+
+            if (temCaseiro) {
+                const selectCaseiro = document.getElementById('item-caseiro');
+                mensagem += `🥮 *Bolo Caseiro:* ${selectCaseiro.options[selectCaseiro.selectedIndex].text}\n\n`;
+            }
+
+            let adicionais = [];
+            if (document.getElementById('add-topper').checked) adicionais.push("Topper Personalizado");
+            if (document.getElementById('add-embalagem').checked) adicionais.push("Embalagem Especial");
+            
+            if (adicionais.length > 0) {
+                mensagem += `🎈 *Adicionais:* ${adicionais.join(', ')}\n\n`;
+            }
+
+            if (formaEntrega === 'entrega') {
+                mensagem += `🛵 *Forma de Recebimento:* Entrega em Domicílio\n`;
+                mensagem += `📍 *Endereço:* ${endereco}\n\n`;
+            } else {
+                mensagem += `🛍️ *Forma de Recebimento:* Retirada na Confeitaria\n\n`;
+            }
+
+            const total = document.getElementById('preco-total').innerText;
+            mensagem += `💰 *Valor Total:* ${total}`;
+
+            const numeroWhatsApp = "5527995336204";
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+</body>
+</html>
