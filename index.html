@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -91,14 +91,36 @@
             </div>
         </section>
 
-        <!-- SEÇÃO GALERIA -->
+        <!-- SEÇÃO GALERIA DE FOTOS (COM AS 6 CATEGORIAS) -->
         <section id="galeria" class="secao">
             <h2>Galeria de Fotos</h2>
+            <p class="subtitulo-secao">Escolha uma categoria para ver as fotos dos nossos produtos:</p>
+            
             <div class="grid-galeria">
-                <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 1"></div></div>
-                <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 2"></div></div>
-                <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 3"></div></div>
-                <div class="foto-item"><div class="img-placeholder"><img src="logo.png" alt="Foto 4"></div></div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('tradicionais', 'Doces Tradicionais')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Doces Tradicionais"></div>
+                    <h3>Doces Tradicionais</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('finos', 'Doces Finos')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Doces Finos"></div>
+                    <h3>Doces Finos</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('gourmet', 'Doces Gourmet')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Doces Gourmet"></div>
+                    <h3>Doces Gourmet</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('festivos', 'Bolos Festivos')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Festivos"></div>
+                    <h3>Bolos Festivos</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('caseiros', 'Bolos Caseiros')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Caseiros"></div>
+                    <h3>Bolos Caseiros</h3>
+                </div>
+                <div class="card-produto" onclick="abrirCategoriaGaleria('sobremesas', 'Sobremesas')">
+                    <div class="img-placeholder"><img src="logo.png" alt="Sobremesas"></div>
+                    <h3>Sobremesas</h3>
+                </div>
             </div>
         </section>
 
@@ -115,6 +137,23 @@
                 <p><strong>WhatsApp:</strong> (27) 99533-6204</p>
                 <p><strong>Instagram:</strong> @suellencakes</p>
                 <p><strong>Localização:</strong> Atendimento com encomendas locais</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- =======================================================
+         TELA 1-B: ABA DE FOTOS DA CATEGORIA DA GALERIA
+         ======================================================= -->
+    <main id="tela-detalhe-galeria" class="tela-pagina" style="display: none;">
+        <section class="secao">
+            <button onclick="voltarParaGaleriaPrincipal()" class="btn-secundario" style="margin-bottom: 20px; width: auto; padding: 8px 16px;">
+                &#8592; Voltar para a Galeria
+            </button>
+            <h2 id="titulo-categoria-galeria">Fotos da Categoria</h2>
+            <p class="subtitulo-secao">Confira alguns dos nossos trabalhos realizados:</p>
+
+            <div class="grid-galeria" id="grid-fotos-categoria">
+                <!-- As fotos serão injetadas dinamicamente aqui conforme a categoria -->
             </div>
         </section>
     </main>
@@ -326,7 +365,7 @@
         <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- JAVASCRIPT DINÂMICO E WHATSAPP -->
+    <!-- JAVASCRIPT DINÂMICO E NAVEGAÇÃO DA GALERIA -->
     <script>
         const listaRecheios = [
             "Brigadeiro", "Ninho", "Nutella (+ R$ 15,00)", "Morango", "Abacaxi", 
@@ -391,6 +430,31 @@
 
         function voltarParaInicio() {
             mostrarTela('tela-inicio');
+        }
+
+        function abrirCategoriaGaleria(categoriaKey, nomeTitulo) {
+            document.getElementById('titulo-categoria-galeria').innerText = nomeTitulo;
+            const gridFotos = document.getElementById('grid-fotos-categoria');
+            
+            // Gerando exemplos de fotos para a categoria (você pode substituir pelas imagens reais depois)
+            let fotosHTML = '';
+            for (let i = 1; i <= 4; i++) {
+                fotosHTML += `
+                    <div class="foto-item">
+                        <div class="img-placeholder"><img src="logo.png" alt="${nomeTitulo} ${i}"></div>
+                        <h4 style="margin-top: 8px; color: #444; font-size: 0.95rem;">${nomeTitulo} - Exemplo ${i}</h4>
+                    </div>
+                `;
+            }
+            gridFotos.innerHTML = fotosHTML;
+            mostrarTela('tela-detalhe-galeria');
+        }
+
+        function voltarParaGaleriaPrincipal() {
+            mostrarTela('tela-inicio');
+            setTimeout(() => {
+                document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         }
 
         function abrirMontagem(categoria) {
