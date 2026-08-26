@@ -47,9 +47,9 @@
                 <h1>Doces que tornam seus momentos especiais</h1>
                 <p>Bolos artesanais, doces finos e sobremesas feitas com carinho.</p>
                 <div class="status-loja" id="status-loja-container">
-    <span class="bolinha-status" id="bolinha-status"></span> 
-    <span id="texto-status">Verificando horário...</span>
-</div>
+                    <span class="bolinha-status" id="bolinha-status"></span> 
+                    <span id="texto-status">Verificando horário...</span>
+                </div>
             </div>
             <img src="logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
         </section>
@@ -356,11 +356,9 @@
             }
         }
 
-        // Executar ao carregar a página: limpa TUDO e deixa zerado
         window.onload = function() {
             popularSelectsRecheio();
             
-            // Garante que todas as caixas começam desmarcadas
             document.getElementById('check-bolo').checked = false;
             document.getElementById('check-doces').checked = false;
             document.getElementById('check-sobremesa').checked = false;
@@ -368,17 +366,14 @@
             document.getElementById('add-topper').checked = false;
             document.getElementById('add-embalagem').checked = false;
 
-            // Oculta todos os painéis de opções
             document.getElementById('opcoes-bolo').style.display = 'none';
             document.getElementById('opcoes-doces').style.display = 'none';
             document.getElementById('opcoes-sobremesa').style.display = 'none';
             document.getElementById('opcoes-caseiro').style.display = 'none';
 
-            // Zera o cálculo inicial
             calcularTotal();
         };
 
-        // CONTROLADOR DE TELAS
         function mostrarTela(idTela) {
             document.querySelectorAll('.tela-pagina').forEach(tela => {
                 tela.style.display = 'none';
@@ -401,7 +396,6 @@
         function abrirMontagem(categoria) {
             mostrarTela('tela-montagem');
             
-            // Reseta todas as seleções ao abrir a tela de montagem
             document.getElementById('check-bolo').checked = false;
             document.getElementById('check-doces').checked = false;
             document.getElementById('check-sobremesa').checked = false;
@@ -440,7 +434,6 @@
             let total = 0;
             let resumoItensHTML = '';
 
-            // BOLO
             if (document.getElementById('check-bolo').checked) {
                 const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
                 let subtotalBolo = 0;
@@ -463,28 +456,24 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎂 Bolo Personalizado (${qtdAndares} Andar/es)</span> <strong>R$ ${subtotalBolo.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
-            // DOCES
             if (document.getElementById('check-doces').checked) {
                 const valDoces = parseFloat(document.getElementById('qtd-doces').value);
                 total += valDoces;
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces / Brigadeiros</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
-            // SOBREMESA
             if (document.getElementById('check-sobremesa').checked) {
                 const valSobremesa = parseFloat(document.getElementById('item-sobremesa').value);
                 total += valSobremesa;
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 Sobremesa</span> <strong>R$ ${valSobremesa.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
-            // CASEIRO
             if (document.getElementById('check-caseiro').checked) {
                 const valCaseiro = parseFloat(document.getElementById('item-caseiro').value);
                 total += valCaseiro;
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro</span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
-            // ADICIONAIS
             if (document.getElementById('add-topper').checked) {
                 total += 15;
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎈 Topper Personalizado</span> <strong>R$ 15,00</strong></div>`;
@@ -494,14 +483,12 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎁 Embalagem Presente</span> <strong>R$ 10,00</strong></div>`;
             }
 
-            // FRETE
             const formaEntrega = document.getElementById('forma-entrega').value;
             if (formaEntrega === 'entrega') {
                 total += 50.00;
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🛵 Taxa de Entrega</span> <strong>R$ 50,00</strong></div>`;
             }
 
-            // ATUALIZAÇÃO DOS CAMPOS DE TEXTO NA INTERFACE
             const textoTotalFormatado = `R$ ${total.toFixed(2).replace('.', ',')}`;
             document.getElementById('preco-total').innerText = textoTotalFormatado;
             document.getElementById('preco-carrinho-top').innerText = textoTotalFormatado;
@@ -515,131 +502,90 @@
         }
 
         function enviarPedidoWhatsApp() {
-    // 1. Validação inicial: verifica se pelo menos um item principal foi selecionado
-    const temBolo = document.getElementById('check-bolo').checked;
-    const temDoces = document.getElementById('check-doces').checked;
-    const temSobremesa = document.getElementById('check-sobremesa').checked;
-    const temCaseiro = document.getElementById('check-caseiro').checked;
+            const temBolo = document.getElementById('check-bolo').checked;
+            const temDoces = document.getElementById('check-doces').checked;
+            const temSobremesa = document.getElementById('check-sobremesa').checked;
+            const temCaseiro = document.getElementById('check-caseiro').checked;
 
-    if (!temBolo && !temDoces && !temSobremesa && !temCaseiro) {
-        alert("Por favor, selecione pelo menos um item para o seu pedido antes de enviar.");
-        return;
-    }
+            if (!temBolo && !temDoces && !temSobremesa && !temCaseiro) {
+                alert("Por favor, selecione pelo menos um item para o seu pedido antes de enviar.");
+                return;
+            }
 
-    // 2. Validação da forma de entrega (obriga o preenchimento se for entrega)
-    const formaEntrega = document.getElementById('forma-entrega').value;
-    let endereco = "";
-    if (formaEntrega === 'entrega') {
-        endereco = document.getElementById('endereco-cliente').value.trim();
-        if (!endereco) {
-            alert("Por favor, preencha o endereço de entrega.");
-            document.getElementById('endereco-cliente').focus();
-            return;
-        }
-    }
+            const formaEntrega = document.getElementById('forma-entrega').value;
+            let endereco = "";
+            if (formaEntrega === 'entrega') {
+                endereco = document.getElementById('endereco-cliente').value.trim();
+                if (!endereco) {
+                    alert("Por favor, preencha o endereço de entrega.");
+                    document.getElementById('endereco-cliente').focus();
+                    return;
+                }
+            }
 
-    // 3. Montagem da mensagem
-    let mensagem = "✨ *NOVO PEDIDO - SUELLEN CAKES* ✨\n\n";
+            let mensagem = "✨ *NOVO PEDIDO - SUELLEN CAKES* ✨\n\n";
 
-    if (temBolo) {
-        const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
-        const massa = document.getElementById('massa-bolo').value;
+            if (temBolo) {
+                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+                const massa = document.getElementById('massa-bolo').value;
 
-        mensagem += `🎂 *Bolo Personalizado (${qtdAndares} Andar/es)*\n`;
-        mensagem += `• Massa: ${massa}\n`;
+                mensagem += `🎂 *Bolo Personalizado (${qtdAndares} Andar/es)*\n`;
+                mensagem += `• Massa: ${massa}\n`;
 
-        for (let andar = 1; andar <= qtdAndares; andar++) {
-            const selectTamanho = document.getElementById(`tamanho-andar-${andar}`);
-            const textoTamanho = selectTamanho.options[selectTamanho.selectedIndex].text;
+                for (let andar = 1; andar <= qtdAndares; andar++) {
+                    const selectTamanho = document.getElementById(`tamanho-andar-${andar}`);
+                    const textoTamanho = selectTamanho.options[selectTamanho.selectedIndex].text;
+                    
+                    const r1 = document.getElementById(`r1-andar-${andar}`).value;
+                    const r2 = document.getElementById(`r2-andar-${andar}`).value;
+                    const r3 = document.getElementById(`r3-andar-${andar}`).value;
+
+                    mensagem += `  - *${andar}º Andar:* ${textoTamanho}\n`;
+                    mensagem += `    Recheios: ${r1}`;
+                    if (r2) mensagem += `, ${r2}`;
+                    if (r3) mensagem += `, ${r3}`;
+                    mensagem += `\n`;
+                }
+                mensagem += `\n`;
+            }
+
+            if (temDoces) {
+                const selectDoces = document.getElementById('qtd-doces');
+                mensagem += `🍬 *Doces/Brigadeiros:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
+            }
+
+            if (temSobremesa) {
+                const selectSobremesa = document.getElementById('item-sobremesa');
+                mensagem += `🍮 *Sobremesa:* ${selectSobremesa.options[selectSobremesa.selectedIndex].text}\n\n`;
+            }
+
+            if (temCaseiro) {
+                const selectCaseiro = document.getElementById('item-caseiro');
+                mensagem += `🥮 *Bolo Caseiro:* ${selectCaseiro.options[selectCaseiro.selectedIndex].text}\n\n`;
+            }
+
+            let adicionais = [];
+            if (document.getElementById('add-topper').checked) adicionais.push("Topper Personalizado");
+            if (document.getElementById('add-embalagem').checked) adicionais.push("Embalagem Especial");
             
-            const r1 = document.getElementById(`r1-andar-${andar}`).value;
-            const r2 = document.getElementById(`r2-andar-${andar}`).value;
-            const r3 = document.getElementById(`r3-andar-${andar}`).value;
+            if (adicionais.length > 0) {
+                mensagem += `🎈 *Adicionais:* ${adicionais.join(', ')}\n\n`;
+            }
 
-            mensagem += `  - *${andar}º Andar:* ${textoTamanho}\n`;
-            mensagem += `    Recheios: ${r1}`;
-            if (r2) mensagem += `, ${r2}`;
-            if (r3) mensagem += `, ${r3}`;
-            mensagem += `\n`;
+            if (formaEntrega === 'entrega') {
+                mensagem += `🛵 *Forma de Recebimento:* Entrega em Domicílio\n`;
+                mensagem += `📍 *Endereço:* ${endereco}\n\n`;
+            } else {
+                mensagem += `🛍️ *Forma de Recebimento:* Retirada na Confeitaria\n\n`;
+            }
+
+            const total = document.getElementById('preco-total').innerText;
+            mensagem += `💰 *Valor Total:* ${total}`;
+
+            const numeroWhatsApp = "5527995336204";
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            window.open(urlWhatsApp, '_blank');
         }
-        mensagem += `\n`;
-    }
-
-    if (temDoces) {
-        const selectDoces = document.getElementById('qtd-doces');
-        mensagem += `🍬 *Doces/Brigadeiros:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
-    }
-
-    if (temSobremesa) {
-        const selectSobremesa = document.getElementById('item-sobremesa');
-        mensagem += `🍮 *Sobremesa:* ${selectSobremesa.options[selectSobremesa.selectedIndex].text}\n\n`;
-    }
-
-    if (temCaseiro) {
-        const selectCaseiro = document.getElementById('item-caseiro');
-        mensagem += `🥮 *Bolo Caseiro:* ${selectCaseiro.options[selectCaseiro.selectedIndex].text}\n\n`;
-    }
-
-    let adicionais = [];
-    if (document.getElementById('add-topper').checked) adicionais.push("Topper Personalizado");
-    if (document.getElementById('add-embalagem').checked) adicionais.push("Embalagem Especial");
-    
-    if (adicionais.length > 0) {
-        mensagem += `🎈 *Adicionais:* ${adicionais.join(', ')}\n\n`;
-    }
-
-    if (formaEntrega === 'entrega') {
-        mensagem += `🛵 *Forma de Recebimento:* Entrega em Domicílio\n`;
-        mensagem += `📍 *Endereço:* ${endereco}\n\n`;
-    } else {
-        mensagem += `🛍️ *Forma de Recebimento:* Retirada na Confeitaria\n\n`;
-    }
-
-    const total = document.getElementById('preco-total').innerText;
-    mensagem += `💰 *Valor Total Estimado:* ${total}`;
-
-    // 4. Disparo para o WhatsApp
-    const telefone = "5527995336204";
-    const urlWhatsApp = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-    window.open(urlWhatsApp, '_blank');
-} // <-- Este fecha certinho a função "enviarPedidoWhatsApp"
-
-// A partir daqui começam as outras funções soltas dentro do <script>:
-
-function verificarHorarioLoja() {
-    const agora = new Date();
-    const diaSemana = agora.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
-    const horaAtual = agora.getHours();
-    const minutoAtual = agora.getMinutes();
-    const horaEmMinutos = horaAtual * 60 + minutoAtual;
-
-    const horaAbertura = 8 * 60;  // 08:00
-    const horaFechamento = 19 * 60; // 19:00
-
-    let estaAberto = false;
-
-    if (diaSemana !== 0) { 
-        if (horaEmMinutos >= horaAbertura && horaEmMinutos < horaFechamento) {
-            estaAberto = true;
-        }
-    }
-
-    const container = document.getElementById('status-loja-container');
-    const texto = document.getElementById('texto-status');
-
-    if (estaAberto) {
-        container.className = "status-loja aberta";
-        texto.innerText = "Estamos abertos! Faça seu pedido 🎂✨";
-    } else {
-        container.className = "status-loja fechada";
-        texto.innerText = "Estamos fechados no momento 🌙";
-    }
-}
-
-// Executa a verificação assim que a página carrega
-window.onload = function() {
-    verificarHorarioLoja();
-};
-</script>
+    </script>
 </body>
 </html>
