@@ -8,6 +8,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo sutil para o container do status da loja */
+        .status-loja {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin-top: 10px;
+        }
+        .status-aberto {
+            border: 1px solid rgba(40, 167, 69, 0.4);
+            color: #1e7e34;
+        }
+        .status-fechado {
+            border: 1px solid rgba(220, 53, 69, 0.4);
+            color: #bd2130;
+        }
+        .bolinha-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
 
@@ -395,7 +423,7 @@
             }
         }
 
-        // Função para verificar se a loja está aberta ou fechada com base no horário
+        // Função limpa e amigável para verificar se a loja está aberta ou fechada
         function verificarStatusLoja() {
             const agora = new Date();
             const diaSemana = agora.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
@@ -404,35 +432,34 @@
             const horaAtualDecimal = hora + minutos / 60;
 
             let aberto = false;
-            let textoHorario = "";
 
-            // Horário padrão: Segunda a Sábado das 08:00 às 18:00 (Fechado aos Domingos)
+            // Horário padrão: Segunda a Sábado das 08:00 às 18:00
             if (diaSemana >= 1 && diaSemana <= 6) {
                 if (horaAtualDecimal >= 8 && horaAtualDecimal < 18) {
                     aberto = true;
                 }
-                textoHorario = "Segunda a Sábado: 08h às 18h";
-            } else {
-                textoHorario = "Fechado aos Domingos";
             }
 
+            const containerStatus = document.getElementById('status-loja-container');
             const bolinha = document.getElementById('bolinha-status');
             const texto = document.getElementById('texto-status');
 
-            if (bolinha && texto) {
+            if (bolinha && texto && containerStatus) {
                 if (aberto) {
                     bolinha.style.backgroundColor = "#28a745"; // Verde
-                    texto.innerHTML = `<strong>Aberto agora!</strong> (${textoHorario})`;
+                    texto.innerHTML = "<strong>Estamos abertos! Faça seu pedido.</strong>";
+                    containerStatus.className = "status-loja status-aberto";
                 } else {
                     bolinha.style.backgroundColor = "#dc3545"; // Vermelho
-                    texto.innerHTML = `<strong>Fechado no momento.</strong> (${textoHorario})`;
+                    texto.innerHTML = "<strong>Estamos fechados no momento.</strong>";
+                    containerStatus.className = "status-loja status-fechado";
                 }
             }
         }
 
         window.onload = function() {
             popularSelectsRecheio();
-            verificarStatusLoja(); // <--- Ativa a verificação de aberto/fechado ao carregar
+            verificarStatusLoja();
             
             document.getElementById('check-bolo').checked = false;
             document.getElementById('check-doces').checked = false;
