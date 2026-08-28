@@ -11,6 +11,7 @@
 </head>
 <body>
 
+    <!-- CABEÇALHO / MENU -->
     <header>
         <div class="logo">Suellen Cakes</div>
         <nav id="nav-principal">
@@ -26,6 +27,7 @@
         </nav>
     </header>
 
+    <!-- BARRA SUPERIOR DE NAVEGAÇÃO / CARRINHO -->
     <div id="barra-top-navegacao" style="display: none;">
         <button class="btn-voltar-seta" onclick="voltarParaInicio()" aria-label="Voltar">
             &#8592;
@@ -35,7 +37,11 @@
         </div>
     </div>
 
+    <!-- =======================================================
+         TELA 1: PÁGINA INICIAL (HOME)
+         ======================================================= -->
     <main id="tela-inicio" class="tela-pagina ativa">
+        <!-- SEÇÃO INÍCIO / HERO -->
         <section id="inicio" class="hero">
             <div class="hero-content">
                 <h1>Doces que tornam seus momentos especiais</h1>
@@ -48,6 +54,7 @@
             <img src="logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
         </section>
 
+        <!-- SEÇÃO PRODUTOS (CARDS INTERATIVOS) -->
         <section id="produtos" class="secao">
             <h2>Nossos Produtos</h2>
             <p class="subtitulo-secao">Clique em uma categoria para personalizar seu pedido:</p>
@@ -75,6 +82,7 @@
             </div>
         </section>
 
+        <!-- SEÇÃO FESTAS E CASAMENTOS -->
         <section id="eventos" class="secao destaque-eventos">
             <div class="card-evento">
                 <h2>Festas e Casamentos</h2>
@@ -83,6 +91,7 @@
             </div>
         </section>
 
+        <!-- SEÇÃO GALERIA DE FOTOS -->
         <section id="galeria" class="secao">
             <h2>Galeria de Fotos</h2>
             <p class="subtitulo-secao">Escolha uma categoria para ver as fotos dos nossos produtos:</p>
@@ -115,11 +124,13 @@
             </div>
         </section>
 
+        <!-- SEÇÃO SOBRE NÓS -->
         <section id="sobre" class="secao sobre-nos">
             <h2>Sobre Nós</h2>
             <p>A Suellen Cakes nasceu da paixão por criar momentos doces e inesquecíveis. Cada receita é produzida de forma artesanal, utilizando ingredientes selecionados e muito carinho.</p>
         </section>
 
+        <!-- SEÇÃO CONTATO -->
         <section id="contato" class="secao contato">
             <h2>Fale Conosco</h2>
             <div class="info-contato">
@@ -130,6 +141,9 @@
         </section>
     </main>
 
+    <!-- =======================================================
+         TELA 1-B: ABA DE FOTOS DA CATEGORIA DA GALERIA
+         ======================================================= -->
     <main id="tela-detalhe-galeria" class="tela-pagina" style="display: none;">
         <section class="secao">
             <button onclick="voltarParaGaleriaPrincipal()" class="btn-secundario" style="margin-bottom: 20px; width: auto; padding: 8px 16px;">
@@ -139,18 +153,24 @@
             <p class="subtitulo-secao">Confira alguns dos nossos trabalhos realizados:</p>
 
             <div class="grid-galeria" id="grid-fotos-categoria">
-                </div>
+                <!-- As fotos serão injetadas dinamicamente aqui -->
+            </div>
         </section>
     </main>
 
+    <!-- =======================================================
+         TELA 2: ÁREA DE MONTAGEM E FINALIZAÇÃO DO PEDIDO
+         ======================================================= -->
     <main id="tela-montagem" class="tela-pagina" style="display: none;">
         <section class="secao">
             <h2 id="titulo-tela-montagem">Monte Seu Pedido</h2>
             <p class="subtitulo-secao">Selecione suas opções abaixo e veja o orçamento atualizar em tempo real:</p>
 
             <div class="layout-montagem">
+                <!-- FORMULÁRIO DE SELEÇÃO -->
                 <div class="calculadora-container">
 
+                    <!-- 1. BOLO PERSONALIZADO -->
                     <div id="painel-montar-bolo" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-bolo" onchange="togglePainel('opcoes-bolo', this.checked);">
@@ -177,6 +197,7 @@
                                 </select>
                             </div>
 
+                            <!-- ANDAR 1 -->
                             <div id="painel-andar-1" class="box-andar">
                                 <h4>1º Andar (Base)</h4>
                                 <div class="grupo-campo">
@@ -197,6 +218,7 @@
                                 </div>
                             </div>
 
+                            <!-- ANDAR 2 -->
                             <div id="painel-andar-2" class="box-andar" style="display: none;">
                                 <h4>2º Andar</h4>
                                 <div class="grupo-campo">
@@ -216,6 +238,7 @@
                                 </div>
                             </div>
 
+                            <!-- ANDAR 3 -->
                             <div id="painel-andar-3" class="box-andar" style="display: none;">
                                 <h4>3º Andar (Topo)</h4>
                                 <div class="grupo-campo">
@@ -236,6 +259,7 @@
                         </div>
                     </div>
 
+                    <!-- 2. DOCES E BRIGADEIROS -->
                     <div id="painel-montar-doces" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-doces" onchange="togglePainel('opcoes-doces', this.checked);">
@@ -254,6 +278,7 @@
                         </div>
                     </div>
 
+                    <!-- 3. SOBREMESAS -->
                     <div id="painel-montar-sobremesa" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-sobremesa" onchange="togglePainel('opcoes-sobremesa', this.checked);">
@@ -271,6 +296,7 @@
                         </div>
                     </div>
 
+                    <!-- 4. BOLOS CASEIROS -->
                     <div id="painel-montar-caseiro" class="item-categoria">
                         <label class="checkbox-titulo">
                             <input type="checkbox" id="check-caseiro" onchange="togglePainel('opcoes-caseiro', this.checked);">
@@ -288,12 +314,14 @@
                         </div>
                     </div>
 
+                    <!-- ADICIONAIS GERAIS -->
                     <div class="grupo-adicionais">
                         <p><strong>Adicionais Opcionais:</strong></p>
                         <label><input type="checkbox" id="add-topper" value="15" onchange="calcularTotal()"> Topper Personalizado (+ R$ 15,00)</label><br>
                         <label><input type="checkbox" id="add-embalagem" value="10" onchange="calcularTotal()"> Embalagem Especial para Presente (+ R$ 10,00)</label>
                     </div>
 
+                    <!-- FORMA DE ENTREGA -->
                     <div class="grupo-campo box-entrega">
                         <label for="forma-entrega"><strong>Forma de Entrega / Retirada:</strong></label>
                         <select id="forma-entrega" onchange="tratarMudancaEntrega(); calcularTotal();">
@@ -308,6 +336,7 @@
                     </div>
                 </div>
 
+                <!-- PAINEL FIXO DO CARRINHO DE COMPRAS / RESUMO -->
                 <div class="carrinho-lateral-container">
                     <div class="carrinho-box">
                         <h3>🛒 Seu Orçamento</h3>
@@ -331,10 +360,12 @@
         </section>
     </main>
 
+    <!-- RODAPÉ -->
     <footer>
         <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
     </footer>
 
+    <!-- JAVASCRIPT DINÂMICO E NAVEGAÇÃO DA GALERIA -->
     <script>
         const listaRecheios = [
             "Brigadeiro", "Ninho", "Nutella (+ R$ 15,00)", "Morango", "Abacaxi", 
@@ -364,8 +395,44 @@
             }
         }
 
+        // Função para verificar se a loja está aberta ou fechada com base no horário
+        function verificarStatusLoja() {
+            const agora = new Date();
+            const diaSemana = agora.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
+            const hora = agora.getHours();
+            const minutos = agora.getMinutes();
+            const horaAtualDecimal = hora + minutos / 60;
+
+            let aberto = false;
+            let textoHorario = "";
+
+            // Horário padrão: Segunda a Sábado das 08:00 às 18:00 (Fechado aos Domingos)
+            if (diaSemana >= 1 && diaSemana <= 6) {
+                if (horaAtualDecimal >= 8 && horaAtualDecimal < 18) {
+                    aberto = true;
+                }
+                textoHorario = "Segunda a Sábado: 08h às 18h";
+            } else {
+                textoHorario = "Fechado aos Domingos";
+            }
+
+            const bolinha = document.getElementById('bolinha-status');
+            const texto = document.getElementById('texto-status');
+
+            if (bolinha && texto) {
+                if (aberto) {
+                    bolinha.style.backgroundColor = "#28a745"; // Verde
+                    texto.innerHTML = `<strong>Aberto agora!</strong> (${textoHorario})`;
+                } else {
+                    bolinha.style.backgroundColor = "#dc3545"; // Vermelho
+                    texto.innerHTML = `<strong>Fechado no momento.</strong> (${textoHorario})`;
+                }
+            }
+        }
+
         window.onload = function() {
             popularSelectsRecheio();
+            verificarStatusLoja(); // <--- Ativa a verificação de aberto/fechado ao carregar
             
             document.getElementById('check-bolo').checked = false;
             document.getElementById('check-doces').checked = false;
@@ -533,7 +600,6 @@
             }
         }
 
-        // Função do WhatsApp corrigida e completa
         function enviarPedidoWhatsApp() {
             const temBolo = document.getElementById('check-bolo').checked;
             const temDoces = document.getElementById('check-doces').checked;
