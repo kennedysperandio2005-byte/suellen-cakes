@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=23">
+    <link rel="stylesheet" href="style.css?v=24">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -235,7 +235,7 @@
                                 <h4>1º Andar (Base)</h4>
                                 <div class="grupo-campo">
                                     <label for="tamanho-andar-1"><strong>Tamanho do 1º Andar:</strong></label>
-                                    <select id="tamanho-andar-1" onchange="atualizarOpcoesTopo(1); calcularTotal();">
+                                    <select id="tamanho-andar-1" onchange="calcularTotal()">
                                         <option value="80">10cm (~6 fatias) - R$ 80,00</option>
                                         <option value="130">15cm (~15 fatias) - R$ 130,00</option>
                                         <option value="185">20cm (~25 fatias) - R$ 185,00</option>
@@ -249,12 +249,6 @@
                                     <select id="r2-andar-1" onchange="calcularTotal()"></select>
                                     <select id="r3-andar-1" onchange="calcularTotal()"></select>
                                 </div>
-                                <div class="grupo-campo">
-                                    <label for="topo-andar-1"><strong>Topo para este andar:</strong></label>
-                                    <select id="topo-andar-1" onchange="calcularTotal()">
-                                        <!-- Dinâmico via JS -->
-                                    </select>
-                                </div>
                             </div>
 
                             <!-- ANDAR 2 -->
@@ -262,7 +256,7 @@
                                 <h4>2º Andar</h4>
                                 <div class="grupo-campo">
                                     <label for="tamanho-andar-2"><strong>Tamanho do 2º Andar:</strong></label>
-                                    <select id="tamanho-andar-2" onchange="atualizarOpcoesTopo(2); calcularTotal();">
+                                    <select id="tamanho-andar-2" onchange="calcularTotal()">
                                         <option value="80">10cm (~6 fatias) - R$ 80,00</option>
                                         <option value="130">15cm (~15 fatias) - R$ 130,00</option>
                                         <option value="185">20cm (~25 fatias) - R$ 185,00</option>
@@ -275,12 +269,6 @@
                                     <select id="r2-andar-2" onchange="calcularTotal()"></select>
                                     <select id="r3-andar-2" onchange="calcularTotal()"></select>
                                 </div>
-                                <div class="grupo-campo">
-                                    <label for="topo-andar-2"><strong>Topo para este andar:</strong></label>
-                                    <select id="topo-andar-2" onchange="calcularTotal()">
-                                        <!-- Dinâmico via JS -->
-                                    </select>
-                                </div>
                             </div>
 
                             <!-- ANDAR 3 -->
@@ -288,7 +276,7 @@
                                 <h4>3º Andar (Topo)</h4>
                                 <div class="grupo-campo">
                                     <label for="tamanho-andar-3"><strong>Tamanho do 3º Andar:</strong></label>
-                                    <select id="tamanho-andar-3" onchange="atualizarOpcoesTopo(3); calcularTotal();">
+                                    <select id="tamanho-andar-3" onchange="calcularTotal()">
                                         <option value="80">10cm (~6 fatias) - R$ 80,00</option>
                                         <option value="130">15cm (~15 fatias) - R$ 130,00</option>
                                         <option value="185">20cm (~25 fatias) - R$ 185,00</option>
@@ -300,10 +288,15 @@
                                     <select id="r2-andar-3" onchange="calcularTotal()"></select>
                                     <select id="r3-andar-3" onchange="calcularTotal()"></select>
                                 </div>
+                            </div>
+
+                            <!-- SEÇÃO GERAL DE TOPO DO BOLO (NO FINAL DOS ANDARES) -->
+                            <div id="painel-topo-geral" class="box-andar" style="background-color: #fafafa; border-style: dashed;">
+                                <h4>Topo do Bolo</h4>
                                 <div class="grupo-campo">
-                                    <label for="topo-andar-3"><strong>Topo para este andar:</strong></label>
-                                    <select id="topo-andar-3" onchange="calcularTotal()">
-                                        <!-- Dinâmico via JS -->
+                                    <label for="topo-bolo-geral"><strong>Escolha o Topo:</strong></label>
+                                    <select id="topo-bolo-geral" onchange="calcularTotal()">
+                                        <!-- Dinâmico via JS com base na quantidade de andares -->
                                     </select>
                                 </div>
                             </div>
@@ -437,15 +430,6 @@
             "Geleia de frutas vermelhas"
         ];
 
-        // Mapeamento dos valores dos topos por tamanho do bolo (em cm)
-        const precosTopoPorTamanho = {
-            "80": 12.00,  // 10cm
-            "130": 15.00, // 15cm
-            "185": 18.00, // 20cm
-            "270": 22.00, // 25cm
-            "320": 25.00  // 30cm
-        };
-
         function popularSelectsRecheio() {
             for (let andar = 1; andar <= 3; andar++) {
                 for (let r = 1; r <= 3; r++) {
@@ -468,29 +452,21 @@
             }
         }
 
-        function atualizarOpcoesTopo(andar) {
-            const selectTamanho = document.getElementById(`tamanho-andar-${andar}`);
-            const selectTopo = document.getElementById(`topo-andar-${andar}`);
-            if (!selectTamanho || !selectTopo) return;
+        function atualizarTopoGeral() {
+            const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+            const selectTopo = document.getElementById('topo-bolo-geral');
+            if (!selectTopo) return;
 
-            const valorTamanhoSelecionado = selectTamanho.value;
-            let nomeTamanhoStr = "10cm";
-            if (valorTamanhoSelecionado === "130") nomeTamanhoStr = "15cm";
-            else if (valorTamanhoSelecionado === "185") nomeTamanhoStr = "20cm";
-            else if (valorTamanhoSelecionado === "270") nomeTamanhoStr = "25cm";
-            else if (valorTamanhoSelecionado === "320") nomeTamanhoStr = "30cm";
+            selectTopo.innerHTML = `<option value="0">Sem Topo</option>`;
 
-            const precoTopo = precosTopoPorTamanho[valorTamanhoSelecionado] || 15.00;
-
-            selectTopo.innerHTML = `
-                <option value="0">Sem Topo</option>
-                <option value="${precoTopo}">Topo para bolo de ${nomeTamanhoStr} - R$ ${precoTopo.toFixed(2).replace('.', ',')}</option>
-            `;
-        }
-
-        function atualizarTodosTopos() {
-            for (let i = 1; i <= 3; i++) {
-                atualizarOpcoesTopo(i);
+            if (qtdAndares === 2) {
+                selectTopo.innerHTML += `<option value="18.00">Topo para bolo de 2 andares - R$ 18,00</option>`;
+            } else if (qtdAndares === 3) {
+                selectTopo.innerHTML += `<option value="25.00">Topo para bolo de 3 andares - R$ 25,00</option>`;
+            } else {
+                // Para 1 andar, se desejar manter opcional ou remover, caso queira para 1 andar pode adicionar aqui. 
+                // Como pedido focado em 2 e 3 andares, para 1 andar deixamos apenas sem topo ou com valor padrão de 1 andar se necessário.
+                selectTopo.innerHTML += `<option value="12.00">Topo para bolo de 1 andar - R$ 12,00</option>`;
             }
         }
 
@@ -530,7 +506,7 @@
 
         window.onload = function() {
             popularSelectsRecheio();
-            atualizarTodosTopos();
+            atualizarTopoGeral();
             verificarStatusLoja();
             
             document.getElementById('forma-entrega').value = 'retirada';
@@ -604,8 +580,9 @@
                 document.getElementById('massa-bolo').selectedIndex = 0;
                 document.getElementById('tamanho-andar-1').selectedIndex = 0;
                 popularSelectsRecheio();
-                atualizarTodosTopos();
                 atualizarAndaresBolo();
+                atualizarTopoGeral();
+                document.getElementById('topo-bolo-geral').selectedIndex = 0;
             } else if (categoria === 'doces-finos') {
                 document.getElementById('painel-montar-doces-finos').style.display = 'block';
                 tituloTela = "Escolher Doces Finos";
@@ -643,6 +620,8 @@
             document.getElementById('painel-andar-1').style.display = 'block';
             document.getElementById('painel-andar-2').style.display = (qtdAndares >= 2) ? 'block' : 'none';
             document.getElementById('painel-andar-3').style.display = (qtdAndares >= 3) ? 'block' : 'none';
+            
+            atualizarTopoGeral();
         }
 
         function tratarMudancaEntrega() {
@@ -677,12 +656,14 @@
                         if (r1 && r1.includes('Nutella')) subtotalBolo += 15;
                         if (r2 && r2.includes('Nutella')) subtotalBolo += 15;
                         if (r3 && r3.includes('Nutella')) subtotalBolo += 15;
-
-                        const valTopo = parseFloat(document.getElementById(`topo-andar-${andar}`).value) || 0;
-                        if (valTopo > 0) {
-                            subtotalBolo += valTopo;
-                        }
                     }
+
+                    // Adiciona o valor do topo geral escolhido no final
+                    const valTopoGeral = parseFloat(document.getElementById('topo-bolo-geral').value) || 0;
+                    if (valTopoGeral > 0) {
+                        subtotalBolo += valTopoGeral;
+                    }
+
                     total += subtotalBolo;
                     resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎂 Bolo Personalizado (${qtdAndares} Andar/es)</span> <strong>R$ ${subtotalBolo.toFixed(2).replace('.', ',')}</strong></div>`;
                 }
@@ -790,17 +771,18 @@
                     const r1 = document.getElementById(`r1-andar-${andar}`).value;
                     const r2 = document.getElementById(`r2-andar-${andar}`).value;
                     const r3 = document.getElementById(`r3-andar-${andar}`).value;
-                    const selectTopo = document.getElementById(`topo-andar-${andar}`);
-                    const textoTopo = selectTopo.options[selectTopo.selectedIndex].text;
 
                     mensagem += `  * ${andar}º Andar: ${textoTamanho}\n`;
                     mensagem += `  - Recheios: ${r1}`;
                     if (r2) mensagem += `, ${r2}`;
                     if (r3) mensagem += `, ${r3}`;
                     mensagem += `\n`;
-                    if (selectTopo.value !== "0") {
-                        mensagem += `  - Topo: ${textoTopo}\n`;
-                    }
+                }
+
+                const selectTopoGeral = document.getElementById('topo-bolo-geral');
+                if (selectTopoGeral.value !== "0") {
+                    const textoTopoGeral = selectTopoGeral.options[selectTopoGeral.selectedIndex].text;
+                    mensagem += `- Topo: ${textoTopoGeral}\n`;
                 }
                 mensagem += "\n";
             } else if (categoriaAtualAtiva === 'doces-finos') {
