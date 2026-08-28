@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=21">
+    <link rel="stylesheet" href="style.css?v=22">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -237,7 +237,7 @@
                                     <label for="tamanho-andar-1"><strong>Tamanho do 1º Andar:</strong></label>
                                     <select id="tamanho-andar-1" onchange="calcularTotal()">
                                         <option value="80">10cm (~6 fatias) - R$ 80,00</option>
-                                        <option value="130" selected>15cm (~15 fatias) - R$ 130,00</option>
+                                        <option value="130">15cm (~15 fatias) - R$ 130,00</option>
                                         <option value="185">20cm (~25 fatias) - R$ 185,00</option>
                                         <option value="270">25cm (~40 fatias) - R$ 270,00</option>
                                         <option value="320">30cm (~50 fatias) - R$ 320,00</option>
@@ -257,7 +257,7 @@
                                 <div class="grupo-campo">
                                     <label for="tamanho-andar-2"><strong>Tamanho do 2º Andar:</strong></label>
                                     <select id="tamanho-andar-2" onchange="calcularTotal()">
-                                        <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
+                                        <option value="80">10cm (~6 fatias) - R$ 80,00</option>
                                         <option value="130">15cm (~15 fatias) - R$ 130,00</option>
                                         <option value="185">20cm (~25 fatias) - R$ 185,00</option>
                                         <option value="270">25cm (~40 fatias) - R$ 270,00</option>
@@ -277,7 +277,7 @@
                                 <div class="grupo-campo">
                                     <label for="tamanho-andar-3"><strong>Tamanho do 3º Andar:</strong></label>
                                     <select id="tamanho-andar-3" onchange="calcularTotal()">
-                                        <option value="80" selected>10cm (~6 fatias) - R$ 80,00</option>
+                                        <option value="80">10cm (~6 fatias) - R$ 80,00</option>
                                         <option value="130">15cm (~15 fatias) - R$ 130,00</option>
                                         <option value="185">20cm (~25 fatias) - R$ 185,00</option>
                                     </select>
@@ -305,6 +305,7 @@
                             <div class="grupo-campo">
                                 <label for="qtd-doces-finos"><strong>Quantidade e Tipo:</strong></label>
                                 <select id="qtd-doces-finos" onchange="calcularTotal()">
+                                    <option value="" selected disabled>-- Selecione uma opção --</option>
                                     <option value="120">50 Doces Finos Variados - R$ 120,00</option>
                                     <option value="220">100 Doces Finos Variados - R$ 220,00</option>
                                 </select>
@@ -318,6 +319,7 @@
                             <div class="grupo-campo">
                                 <label for="qtd-doces-tradicionais"><strong>Quantidade e Tipo:</strong></label>
                                 <select id="qtd-doces-tradicionais" onchange="calcularTotal()">
+                                    <option value="" selected disabled>-- Selecione uma opção --</option>
                                     <option value="45">50 Brigadeiros Tradicionais - R$ 45,00</option>
                                     <option value="85">100 Brigadeiros Tradicionais - R$ 85,00</option>
                                 </select>
@@ -331,6 +333,7 @@
                             <div class="grupo-campo">
                                 <label for="qtd-doces-gourmet"><strong>Quantidade e Tipo:</strong></label>
                                 <select id="qtd-doces-gourmet" onchange="calcularTotal()">
+                                    <option value="" selected disabled>-- Selecione uma opção --</option>
                                     <option value="70">50 Brigadeiros Gourmet - R$ 70,00</option>
                                     <option value="135">100 Brigadeiros Gourmet - R$ 135,00</option>
                                 </select>
@@ -344,6 +347,7 @@
                             <div class="grupo-campo">
                                 <label for="item-sobremesa"><strong>Escolha a Sobremesa:</strong></label>
                                 <select id="item-sobremesa" onchange="calcularTotal()">
+                                    <option value="" selected disabled>-- Selecione uma opção --</option>
                                     <option value="50">Pudim Cremoso GG - R$ 50,00</option>
                                     <option value="75">Taça da Felicidade (1.5L) - R$ 75,00</option>
                                     <option value="65">Torta Holandesa - R$ 65,00</option>
@@ -358,6 +362,7 @@
                             <div class="grupo-campo">
                                 <label for="item-caseiro"><strong>Escolha o Bolo Caseiro:</strong></label>
                                 <select id="item-caseiro" onchange="calcularTotal()">
+                                    <option value="" selected disabled>-- Selecione uma opção --</option>
                                     <option value="25">Bolo de Cenoura com Vulcão de Chocolate - R$ 25,00</option>
                                     <option value="22">Bolo de Fubá com Goiabada - R$ 22,00</option>
                                     <option value="28">Bolo Ninho com Nutella - R$ 28,00</option>
@@ -370,7 +375,7 @@
                     <div class="grupo-campo box-entrega" style="margin-top: 20px;">
                         <label for="forma-entrega"><strong>Forma de Entrega / Retirada:</strong></label>
                         <select id="forma-entrega" onchange="tratarMudancaEntrega(); calcularTotal();">
-                            <option value="retirada">Retirar na Confeitaria (Grátis)</option>
+                            <option value="retirada" selected>Retirar na Confeitaria (Grátis)</option>
                             <option value="entrega">Entrega em Domicílio (Taxa fixa R$ 50,00)</option>
                         </select>
 
@@ -429,11 +434,12 @@
                     select.innerHTML = '';
 
                     if (r === 1) {
+                        select.innerHTML = `<option value="" selected disabled>-- Escolha o 1º recheio --</option>`;
                         listaRecheios.forEach(rec => {
                             select.innerHTML += `<option value="${rec}">${rec}</option>`;
                         });
                     } else {
-                        select.innerHTML = `<option value="">-- Nenhum ${r}º recheio --</option>`;
+                        select.innerHTML = `<option value="" selected>-- Nenhum ${r}º recheio --</option>`;
                         listaRecheios.forEach(rec => {
                             select.innerHTML += `<option value="${rec}">${rec}</option>`;
                         });
@@ -484,6 +490,9 @@
             const addEmb = document.getElementById('add-embalagem');
             if (addTp) addTp.checked = false;
             if (addEmb) addEmb.checked = false;
+            
+            document.getElementById('forma-entrega').value = 'retirada';
+            document.getElementById('painel-frete').style.display = 'none';
 
             calcularTotal();
         };
@@ -545,25 +554,43 @@
 
             let tituloTela = "Monte Seu Pedido";
 
-            // Mostra somente o painel correspondente e ajusta o título principal
+            // Reseta campos ao abrir nova categoria para garantir carrinho limpo/zerado
             if (categoria === 'bolo') {
                 document.getElementById('painel-montar-bolo').style.display = 'block';
                 tituloTela = "Monte Seu Bolo Festivo";
+                document.getElementById('tipo-bolo').value = "1";
+                document.getElementById('massa-bolo').selectedIndex = 0;
+                document.getElementById('tamanho-andar-1').selectedIndex = 0;
+                popularSelectsRecheio();
+                document.getElementById('add-topper').checked = false;
+                document.getElementById('add-embalagem').checked = false;
+                atualizarAndaresBolo();
             } else if (categoria === 'doces-finos') {
                 document.getElementById('painel-montar-doces-finos').style.display = 'block';
                 tituloTela = "Escolher Doces Finos";
+                document.getElementById('qtd-doces-finos').selectedIndex = 0;
             } else if (categoria === 'doces-tradicionais') {
                 document.getElementById('painel-montar-doces-tradicionais').style.display = 'block';
                 tituloTela = "Escolher Doces Tradicionais";
+                document.getElementById('qtd-doces-tradicionais').selectedIndex = 0;
             } else if (categoria === 'doces-gourmet') {
                 document.getElementById('painel-montar-doces-gourmet').style.display = 'block';
                 tituloTela = "Escolher Doces Gourmet";
+                document.getElementById('qtd-doces-gourmet').selectedIndex = 0;
             } else if (categoria === 'sobremesa') {
                 document.getElementById('painel-montar-sobremesa').style.display = 'block';
                 tituloTela = "Escolher Sobremesa";
+                document.getElementById('item-sobremesa').selectedIndex = 0;
             } else if (categoria === 'caseiro') {
                 document.getElementById('painel-montar-caseiro').style.display = 'block';
                 tituloTela = "Escolher Bolo Caseiro";
+                document.getElementById('item-caseiro').selectedIndex = 0;
+            }
+
+            document.getElementById('forma-entrega').value = 'retirada';
+            document.getElementById('painel-frete').style.display = 'none';
+            if(document.getElementById('endereco-cliente')) {
+                document.getElementById('endereco-cliente').value = '';
             }
 
             document.getElementById('titulo-tela-montagem').innerText = tituloTela;
@@ -588,58 +615,80 @@
             let resumoItensHTML = '';
 
             if (categoriaAtualAtiva === 'bolo') {
-                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
-                let subtotalBolo = 0;
+                const tamanho1 = document.getElementById('tamanho-andar-1').value;
+                const recheio1 = document.getElementById('r1-andar-1').value;
 
-                if (document.getElementById('massa-bolo').value.includes('Red Velvet')) subtotalBolo += 10;
+                // Só calcula se o usuário escolheu o tamanho e o 1º recheio obrigatório
+                if (tamanho1 && recheio1) {
+                    const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+                    let subtotalBolo = 0;
 
-                for (let andar = 1; andar <= qtdAndares; andar++) {
-                    const valTamanho = parseFloat(document.getElementById(`tamanho-andar-${andar}`).value);
-                    subtotalBolo += valTamanho;
+                    if (document.getElementById('massa-bolo').value.includes('Red Velvet')) subtotalBolo += 10;
 
-                    const r1 = document.getElementById(`r1-andar-${andar}`).value;
-                    const r2 = document.getElementById(`r2-andar-${andar}`).value;
-                    const r3 = document.getElementById(`r3-andar-${andar}`).value;
+                    for (let andar = 1; andar <= qtdAndares; andar++) {
+                        const valTamanho = parseFloat(document.getElementById(`tamanho-andar-${andar}`).value);
+                        subtotalBolo += valTamanho;
 
-                    if (r1.includes('Nutella')) subtotalBolo += 15;
-                    if (r2.includes('Nutella')) subtotalBolo += 15;
-                    if (r3.includes('Nutella')) subtotalBolo += 15;
-                }
-                total += subtotalBolo;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎂 Bolo Personalizado (${qtdAndares} Andar/es)</span> <strong>R$ ${subtotalBolo.toFixed(2).replace('.', ',')}</strong></div>`;
+                        const r1 = document.getElementById(`r1-andar-${andar}`).value;
+                        const r2 = document.getElementById(`r2-andar-${andar}`).value;
+                        const r3 = document.getElementById(`r3-andar-${andar}`).value;
 
-                if (document.getElementById('add-topper').checked) {
-                    total += 15;
-                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎈 Topper Personalizado</span> <strong>R$ 15,00</strong></div>`;
-                }
-                if (document.getElementById('add-embalagem').checked) {
-                    total += 10;
-                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎁 Embalagem Presente</span> <strong>R$ 10,00</strong></div>`;
+                        if (r1 && r1.includes('Nutella')) subtotalBolo += 15;
+                        if (r2 && r2.includes('Nutella')) subtotalBolo += 15;
+                        if (r3 && r3.includes('Nutella')) subtotalBolo += 15;
+                    }
+                    total += subtotalBolo;
+                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎂 Bolo Personalizado (${qtdAndares} Andar/es)</span> <strong>R$ ${subtotalBolo.toFixed(2).replace('.', ',')}</strong></div>`;
+
+                    if (document.getElementById('add-topper').checked) {
+                        total += 15;
+                        resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎈 Topper Personalizado</span> <strong>R$ 15,00</strong></div>`;
+                    }
+                    if (document.getElementById('add-embalagem').checked) {
+                        total += 10;
+                        resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎁 Embalagem Presente</span> <strong>R$ 10,00</strong></div>`;
+                    }
                 }
             } else if (categoriaAtualAtiva === 'doces-finos') {
-                const valDoces = parseFloat(document.getElementById('qtd-doces-finos').value);
-                total += valDoces;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces Finos</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
+                const valDocesStr = document.getElementById('qtd-doces-finos').value;
+                if (valDocesStr) {
+                    const valDoces = parseFloat(valDocesStr);
+                    total += valDoces;
+                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces Finos</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
+                }
             } else if (categoriaAtualAtiva === 'doces-tradicionais') {
-                const valDoces = parseFloat(document.getElementById('qtd-doces-tradicionais').value);
-                total += valDoces;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces Tradicionais</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
+                const valDocesStr = document.getElementById('qtd-doces-tradicionais').value;
+                if (valDocesStr) {
+                    const valDoces = parseFloat(valDocesStr);
+                    total += valDoces;
+                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces Tradicionais</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
+                }
             } else if (categoriaAtualAtiva === 'doces-gourmet') {
-                const valDoces = parseFloat(document.getElementById('qtd-doces-gourmet').value);
-                total += valDoces;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces Gourmet</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
+                const valDocesStr = document.getElementById('qtd-doces-gourmet').value;
+                if (valDocesStr) {
+                    const valDoces = parseFloat(valDocesStr);
+                    total += valDoces;
+                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces Gourmet</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
+                }
             } else if (categoriaAtualAtiva === 'sobremesa') {
-                const valSobremesa = parseFloat(document.getElementById('item-sobremesa').value);
-                total += valSobremesa;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 Sobremesa</span> <strong>R$ ${valSobremesa.toFixed(2).replace('.', ',')}</strong></div>`;
+                const valSobremesaStr = document.getElementById('item-sobremesa').value;
+                if (valSobremesaStr) {
+                    const valSobremesa = parseFloat(valSobremesaStr);
+                    total += valSobremesa;
+                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 Sobremesa</span> <strong>R$ ${valSobremesa.toFixed(2).replace('.', ',')}</strong></div>`;
+                }
             } else if (categoriaAtualAtiva === 'caseiro') {
-                const valCaseiro = parseFloat(document.getElementById('item-caseiro').value);
-                total += valCaseiro;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro</span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
+                const valCaseiroStr = document.getElementById('item-caseiro').value;
+                if (valCaseiroStr) {
+                    const valCaseiro = parseFloat(valCaseiroStr);
+                    total += valCaseiro;
+                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro</span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
+                }
             }
 
             const formaEntrega = document.getElementById('forma-entrega').value;
-            if (formaEntrega === 'entrega') {
+            // Só adiciona a taxa de entrega se já houver algum item principal selecionado
+            if (formaEntrega === 'entrega' && total > 0) {
                 total += 50.00;
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🛵 Taxa de Entrega</span> <strong>R$ 50,00</strong></div>`;
             }
@@ -657,6 +706,28 @@
         }
 
         function enviarPedidoWhatsApp() {
+            let totalAtual = 0;
+            if (categoriaAtualAtiva === 'bolo') {
+                const tamanho1 = document.getElementById('tamanho-andar-1').value;
+                const recheio1 = document.getElementById('r1-andar-1').value;
+                if (tamanho1 && recheio1) totalAtual = 1;
+            } else if (categoriaAtualAtiva === 'doces-finos') {
+                if (document.getElementById('qtd-doces-finos').value) totalAtual = 1;
+            } else if (categoriaAtualAtiva === 'doces-tradicionais') {
+                if (document.getElementById('qtd-doces-tradicionais').value) totalAtual = 1;
+            } else if (categoriaAtualAtiva === 'doces-gourmet') {
+                if (document.getElementById('qtd-doces-gourmet').value) totalAtual = 1;
+            } else if (categoriaAtualAtiva === 'sobremesa') {
+                if (document.getElementById('item-sobremesa').value) totalAtual = 1;
+            } else if (categoriaAtualAtiva === 'caseiro') {
+                if (document.getElementById('item-caseiro').value) totalAtual = 1;
+            }
+
+            if (totalAtual === 0) {
+                alert("Por favor, selecione as opções do produto antes de enviar o pedido.");
+                return;
+            }
+
             const formaEntrega = document.getElementById('forma-entrega').value;
             let endereco = "";
             if (formaEntrega === 'entrega') {
