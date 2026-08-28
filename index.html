@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=24">
+    <link rel="stylesheet" href="style.css?v=25">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilo sutil para o container do status da loja */
         .status-loja {
             display: inline-flex;
             align-items: center;
@@ -64,11 +63,8 @@
         </div>
     </div>
 
-    <!-- =======================================================
-         TELA 1: PÁGINA INICIAL (HOME)
-         ======================================================= -->
+    <!-- TELA 1: PÁGINA INICIAL (HOME) -->
     <main id="tela-inicio" class="tela-pagina ativa">
-        <!-- SEÇÃO INÍCIO / HERO -->
         <section id="inicio" class="hero">
             <div class="hero-content">
                 <h1>Doces que tornam seus momentos especiais</h1>
@@ -78,41 +74,41 @@
                     <span id="texto-status">Verificando horário...</span>
                 </div>
             </div>
-            <img src="logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
+            <img src="imagens/logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
         </section>
 
-        <!-- SEÇÃO PRODUTOS (CARDS INTERATIVOS) -->
+        <!-- SEÇÃO PRODUTOS -->
         <section id="produtos" class="secao">
             <h2>Nossos Produtos</h2>
             <p class="subtitulo-secao">Clique em uma categoria para personalizar seu pedido:</p>
             <div class="grid-produtos">
                 <div class="card-produto" onclick="abrirMontagem('bolo')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Festivos"></div>
+                    <div class="img-placeholder"><img src="imagens/bolo-festivo.jpg" alt="Bolos Festivos"></div>
                     <h3>Bolos Festivos</h3>
                     <p>Bolos personalizados para aniversários e casamentos com os melhores recheios.</p>
                 </div>
                 <div class="card-produto" onclick="abrirMontagem('doces-finos')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Finos"></div>
+                    <div class="img-placeholder"><img src="imagens/doces-finos.jpg" alt="Doces Finos"></div>
                     <h3>Doces Finos</h3>
                     <p>Bombons, copinhos recheados e doces sofisticados para sua festa.</p>
                 </div>
                 <div class="card-produto" onclick="abrirMontagem('doces-tradicionais')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Tradicionais"></div>
+                    <div class="img-placeholder"><img src="imagens/doces-tradicionais.jpg" alt="Doces Tradicionais"></div>
                     <h3>Doces Tradicionais</h3>
                     <p>O clássico brigadeiro, beijinho e cajuzinho que não podem faltar.</p>
                 </div>
                 <div class="card-produto" onclick="abrirMontagem('doces-gourmet')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Gourmet"></div>
+                    <div class="img-placeholder"><img src="imagens/doces-gourmet.jpg" alt="Doces Gourmet"></div>
                     <h3>Doces Gourmet</h3>
                     <p>Brigadeiros especiais com ingredientes nobres e coberturas exclusivas.</p>
                 </div>
                 <div class="card-produto" onclick="abrirMontagem('sobremesa')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Sobremesas"></div>
+                    <div class="img-placeholder"><img src="imagens/sobremesa.jpg" alt="Sobremesas"></div>
                     <h3>Sobremesas</h3>
                     <p>Tortas, pudins e taças da felicidade para o seu fim de semana.</p>
                 </div>
                 <div class="card-produto" onclick="abrirMontagem('caseiro')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Caseiros"></div>
+                    <div class="img-placeholder"><img src="imagens/bolo-caseiro.jpg" alt="Bolos Caseiros"></div>
                     <h3>Bolos Caseiros</h3>
                     <p>Aquele bolo fofinho e caseiro perfeito para o café da tarde.</p>
                 </div>
@@ -135,27 +131,27 @@
             
             <div class="grid-galeria">
                 <div class="card-produto" onclick="abrirCategoriaGaleria('tradicionais', 'Doces Tradicionais')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Tradicionais"></div>
+                    <div class="img-placeholder"><img src="imagens/doces-tradicionais.jpg" alt="Doces Tradicionais"></div>
                     <h3>Doces Tradicionais</h3>
                 </div>
                 <div class="card-produto" onclick="abrirCategoriaGaleria('finos', 'Doces Finos')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Finos"></div>
+                    <div class="img-placeholder"><img src="imagens/doces-finos.jpg" alt="Doces Finos"></div>
                     <h3>Doces Finos</h3>
                 </div>
                 <div class="card-produto" onclick="abrirCategoriaGaleria('gourmet', 'Doces Gourmet')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Doces Gourmet"></div>
+                    <div class="img-placeholder"><img src="imagens/doces-gourmet.jpg" alt="Doces Gourmet"></div>
                     <h3>Doces Gourmet</h3>
                 </div>
                 <div class="card-produto" onclick="abrirCategoriaGaleria('festivos', 'Bolos Festivos')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Festivos"></div>
+                    <div class="img-placeholder"><img src="imagens/bolo-festivo.jpg" alt="Bolos Festivos"></div>
                     <h3>Bolos Festivos</h3>
                 </div>
                 <div class="card-produto" onclick="abrirCategoriaGaleria('caseiros', 'Bolos Caseiros')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Bolos Caseiros"></div>
+                    <div class="img-placeholder"><img src="imagens/bolo-caseiro.jpg" alt="Bolos Caseiros"></div>
                     <h3>Bolos Caseiros</h3>
                 </div>
                 <div class="card-produto" onclick="abrirCategoriaGaleria('sobremesas', 'Sobremesas')">
-                    <div class="img-placeholder"><img src="logo.png" alt="Sobremesas"></div>
+                    <div class="img-placeholder"><img src="imagens/sobremesa.jpg" alt="Sobremesas"></div>
                     <h3>Sobremesas</h3>
                 </div>
             </div>
@@ -178,9 +174,7 @@
         </section>
     </main>
 
-    <!-- =======================================================
-         TELA 1-B: ABA DE FOTOS DA CATEGORIA DA GALERIA
-         ======================================================= -->
+    <!-- TELA 1-B: ABA DE FOTOS DA GALERIA -->
     <main id="tela-detalhe-galeria" class="tela-pagina" style="display: none;">
         <section class="secao">
             <button onclick="voltarParaGaleriaPrincipal()" class="btn-secundario" style="margin-bottom: 20px; width: auto; padding: 8px 16px;">
@@ -189,25 +183,18 @@
             <h2 id="titulo-categoria-galeria">Fotos da Categoria</h2>
             <p class="subtitulo-secao">Confira alguns dos nossos trabalhos realizados:</p>
 
-            <div class="grid-galeria" id="grid-fotos-categoria">
-                <!-- As fotos serão injetadas dinamicamente aqui -->
-            </div>
+            <div class="grid-galeria" id="grid-fotos-categoria"></div>
         </section>
     </main>
 
-    <!-- =======================================================
-         TELA 2: ÁREA DE MONTAGEM E FINALIZAÇÃO DO PEDIDO
-         ======================================================= -->
+    <!-- TELA 2: ÁREA DE MONTAGEM E FINALIZAÇÃO DO PEDIDO -->
     <main id="tela-montagem" class="tela-pagina" style="display: none;">
         <section class="secao">
             <h2 id="titulo-tela-montagem">Monte Seu Pedido</h2>
             <p class="subtitulo-secao">Selecione suas opções abaixo e veja o orçamento atualizar em tempo real:</p>
 
             <div class="layout-montagem">
-                <!-- FORMULÁRIO DE SELEÇÃO -->
                 <div class="calculadora-container">
-
-                    <!-- 1. BOLO PERSONALIZADO -->
                     <div id="painel-montar-bolo" class="item-categoria" style="display: none;">
                         <div id="opcoes-bolo" class="painel-opcoes">
                             <div class="grupo-campo">
@@ -230,7 +217,6 @@
                                 </select>
                             </div>
 
-                            <!-- ANDAR 1 -->
                             <div id="painel-andar-1" class="box-andar">
                                 <h4>1º Andar (Base)</h4>
                                 <div class="grupo-campo">
@@ -251,7 +237,6 @@
                                 </div>
                             </div>
 
-                            <!-- ANDAR 2 -->
                             <div id="painel-andar-2" class="box-andar" style="display: none;">
                                 <h4>2º Andar</h4>
                                 <div class="grupo-campo">
@@ -271,7 +256,6 @@
                                 </div>
                             </div>
 
-                            <!-- ANDAR 3 -->
                             <div id="painel-andar-3" class="box-andar" style="display: none;">
                                 <h4>3º Andar (Topo)</h4>
                                 <div class="grupo-campo">
@@ -290,20 +274,16 @@
                                 </div>
                             </div>
 
-                            <!-- SEÇÃO GERAL DE TOPO DO BOLO (NO FINAL DOS ANDARES) -->
                             <div id="painel-topo-geral" class="box-andar" style="background-color: #fafafa; border-style: dashed;">
                                 <h4>Topo do Bolo</h4>
                                 <div class="grupo-campo">
                                     <label for="topo-bolo-geral"><strong>Escolha o Topo:</strong></label>
-                                    <select id="topo-bolo-geral" onchange="calcularTotal()">
-                                        <!-- Dinâmico via JS com base na quantidade de andares -->
-                                    </select>
+                                    <select id="topo-bolo-geral" onchange="calcularTotal()"></select>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 2. DOCES FINOS -->
                     <div id="painel-montar-doces-finos" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
                             <div class="grupo-campo">
@@ -317,7 +297,6 @@
                         </div>
                     </div>
 
-                    <!-- 3. DOCES TRADICIONAIS -->
                     <div id="painel-montar-doces-tradicionais" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
                             <div class="grupo-campo">
@@ -331,7 +310,6 @@
                         </div>
                     </div>
 
-                    <!-- 4. DOCES GOURMET -->
                     <div id="painel-montar-doces-gourmet" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
                             <div class="grupo-campo">
@@ -345,37 +323,52 @@
                         </div>
                     </div>
 
-                    <!-- 5. SOBREMESAS -->
                     <div id="painel-montar-sobremesa" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
                             <div class="grupo-campo">
-                                <label for="item-sobremesa"><strong>Escolha a Sobremesa:</strong></label>
-                                <select id="item-sobremesa" onchange="calcularTotal()">
-                                    <option value="" selected disabled>-- Selecione uma opção --</option>
-                                    <option value="50">Pudim Cremoso GG - R$ 50,00</option>
-                                    <option value="75">Taça da Felicidade (1.5L) - R$ 75,00</option>
-                                    <option value="65">Torta Holandesa - R$ 65,00</option>
-                                </select>
+                                <label><strong>Escolha a Sobremesa:</strong></label>
+                                <div class="grid-selecao-fotos">
+                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-sobremesa', '50', this)">
+                                        <img src="imagens/pudim.jpg" alt="Pudim">
+                                        <span>Pudim Cremoso GG<br><strong>R$ 50,00</strong></span>
+                                    </div>
+                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-sobremesa', '75', this)">
+                                        <img src="imagens/taca.jpg" alt="Taça">
+                                        <span>Taça da Felicidade (1.5L)<br><strong>R$ 75,00</strong></span>
+                                    </div>
+                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-sobremesa', '65', this)">
+                                        <img src="imagens/torta.jpg" alt="Torta">
+                                        <span>Torta Holandesa<br><strong>R$ 65,00</strong></span>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="item-sobremesa" value="" onchange="calcularTotal()">
                             </div>
                         </div>
                     </div>
 
-                    <!-- 6. BOLOS CASEIROS -->
                     <div id="painel-montar-caseiro" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
                             <div class="grupo-campo">
-                                <label for="item-caseiro"><strong>Escolha o Bolo Caseiro:</strong></label>
-                                <select id="item-caseiro" onchange="calcularTotal()">
-                                    <option value="" selected disabled>-- Selecione uma opção --</option>
-                                    <option value="25">Bolo de Cenoura com Vulcão de Chocolate - R$ 25,00</option>
-                                    <option value="22">Bolo de Fubá com Goiabada - R$ 22,00</option>
-                                    <option value="28">Bolo Ninho com Nutella - R$ 28,00</option>
-                                </select>
+                                <label><strong>Escolha o Bolo Caseiro:</strong></label>
+                                <div class="grid-selecao-fotos">
+                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-caseiro', '25', this)">
+                                        <img src="imagens/cenoura.jpg" alt="Cenoura">
+                                        <span>Cenoura com Vulcão<br><strong>R$ 25,00</strong></span>
+                                    </div>
+                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-caseiro', '22', this)">
+                                        <img src="imagens/fuba.jpg" alt="Fubá">
+                                        <span>Fubá com Goiabada<br><strong>R$ 22,00</strong></span>
+                                    </div>
+                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-caseiro', '28', this)">
+                                        <img src="imagens/ninho.jpg" alt="Ninho">
+                                        <span>Ninho com Nutella<br><strong>R$ 28,00</strong></span>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="item-caseiro" value="" onchange="calcularTotal()">
                             </div>
                         </div>
                     </div>
 
-                    <!-- FORMA DE ENTREGA -->
                     <div class="grupo-campo box-entrega" style="margin-top: 20px;">
                         <label for="forma-entrega"><strong>Forma de Entrega / Retirada:</strong></label>
                         <select id="forma-entrega" onchange="tratarMudancaEntrega(); calcularTotal();">
@@ -390,7 +383,6 @@
                     </div>
                 </div>
 
-                <!-- PAINEL FIXO DO CARRINHO DE COMPRAS / RESUMO -->
                 <div class="carrinho-lateral-container">
                     <div class="carrinho-box">
                         <h3>🛒 Seu Orçamento</h3>
@@ -414,12 +406,10 @@
         </section>
     </main>
 
-    <!-- RODAPÉ -->
     <footer>
         <p>&copy; 2026 Suellen Cakes. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- JAVASCRIPT DINÂMICO E NAVEGAÇÃO DA GALERIA -->
     <script>
         let categoriaAtualAtiva = 'bolo';
 
@@ -464,23 +454,26 @@
             } else if (qtdAndares === 3) {
                 selectTopo.innerHTML += `<option value="25.00">Topo para bolo de 3 andares - R$ 25,00</option>`;
             } else {
-                // Para 1 andar, se desejar manter opcional ou remover, caso queira para 1 andar pode adicionar aqui. 
-                // Como pedido focado em 2 e 3 andares, para 1 andar deixamos apenas sem topo ou com valor padrão de 1 andar se necessário.
                 selectTopo.innerHTML += `<option value="12.00">Topo para bolo de 1 andar - R$ 12,00</option>`;
             }
         }
 
-        // Função limpa e amigável para verificar se a loja está aberta ou fechada
+        function selecionarOpcaoInterna(idInput, valor, elementoCard) {
+            const pai = elementoCard.parentElement;
+            pai.querySelectorAll('.card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
+            elementoCard.classList.add('selecionado');
+            document.getElementById(idInput).value = valor;
+            calcularTotal();
+        }
+
         function verificarStatusLoja() {
             const agora = new Date();
-            const diaSemana = agora.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
+            const diaSemana = agora.getDay();
             const hora = agora.getHours();
             const minutos = agora.getMinutes();
             const horaAtualDecimal = hora + minutos / 60;
 
             let aberto = false;
-
-            // Horário padrão: Segunda a Sábado das 08:00 às 18:00
             if (diaSemana >= 1 && diaSemana <= 6) {
                 if (horaAtualDecimal >= 8 && horaAtualDecimal < 18) {
                     aberto = true;
@@ -493,11 +486,11 @@
 
             if (bolinha && texto && containerStatus) {
                 if (aberto) {
-                    bolinha.style.backgroundColor = "#28a745"; // Verde
+                    bolinha.style.backgroundColor = "#28a745";
                     texto.innerHTML = "<strong>Estamos abertos! Faça seu pedido.</strong>";
                     containerStatus.className = "status-loja status-aberto";
                 } else {
-                    bolinha.style.backgroundColor = "#dc3545"; // Vermelho
+                    bolinha.style.backgroundColor = "#dc3545";
                     texto.innerHTML = "<strong>Estamos fechados no momento.</strong>";
                     containerStatus.className = "status-loja status-fechado";
                 }
@@ -542,7 +535,7 @@
             for (let i = 1; i <= 4; i++) {
                 fotosHTML += `
                     <div class="foto-item">
-                        <div class="img-placeholder"><img src="logo.png" alt="${nomeTitulo} ${i}"></div>
+                        <div class="img-placeholder"><img src="imagens/logo.png" alt="${nomeTitulo} ${i}"></div>
                         <h4 style="margin-top: 8px; color: #444; font-size: 0.95rem;">${nomeTitulo} - Exemplo ${i}</h4>
                     </div>
                 `;
@@ -562,7 +555,6 @@
             categoriaAtualAtiva = categoria;
             mostrarTela('tela-montagem');
 
-            // Esconde todos os painéis internos primeiro
             document.getElementById('painel-montar-bolo').style.display = 'none';
             document.getElementById('painel-montar-doces-finos').style.display = 'none';
             document.getElementById('painel-montar-doces-tradicionais').style.display = 'none';
@@ -572,7 +564,6 @@
 
             let tituloTela = "Monte Seu Pedido";
 
-            // Reseta campos ao abrir nova categoria para garantir carrinho limpo/zerado
             if (categoria === 'bolo') {
                 document.getElementById('painel-montar-bolo').style.display = 'block';
                 tituloTela = "Monte Seu Bolo Festivo";
@@ -598,11 +589,13 @@
             } else if (categoria === 'sobremesa') {
                 document.getElementById('painel-montar-sobremesa').style.display = 'block';
                 tituloTela = "Escolher Sobremesa";
-                document.getElementById('item-sobremesa').selectedIndex = 0;
+                document.getElementById('item-sobremesa').value = "";
+                document.querySelectorAll('#painel-montar-sobremesa .card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
             } else if (categoria === 'caseiro') {
                 document.getElementById('painel-montar-caseiro').style.display = 'block';
                 tituloTela = "Escolher Bolo Caseiro";
-                document.getElementById('item-caseiro').selectedIndex = 0;
+                document.getElementById('item-caseiro').value = "";
+                document.querySelectorAll('#painel-montar-caseiro .card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
             }
 
             document.getElementById('forma-entrega').value = 'retirada';
@@ -638,7 +631,6 @@
                 const tamanho1 = document.getElementById('tamanho-andar-1').value;
                 const recheio1 = document.getElementById('r1-andar-1').value;
 
-                // Só calcula se o usuário escolheu o tamanho e o 1º recheio obrigatório
                 if (tamanho1 && recheio1) {
                     const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
                     let subtotalBolo = 0;
@@ -658,7 +650,6 @@
                         if (r3 && r3.includes('Nutella')) subtotalBolo += 15;
                     }
 
-                    // Adiciona o valor do topo geral escolhido no final
                     const valTopoGeral = parseFloat(document.getElementById('topo-bolo-geral').value) || 0;
                     if (valTopoGeral > 0) {
                         subtotalBolo += valTopoGeral;
@@ -705,7 +696,6 @@
             }
 
             const formaEntrega = document.getElementById('forma-entrega').value;
-            // Só adiciona a taxa de entrega se já houver algum item principal selecionado
             if (formaEntrega === 'entrega' && total > 0) {
                 total += 50.00;
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🛵 Taxa de Entrega</span> <strong>R$ 50,00</strong></div>`;
@@ -798,13 +788,13 @@
                 const textoDoces = selectDoces.options[selectDoces.selectedIndex].text;
                 mensagem += `🍬 *Doces Gourmet:* ${textoDoces}\n\n`;
             } else if (categoriaAtualAtiva === 'sobremesa') {
-                const selectSobremesa = document.getElementById('item-sobremesa');
-                const textoSobremesa = selectSobremesa.options[selectSobremesa.selectedIndex].text;
-                mensagem += `🍮 *Sobremesa:* ${textoSobremesa}\n\n`;
+                const valSel = document.getElementById('item-sobremesa').value;
+                let nomeSobremesa = valSel === '50' ? 'Pudim Cremoso GG' : (valSel === '75' ? 'Taça da Felicidade (1.5L)' : 'Torta Holandesa');
+                mensagem += `🍮 *Sobremesa:* ${nomeSobremesa}\n\n`;
             } else if (categoriaAtualAtiva === 'caseiro') {
-                const selectCaseiro = document.getElementById('item-caseiro');
-                const textoCaseiro = selectCaseiro.options[selectCaseiro.selectedIndex].text;
-                mensagem += `🥮 *Bolo Caseiro:* ${textoCaseiro}\n\n`;
+                const valSel = document.getElementById('item-caseiro').value;
+                let nomeCaseiro = valSel === '25' ? 'Cenoura com Vulcão' : (valSel === '22' ? 'Fubá com Goiabada' : 'Ninho com Nutella');
+                mensagem += `🥮 *Bolo Caseiro:* ${nomeCaseiro}\n\n`;
             }
 
             mensagem += `📦 *Forma de Retirada:* ${formaEntrega === 'entrega' ? 'Entrega em Domicílio' : 'Retirada na Confeitaria'}\n`;
