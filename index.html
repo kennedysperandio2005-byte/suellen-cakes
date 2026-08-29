@@ -422,22 +422,39 @@
                     <div id="painel-montar-caseiro" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
                             <div class="grupo-campo">
-                                <label><strong>Escolha o Bolo Caseiro:</strong></label>
-                                <div class="grid-selecao-fotos">
-                                    <div class="card-opcao-foto" onclick="selecionarCaseiro('25', this)">
-                                        <img src="imagens/cenoura.jpg" alt="Cenoura">
-                                        <span>Cenoura com Vulcão<br><strong>R$ 25,00</strong></span>
-                                    </div>
-                                    <div class="card-opcao-foto" onclick="selecionarCaseiro('22', this)">
-                                        <img src="imagens/fuba.jpg" alt="Fubá">
-                                        <span>Fubá com Goiabada<br><strong>R$ 22,00</strong></span>
-                                    </div>
-                                    <div class="card-opcao-foto" onclick="selecionarCaseiro('28', this)">
-                                        <img src="imagens/ninho.jpg" alt="Ninho">
-                                        <span>Ninho com Nutella<br><strong>R$ 28,00</strong></span>
-                                    </div>
-                                </div>
-                                <input type="hidden" id="item-caseiro" value="">
+                                <label for="massa-bolo-caseiro"><strong>Escolha a Massa do Bolo Caseiro:</strong></label>
+                                <select id="massa-bolo-caseiro" onchange="calcularTotal()">
+                                    <option value="" selected disabled>-- Selecione a massa --</option>
+                                    <option value="Cenoura">Cenoura</option>
+                                    <option value="Churros">Churros</option>
+                                    <option value="Nozes">Nozes</option>
+                                    <option value="Fubá">Fubá</option>
+                                    <option value="Limão">Limão</option>
+                                    <option value="Banana">Banana</option>
+                                    <option value="Café">Café</option>
+                                    <option value="Amendoim">Amendoim</option>
+                                    <option value="Branca">Branca</option>
+                                    <option value="Chocolate">Chocolate</option>
+                                </select>
+                            </div>
+
+                            <div class="grupo-campo" style="margin-top: 15px;">
+                                <label for="recheio-bolo-caseiro"><strong>Escolha o Recheio do Bolo Caseiro:</strong></label>
+                                <select id="recheio-bolo-caseiro" onchange="calcularTotal()">
+                                    <option value="Sem Recheio" selected>Sem Recheio</option>
+                                    <option value="Frutas Vermelhas">Frutas Vermelhas</option>
+                                    <option value="Morango">Morango</option>
+                                    <option value="Chocolate">Chocolate</option>
+                                    <option value="Ninho">Ninho</option>
+                                    <option value="Doce de leite">Doce de leite</option>
+                                    <option value="Amendoim">Amendoim</option>
+                                    <option value="Café">Café</option>
+                                    <option value="Limão">Limão</option>
+                                    <option value="Maracujá">Maracujá</option>
+                                    <option value="Nozes">Nozes</option>
+                                    <option value="Coco">Coco</option>
+                                    <option value="Dois amor (ninho, brigadeiro)">Dois amor (ninho, brigadeiro)</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -569,20 +586,6 @@
             calcularTotal();
         }
 
-        function selecionarCaseiro(valor, elementoCard) {
-            const pai = elementoCard.parentElement;
-            pai.querySelectorAll('.card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
-            
-            const input = document.getElementById('item-caseiro');
-            if (input.value === valor) {
-                input.value = "";
-            } else {
-                elementoCard.classList.add('selecionado');
-                input.value = valor;
-            }
-            calcularTotal();
-        }
-
         window.onload = function() {
             verificarStatusFuncionamento();
             popularSelectsRecheio();
@@ -654,7 +657,7 @@
             else if (categoria === 'doces-tradicionais') tituloTela = "Escolher Doces Tradicionais";
             else if (categoria === 'doces-gourmet') tituloTela = "Escolher Doces Gourmet";
             else if (categoria === 'sobremesa') tituloTela = "Escolher Sobremesa";
-            else if (categoria === 'caseiro') tituloTela = "Escolher Bolo Caseiro";
+            else if (categoria === 'caseiro') tituloTela = "Monte seu Bolo Caseiro";
 
             document.getElementById('titulo-tela-montagem').innerText = tituloTela;
             calcularTotal();
@@ -758,12 +761,13 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 Sobremesa: ${nomeSobremesa}</span> <strong>R$ ${valSobremesa.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
-            // 6. Avalia Bolo Caseiro
-            const valCaseiro = parseFloat(document.getElementById('item-caseiro').value) || 0;
-            if (valCaseiro > 0) {
+            // 6. Avalia Bolo Caseiro (Preço fixo base de R$ 25,00 para o caseiro montado, ajustável se necessário)
+            const massaCaseiro = document.getElementById('massa-bolo-caseiro').value;
+            const recheioCaseiro = document.getElementById('recheio-bolo-caseiro').value;
+            if (massaCaseiro) {
+                let valCaseiro = 25.00;
                 total += valCaseiro;
-                let nomeCaseiro = valCaseiro === 25 ? 'Cenoura com Vulcão' : (valCaseiro === 22 ? 'Fubá com Goiabada' : 'Ninho com Nutella');
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro: ${nomeCaseiro}</span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro<br><small style="color: #666;">Massa: ${massaCaseiro} | Recheio: ${recheioCaseiro}</small></span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
             // 7. Frete
@@ -796,9 +800,9 @@
             const valTrad = document.getElementById('qtd-doces-tradicionais').value;
             const valGourmet = document.getElementById('qtd-doces-gourmet').value;
             const valSobremesa = document.getElementById('item-sobremesa').value;
-            const valCaseiro = document.getElementById('item-caseiro').value;
+            const massaCaseiro = document.getElementById('massa-bolo-caseiro').value;
 
-            if (temBolo || valFinos || valTrad || valGourmet || valSobremesa || valCaseiro) {
+            if (temBolo || valFinos || valTrad || valGourmet || valSobremesa || massaCaseiro) {
                 temItem = true;
             }
 
@@ -886,9 +890,11 @@
                 mensagem += `🍮 *Sobremesa:* ${nomeSobremesa}\n\n`;
             }
 
-            if (valCaseiro) {
-                let nomeCaseiro = valCaseiro === '25' ? 'Cenoura com Vulcão' : (valCaseiro === '22' ? 'Fubá com Goiabada' : 'Ninho com Nutella');
-                mensagem += `🥮 *Bolo Caseiro:* ${nomeCaseiro}\n\n`;
+            if (massaCaseiro) {
+                const recheioCaseiro = document.getElementById('recheio-bolo-caseiro').value;
+                mensagem += `🥮 *Bolo Caseiro Montado*\n`;
+                mensagem += `- Massa: ${massaCaseiro}\n`;
+                mensagem += `- Recheio: ${recheioCaseiro}\n\n`;
             }
 
             mensagem += `📦 *Forma de Retirada:* ${formaEntrega === 'entrega' ? 'Entrega em Domicílio' : 'Retirada na Confeitaria'}\n`;
