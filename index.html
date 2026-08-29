@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=27">
+    <link rel="stylesheet" href="style.css?v=28">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,6 +22,22 @@
             font-weight: normal;
             cursor: pointer;
             font-size: 0.95rem;
+        }
+        .status-funcionamento {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        .status-aberto {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status-fechado {
+            background-color: #f8d7da;
+            color: #721c24;
         }
     </style>
 </head>
@@ -58,6 +74,7 @@
             <div class="hero-content">
                 <h1>Doces que tornam seus momentos especiais</h1>
                 <p>Bolos artesanais, doces finos e sobremesas feitas com carinho.</p>
+                <div id="indicador-status" style="margin-top: 15px;"></div>
             </div>
             <img src="imagens/logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
         </section>
@@ -440,6 +457,31 @@
             "Geleia de frutas vermelhas"
         ];
 
+        function verificarStatusFuncionamento() {
+            const agora = new Date();
+            const diaSemana = agora.getDay(); // 0 (Domingo) a 6 (Sábado)
+            const hora = agora.getHours();
+            const minutos = agora.getMinutes();
+            const horaDecimal = hora + minutos / 60;
+
+            let aberto = false;
+            // Exemplo padrão: Segunda a Sábado das 08:00 às 19:00
+            if (diaSemana >= 1 && diaSemana <= 6) {
+                if (horaDecimal >= 8 && horaDecimal < 19) {
+                    aberto = true;
+                }
+            }
+
+            const containerStatus = document.getElementById('indicador-status');
+            if (containerStatus) {
+                if (aberto) {
+                    containerStatus.innerHTML = '<span class="status-funcionamento status-aberto">🟢 Aberto agora</span>';
+                } else {
+                    containerStatus.innerHTML = '<span class="status-funcionamento status-fechado">🔴 Fechado no momento</span>';
+                }
+            }
+        }
+
         function popularSelectsRecheio() {
             for (let andar = 1; andar <= 3; andar++) {
                 for (let r = 1; r <= 3; r++) {
@@ -507,6 +549,7 @@
         }
 
         window.onload = function() {
+            verificarStatusFuncionamento();
             popularSelectsRecheio();
             atualizarTopoGeral();
             
