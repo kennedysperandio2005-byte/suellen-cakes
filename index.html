@@ -396,14 +396,21 @@
                         </div>
                     </div>
 
-                    <!-- PAINEL DE SOBREMESAS ATUALIZADO -->
+                    <!-- PAINEL DE SOBREMESAS ATUALIZADO COM ESCOLHA BOLO DE POTE OU FATIA -->
                     <div id="painel-montar-sobremesa" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
                             
                             <!-- Opção 1: Monte seu Bolo de Pote ou Fatia de Bolo -->
                             <div class="box-andar" style="margin-bottom: 20px;">
-                                <h4>🍰 Monte seu Bolo de Pote ou Fatia de Bolo</h4>
+                                <h4>🍰 Monte seu Bolo ou Fatia</h4>
                                 <div class="grupo-campo">
+                                    <label for="tipo-servir-sobremesa"><strong>Deseja em Pote ou Fatia?</strong></label>
+                                    <select id="tipo-servir-sobremesa" onchange="calcularTotal()">
+                                        <option value="Bolo de Pote" selected>Bolo de Pote</option>
+                                        <option value="Fatia de Bolo">Fatia de Bolo</option>
+                                    </select>
+                                </div>
+                                <div class="grupo-campo" style="margin-top: 10px;">
                                     <label for="tipo-massa-sobremesa"><strong>Escolha a Massa:</strong></label>
                                     <select id="tipo-massa-sobremesa" onchange="calcularTotal()">
                                         <option value="" selected disabled>-- Selecione a massa --</option>
@@ -560,7 +567,6 @@
             "Geleia de frutas vermelhas"
         ];
 
-        // Listas específicas para sobremesas solicitadas
         const recheiosBoloPote = [
             "Oreo", "Frutas Vermelhas", "Morango", "Chocolate", "Ninho", 
             "Doce de leite", "Amendoim", "Café", "Limão", "Maracujá", 
@@ -617,7 +623,6 @@
                 }
             }
 
-            // Popular recheios do Bolo de Pote / Fatia de Bolo
             const rPote1 = document.getElementById('recheio-sobremesa-1');
             const rPote2 = document.getElementById('recheio-sobremesa-2');
             if (rPote1 && rPote2) {
@@ -629,7 +634,6 @@
                 });
             }
 
-            // Popular recheios do Copo da Felicidade
             const rCopo1 = document.getElementById('recheio-copo-1');
             const rCopo2 = document.getElementById('recheio-copo-2');
             if (rCopo1 && rCopo2) {
@@ -754,7 +758,6 @@
             let total = 0;
             let resumoItensHTML = '';
 
-            // 1. Avalia Bolo Festivo
             const tamanho1 = document.getElementById('tamanho-andar-1').value;
             const recheio1 = document.getElementById('r1-andar-1').value;
             if (tamanho1 && recheio1) {
@@ -785,7 +788,6 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎂 Bolo Personalizado (${qtdAndares} Andar/es)</span> <strong>R$ ${subtotalBolo.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
-            // 2. Avalia Doces Finos
             const valDocesFinos = parseFloat(document.getElementById('qtd-doces-finos').value) || 0;
             if (valDocesFinos > 0) {
                 total += valDocesFinos;
@@ -793,7 +795,6 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoFinos}</span></div>`;
             }
 
-            // 3. Avalia Doces Tradicionais
             const valDocesTrad = parseFloat(document.getElementById('qtd-doces-tradicionais').value) || 0;
             if (valDocesTrad > 0) {
                 total += valDocesTrad;
@@ -809,7 +810,6 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoTrad} (${valDocesTrad.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})})${textoSabores}</span></div>`;
             }
 
-            // 4. Avalia Doces Gourmet
             const valDocesGourmet = parseFloat(document.getElementById('qtd-doces-gourmet').value) || 0;
             if (valDocesGourmet > 0) {
                 total += valDocesGourmet;
@@ -825,17 +825,17 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoGourmet} (${valDocesGourmet.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})})${textoSaboresGourmet}</span></div>`;
             }
 
-            // 5. Avalia Sobremesas (Bolo de Pote / Fatia, Prontas e Copo da Felicidade)
             const massaSobremesa = document.getElementById('tipo-massa-sobremesa').value;
             if (massaSobremesa) {
-                let valBoloPote = 15.00; // Preço base fixo de exemplo para bolo de pote / fatia
+                const tipoServir = document.getElementById('tipo-servir-sobremesa').value;
+                let valBoloPote = 15.00;
                 total += valBoloPote;
                 let r1Pote = document.getElementById('recheio-sobremesa-1').value;
                 let r2Pote = document.getElementById('recheio-sobremesa-2').value;
                 let textoPoteRecheio = r1Pote ? r1Pote : '';
                 if (r2Pote) textoPoteRecheio += `, ${r2Pote}`;
 
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍰 Bolo de Pote / Fatia<br><small style="color: #666;">Massa: ${massaSobremesa} | Recheios: ${textoPoteRecheio || 'Nenhum'}</small></span> <strong>R$ ${valBoloPote.toFixed(2).replace('.', ',')}</strong></div>`;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍰 ${tipoServir}<br><small style="color: #666;">Massa: ${massaSobremesa} | Recheios: ${textoPoteRecheio || 'Nenhum'}</small></span> <strong>R$ ${valBoloPote.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
             const selectPronta = document.getElementById('sobremesa-pronta');
@@ -852,7 +852,7 @@
 
             const baseCopo = document.getElementById('base-copo-felicidade').value;
             if (baseCopo) {
-                let valCopo = 22.00; // Preço base fixo para o copo da felicidade
+                let valCopo = 22.00;
                 total += valCopo;
                 let rCopo1 = document.getElementById('recheio-copo-1').value;
                 let rCopo2 = document.getElementById('recheio-copo-2').value;
@@ -862,7 +862,6 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍧 Copo da Felicidade<br><small style="color: #666;">Base: ${baseCopo} | Recheios: ${textoCopoRecheio || 'Nenhum'}</small></span> <strong>R$ ${valCopo.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
-            // 6. Avalia Bolo Caseiro
             const massaCaseiro = document.getElementById('massa-bolo-caseiro').value;
             const recheioCaseiro = document.getElementById('recheio-bolo-caseiro').value;
             if (massaCaseiro) {
@@ -871,7 +870,6 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro<br><small style="color: #666;">Massa: ${massaCaseiro} | Recheio: ${recheioCaseiro}</small></span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
-            // 7. Frete
             const formaEntrega = document.getElementById('forma-entrega').value;
             if (formaEntrega === 'entrega' && total > 0) {
                 total += 50.00;
@@ -989,9 +987,10 @@
             }
 
             if (massaSobremesa) {
+                const tipoServir = document.getElementById('tipo-servir-sobremesa').value;
                 const r1Pote = document.getElementById('recheio-sobremesa-1').value;
                 const r2Pote = document.getElementById('recheio-sobremesa-2').value;
-                mensagem += `🍰 *Bolo de Pote / Fatia de Bolo*\n`;
+                mensagem += `🍰 *${tipoServir}*\n`;
                 mensagem += `- Massa: ${massaSobremesa}\n`;
                 mensagem += `- Recheios: ${r1Pote || 'Nenhum'}${r2Pote ? ', ' + r2Pote : ''}\n\n`;
             }
