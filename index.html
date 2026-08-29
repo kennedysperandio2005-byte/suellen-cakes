@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=28">
+    <link rel="stylesheet" href="style.css?v=29">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -350,12 +350,48 @@
                     <div id="painel-montar-doces-gourmet" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
                             <div class="grupo-campo">
-                                <label for="qtd-doces-gourmet"><strong>Quantidade e Tipo:</strong></label>
+                                <label for="qtd-doces-gourmet"><strong>Quantidade de Doces Gourmet:</strong></label>
                                 <select id="qtd-doces-gourmet" onchange="calcularTotal()">
-                                    <option value="" selected disabled>-- Selecione uma opção --</option>
-                                    <option value="70">50 Brigadeiros Gourmet - R$ 70,00</option>
-                                    <option value="135">100 Brigadeiros Gourmet - R$ 135,00</option>
+                                    <option value="" selected disabled>-- Selecione a quantidade --</option>
+                                    <option value="42.50">50 doces (R$ 0,85 un)</option>
+                                    <option value="85.00">100 doces (R$ 0,85 un)</option>
+                                    <option value="127.50">150 doces (R$ 0,85 un)</option>
+                                    <option value="170.00">200 doces (R$ 0,85 un)</option>
+                                    <option value="212.50">250 doces (R$ 0,85 un)</option>
+                                    <option value="255.00">300 doces (R$ 0,85 un)</option>
+                                    <option value="297.50">350 doces (R$ 0,85 un)</option>
+                                    <option value="340.00">400 doces (R$ 0,85 un)</option>
+                                    <option value="382.50">450 doces (R$ 0,85 un)</option>
+                                    <option value="425.00">500 doces (R$ 0,85 un)</option>
+                                    <option value="467.50">550 doces (R$ 0,85 un)</option>
+                                    <option value="510.00">600 doces (R$ 0,85 un)</option>
+                                    <option value="552.50">650 doces (R$ 0,85 un)</option>
+                                    <option value="595.00">700 doces (R$ 0,85 un)</option>
+                                    <option value="637.50">750 doces (R$ 0,85 un)</option>
+                                    <option value="680.00">800 doces (R$ 0,85 un)</option>
+                                    <option value="722.50">850 doces (R$ 0,85 un)</option>
+                                    <option value="765.00">900 doces (R$ 0,85 un)</option>
+                                    <option value="807.50">950 doces (R$ 0,85 un)</option>
+                                    <option value="850.00">1000 doces (R$ 0,85 un)</option>
                                 </select>
+                            </div>
+                            <div class="grupo-campo">
+                                <label><strong>Escolha os Sabores Gourmet (pode selecionar quantos quiser):</strong></label>
+                                <div class="checkbox-grid">
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Brigadeiro Crocante" onchange="calcularTotal()"> Brigadeiro Crocante</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Brigadeiro de Café" onchange="calcularTotal()"> Brigadeiro de Café</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Brigadeiro de Damasco" onchange="calcularTotal()"> Brigadeiro de Damasco</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Brigadeiro de Ferrero" onchange="calcularTotal()"> Brigadeiro de Ferrero</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Brigadeiro de Nozes" onchange="calcularTotal()"> Brigadeiro de Nozes</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Brigadeiro de Palha Italiana" onchange="calcularTotal()"> Brigadeiro de Palha Italiana</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Brigadeiro Meio Amargo" onchange="calcularTotal()"> Brigadeiro Meio Amargo</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Churros" onchange="calcularTotal()"> Churros</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Dois Amores" onchange="calcularTotal()"> Dois Amores</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Napolitano" onchange="calcularTotal()"> Napolitano</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Ninho com Nutella" onchange="calcularTotal()"> Ninho com Nutella</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Prestigio" onchange="calcularTotal()"> Prestigio</label>
+                                    <label><input type="checkbox" name="sabor-gourmet" value="Surpresa de uva" onchange="calcularTotal()"> Surpresa de uva</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -459,13 +495,12 @@
 
         function verificarStatusFuncionamento() {
             const agora = new Date();
-            const diaSemana = agora.getDay(); // 0 (Domingo) a 6 (Sábado)
+            const diaSemana = agora.getDay();
             const hora = agora.getHours();
             const minutos = agora.getMinutes();
             const horaDecimal = hora + minutos / 60;
 
             let aberto = false;
-            // Exemplo padrão: Segunda a Sábado das 08:00 às 19:00
             if (diaSemana >= 1 && diaSemana <= 6) {
                 if (horaDecimal >= 8 && horaDecimal < 19) {
                     aberto = true;
@@ -703,8 +738,16 @@
             const valDocesGourmet = parseFloat(document.getElementById('qtd-doces-gourmet').value) || 0;
             if (valDocesGourmet > 0) {
                 total += valDocesGourmet;
-                const textoOpcaoGourmet = document.getElementById('qtd-doces-gourmet').options[document.getElementById('qtd-doces-gourmet').selectedIndex].text;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoGourmet}</span></div>`;
+                const selectGourmet = document.getElementById('qtd-doces-gourmet');
+                const textoOpcaoGourmet = selectGourmet.options[selectGourmet.selectedIndex].text.split('(')[0].trim();
+                
+                let saboresGourmetSelecionados = [];
+                document.querySelectorAll('input[name="sabor-gourmet"]:checked').forEach(cb => {
+                    saboresGourmetSelecionados.push(cb.value);
+                });
+
+                let textoSaboresGourmet = saboresGourmetSelecionados.length > 0 ? `<br><small style="color: #666;">Sabores: ${saboresGourmetSelecionados.join(', ')}</small>` : '';
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoGourmet} (${valDocesGourmet.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})})${textoSaboresGourmet}</span></div>`;
             }
 
             // 5. Avalia Sobremesa
@@ -826,7 +869,16 @@
 
             if (valGourmet) {
                 const selectDoces = document.getElementById('qtd-doces-gourmet');
-                mensagem += `🍬 *Doces Gourmet:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
+                const textoQtdGourmet = selectDoces.options[selectDoces.selectedIndex].text.split('(')[0].trim();
+                let saboresGourmetSelecionados = [];
+                document.querySelectorAll('input[name="sabor-gourmet"]:checked').forEach(cb => {
+                    saboresGourmetSelecionados.push(cb.value);
+                });
+                mensagem += `🍬 *Doces Gourmet:* ${textoQtdGourmet}\n`;
+                if (saboresGourmetSelecionados.length > 0) {
+                    mensagem += `- Sabores: ${saboresGourmetSelecionados.join(', ')}\n`;
+                }
+                mensagem += "\n";
             }
 
             if (valSobremesa) {
