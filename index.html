@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=29">
+    <link rel="stylesheet" href="style.css?v=30">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -107,7 +107,7 @@
                 <div class="card-produto" onclick="abrirMontagem('sobremesa')">
                     <div class="img-placeholder"><img src="imagens/sobremesa.jpg" alt="Sobremesas"></div>
                     <h3>Sobremesas</h3>
-                    <p>Tortas, pudins e taças da felicidade para o seu fim de semana.</p>
+                    <p>Bolos de pote, copo da felicidade, tortas e pavês para sua sobremesa.</p>
                 </div>
                 <div class="card-produto" onclick="abrirMontagem('caseiro')">
                     <div class="img-placeholder"><img src="imagens/bolo-caseiro.jpg" alt="Bolos Caseiros"></div>
@@ -396,26 +396,76 @@
                         </div>
                     </div>
 
+                    <!-- PAINEL DE SOBREMESAS ATUALIZADO -->
                     <div id="painel-montar-sobremesa" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
-                            <div class="grupo-campo">
-                                <label><strong>Escolha a Sobremesa:</strong></label>
-                                <div class="grid-selecao-fotos">
-                                    <div class="card-opcao-foto" onclick="selecionarSobremesa('50', this)">
-                                        <img src="imagens/pudim.jpg" alt="Pudim">
-                                        <span>Pudim Cremoso GG<br><strong>R$ 50,00</strong></span>
-                                    </div>
-                                    <div class="card-opcao-foto" onclick="selecionarSobremesa('75', this)">
-                                        <img src="imagens/taca.jpg" alt="Taça">
-                                        <span>Taça da Felicidade (1.5L)<br><strong>R$ 75,00</strong></span>
-                                    </div>
-                                    <div class="card-opcao-foto" onclick="selecionarSobremesa('65', this)">
-                                        <img src="imagens/torta.jpg" alt="Torta">
-                                        <span>Torta Holandesa<br><strong>R$ 65,00</strong></span>
-                                    </div>
+                            
+                            <!-- Opção 1: Monte seu Bolo de Pote ou Fatia de Bolo -->
+                            <div class="box-andar" style="margin-bottom: 20px;">
+                                <h4>🍰 Monte seu Bolo de Pote ou Fatia de Bolo</h4>
+                                <div class="grupo-campo">
+                                    <label for="tipo-massa-sobremesa"><strong>Escolha a Massa:</strong></label>
+                                    <select id="tipo-massa-sobremesa" onchange="calcularTotal()">
+                                        <option value="" selected disabled>-- Selecione a massa --</option>
+                                        <option value="Baunilha">Baunilha</option>
+                                        <option value="Branca">Branca</option>
+                                        <option value="Chocolate">Chocolate</option>
+                                    </select>
                                 </div>
-                                <input type="hidden" id="item-sobremesa" value="">
+                                <div class="grupo-campo">
+                                    <label><strong>Escolha até 2 Recheios:</strong></label>
+                                    <select id="recheio-sobremesa-1" onchange="calcularTotal()">
+                                        <option value="" selected>-- 1º Recheio --</option>
+                                    </select>
+                                    <select id="recheio-sobremesa-2" onchange="calcularTotal()" style="margin-top: 8px;">
+                                        <option value="" selected>-- 2º Recheio (Opcional) --</option>
+                                    </select>
+                                </div>
                             </div>
+
+                            <!-- Opção 2: Sobremesas Prontas / Família -->
+                            <div class="box-andar" style="margin-bottom: 20px;">
+                                <h4>🍮 Sobremesas Prontas (Travessa ou Pote de 350ml)</h4>
+                                <div class="grupo-campo">
+                                    <label for="sobremesa-pronta"><strong>Escolha a Sobremesa:</strong></label>
+                                    <select id="sobremesa-pronta" onchange="calcularTotal()">
+                                        <option value="" selected disabled>-- Selecione uma opção --</option>
+                                        <option value="Pudim (R$ 50,00)">Pudim - R$ 50,00</option>
+                                        <option value="Pavê de Abacaxi (R$ 45,00)">Pavê de Abacaxi - R$ 45,00</option>
+                                        <option value="Pavê de Pêssego (R$ 45,00)">Pavê de Pêssego - R$ 45,00</option>
+                                        <option value="Banoffee (R$ 55,00)">Banoffee - R$ 55,00</option>
+                                        <option value="Bombom Aberto de Morango na Travessa/Pote (R$ 60,00)">Bombom Aberto de Morango na Travessa ou Pote - R$ 60,00</option>
+                                        <option value="Bombom Aberto de Uva na Travessa/Pote (R$ 60,00)">Bombom Aberto de Uva na Travessa ou Pote - R$ 60,00</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Opção 3: Monte seu Copo da Felicidade -->
+                            <div class="box-andar">
+                                <h4>🍧 Monte seu Copo da Felicidade</h4>
+                                <div class="grupo-campo">
+                                    <label for="base-copo-felicidade"><strong>Escolha o Sabor Principal / Base:</strong></label>
+                                    <select id="base-copo-felicidade" onchange="calcularTotal()">
+                                        <option value="" selected disabled>-- Selecione o sabor base --</option>
+                                        <option value="Morango">Morango</option>
+                                        <option value="Uva">Uva</option>
+                                        <option value="Morango e Uva">Morango e Uva</option>
+                                        <option value="Brownie">Brownie</option>
+                                        <option value="Abacaxi">Abacaxi</option>
+                                        <option value="Oreo">Oreo</option>
+                                    </select>
+                                </div>
+                                <div class="grupo-campo">
+                                    <label><strong>Escolha até 2 Recheios para o Copo:</strong></label>
+                                    <select id="recheio-copo-1" onchange="calcularTotal()">
+                                        <option value="" selected>-- 1º Recheio --</option>
+                                    </select>
+                                    <select id="recheio-copo-2" onchange="calcularTotal()" style="margin-top: 8px;">
+                                        <option value="" selected>-- 2º Recheio (Opcional) --</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -510,6 +560,18 @@
             "Geleia de frutas vermelhas"
         ];
 
+        // Listas específicas para sobremesas solicitadas
+        const recheiosBoloPote = [
+            "Oreo", "Frutas Vermelhas", "Morango", "Chocolate", "Ninho", 
+            "Doce de leite", "Amendoim", "Café", "Limão", "Maracujá", 
+            "Nozes", "Coco", "Dois amor (ninho, brigadeiro)", "Abacaxi", "Nutella", "Geleia de morango"
+        ];
+
+        const recheiosCopoFelicidade = [
+            "Oreo", "Chocolate", "Ninho", "Doce de leite", "Amendoim", 
+            "Limão", "Maracujá", "Coco", "Nutella"
+        ];
+
         function verificarStatusFuncionamento() {
             const agora = new Date();
             const diaSemana = agora.getDay();
@@ -554,6 +616,30 @@
                     }
                 }
             }
+
+            // Popular recheios do Bolo de Pote / Fatia de Bolo
+            const rPote1 = document.getElementById('recheio-sobremesa-1');
+            const rPote2 = document.getElementById('recheio-sobremesa-2');
+            if (rPote1 && rPote2) {
+                rPote1.innerHTML = `<option value="" selected disabled>-- 1º Recheio --</option>`;
+                rPote2.innerHTML = `<option value="" selected>-- 2º Recheio (Opcional) --</option>`;
+                recheiosBoloPote.forEach(rec => {
+                    rPote1.innerHTML += `<option value="${rec}">${rec}</option>`;
+                    rPote2.innerHTML += `<option value="${rec}">${rec}</option>`;
+                });
+            }
+
+            // Popular recheios do Copo da Felicidade
+            const rCopo1 = document.getElementById('recheio-copo-1');
+            const rCopo2 = document.getElementById('recheio-copo-2');
+            if (rCopo1 && rCopo2) {
+                rCopo1.innerHTML = `<option value="" selected disabled>-- 1º Recheio --</option>`;
+                rCopo2.innerHTML = `<option value="" selected>-- 2º Recheio (Opcional) --</option>`;
+                recheiosCopoFelicidade.forEach(rec => {
+                    rCopo1.innerHTML += `<option value="${rec}">${rec}</option>`;
+                    rCopo2.innerHTML += `<option value="${rec}">${rec}</option>`;
+                });
+            }
         }
 
         function atualizarTopoGeral() {
@@ -570,20 +656,6 @@
             } else {
                 selectTopo.innerHTML += `<option value="12.00">Topo para bolo de 1 andar - R$ 12,00</option>`;
             }
-        }
-
-        function selecionarSobremesa(valor, elementoCard) {
-            const pai = elementoCard.parentElement;
-            pai.querySelectorAll('.card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
-            
-            const input = document.getElementById('item-sobremesa');
-            if (input.value === valor) {
-                input.value = "";
-            } else {
-                elementoCard.classList.add('selecionado');
-                input.value = valor;
-            }
-            calcularTotal();
         }
 
         window.onload = function() {
@@ -656,7 +728,7 @@
             else if (categoria === 'doces-finos') tituloTela = "Escolher Doces Finos";
             else if (categoria === 'doces-tradicionais') tituloTela = "Escolher Doces Tradicionais";
             else if (categoria === 'doces-gourmet') tituloTela = "Escolher Doces Gourmet";
-            else if (categoria === 'sobremesa') tituloTela = "Escolher Sobremesa";
+            else if (categoria === 'sobremesa') tituloTela = "Escolher e Montar Sobremesas";
             else if (categoria === 'caseiro') tituloTela = "Monte seu Bolo Caseiro";
 
             document.getElementById('titulo-tela-montagem').innerText = tituloTela;
@@ -753,15 +825,44 @@
                 resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoGourmet} (${valDocesGourmet.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})})${textoSaboresGourmet}</span></div>`;
             }
 
-            // 5. Avalia Sobremesa
-            const valSobremesa = parseFloat(document.getElementById('item-sobremesa').value) || 0;
-            if (valSobremesa > 0) {
-                total += valSobremesa;
-                let nomeSobremesa = valSobremesa === 50 ? 'Pudim Cremoso GG' : (valSobremesa === 75 ? 'Taça da Felicidade (1.5L)' : 'Torta Holandesa');
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 Sobremesa: ${nomeSobremesa}</span> <strong>R$ ${valSobremesa.toFixed(2).replace('.', ',')}</strong></div>`;
+            // 5. Avalia Sobremesas (Bolo de Pote / Fatia, Prontas e Copo da Felicidade)
+            const massaSobremesa = document.getElementById('tipo-massa-sobremesa').value;
+            if (massaSobremesa) {
+                let valBoloPote = 15.00; // Preço base fixo de exemplo para bolo de pote / fatia
+                total += valBoloPote;
+                let r1Pote = document.getElementById('recheio-sobremesa-1').value;
+                let r2Pote = document.getElementById('recheio-sobremesa-2').value;
+                let textoPoteRecheio = r1Pote ? r1Pote : '';
+                if (r2Pote) textoPoteRecheio += `, ${r2Pote}`;
+
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍰 Bolo de Pote / Fatia<br><small style="color: #666;">Massa: ${massaSobremesa} | Recheios: ${textoPoteRecheio || 'Nenhum'}</small></span> <strong>R$ ${valBoloPote.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
-            // 6. Avalia Bolo Caseiro (Preço fixo base de R$ 25,00 para o caseiro montado, ajustável se necessário)
+            const selectPronta = document.getElementById('sobremesa-pronta');
+            if (selectPronta.value) {
+                let textoPronta = selectPronta.options[selectPronta.selectedIndex].text;
+                let valPronta = 50.00;
+                if (textoPronta.includes('45,00')) valPronta = 45.00;
+                if (textoPronta.includes('55,00')) valPronta = 55.00;
+                if (textoPronta.includes('60,00')) valPronta = 60.00;
+
+                total += valPronta;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 ${textoPronta}</span></div>`;
+            }
+
+            const baseCopo = document.getElementById('base-copo-felicidade').value;
+            if (baseCopo) {
+                let valCopo = 22.00; // Preço base fixo para o copo da felicidade
+                total += valCopo;
+                let rCopo1 = document.getElementById('recheio-copo-1').value;
+                let rCopo2 = document.getElementById('recheio-copo-2').value;
+                let textoCopoRecheio = rCopo1 ? rCopo1 : '';
+                if (rCopo2) textoCopoRecheio += `, ${rCopo2}`;
+
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍧 Copo da Felicidade<br><small style="color: #666;">Base: ${baseCopo} | Recheios: ${textoCopoRecheio || 'Nenhum'}</small></span> <strong>R$ ${valCopo.toFixed(2).replace('.', ',')}</strong></div>`;
+            }
+
+            // 6. Avalia Bolo Caseiro
             const massaCaseiro = document.getElementById('massa-bolo-caseiro').value;
             const recheioCaseiro = document.getElementById('recheio-bolo-caseiro').value;
             if (massaCaseiro) {
@@ -799,10 +900,12 @@
             const valFinos = document.getElementById('qtd-doces-finos').value;
             const valTrad = document.getElementById('qtd-doces-tradicionais').value;
             const valGourmet = document.getElementById('qtd-doces-gourmet').value;
-            const valSobremesa = document.getElementById('item-sobremesa').value;
+            const massaSobremesa = document.getElementById('tipo-massa-sobremesa').value;
+            const sobremesaPronta = document.getElementById('sobremesa-pronta').value;
+            const baseCopo = document.getElementById('base-copo-felicidade').value;
             const massaCaseiro = document.getElementById('massa-bolo-caseiro').value;
 
-            if (temBolo || valFinos || valTrad || valGourmet || valSobremesa || massaCaseiro) {
+            if (temBolo || valFinos || valTrad || valGourmet || massaSobremesa || sobremesaPronta || baseCopo || massaCaseiro) {
                 temItem = true;
             }
 
@@ -885,9 +988,25 @@
                 mensagem += "\n";
             }
 
-            if (valSobremesa) {
-                let nomeSobremesa = valSobremesa === '50' ? 'Pudim Cremoso GG' : (valSobremesa === '75' ? 'Taça da Felicidade (1.5L)' : 'Torta Holandesa');
-                mensagem += `🍮 *Sobremesa:* ${nomeSobremesa}\n\n`;
+            if (massaSobremesa) {
+                const r1Pote = document.getElementById('recheio-sobremesa-1').value;
+                const r2Pote = document.getElementById('recheio-sobremesa-2').value;
+                mensagem += `🍰 *Bolo de Pote / Fatia de Bolo*\n`;
+                mensagem += `- Massa: ${massaSobremesa}\n`;
+                mensagem += `- Recheios: ${r1Pote || 'Nenhum'}${r2Pote ? ', ' + r2Pote : ''}\n\n`;
+            }
+
+            if (sobremesaPronta) {
+                const selectPronta = document.getElementById('sobremesa-pronta');
+                mensagem += `🍮 *Sobremesa Pronta:* ${selectPronta.options[selectPronta.selectedIndex].text}\n\n`;
+            }
+
+            if (baseCopo) {
+                const rCopo1 = document.getElementById('recheio-copo-1').value;
+                const rCopo2 = document.getElementById('recheio-copo-2').value;
+                mensagem += `🍧 *Copo da Felicidade*\n`;
+                mensagem += `- Sabor Base: ${baseCopo}\n`;
+                mensagem += `- Recheios: ${rCopo1 || 'Nenhum'}${rCopo2 ? ', ' + rCopo2 : ''}\n\n`;
             }
 
             if (massaCaseiro) {
