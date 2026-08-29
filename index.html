@@ -4,35 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=26">
+    <link rel="stylesheet" href="style.css?v=27">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .status-loja {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.8);
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
             margin-top: 10px;
         }
-        .status-aberto {
-            border: 1px solid rgba(40, 167, 69, 0.4);
-            color: #1e7e34;
-        }
-        .status-fechado {
-            border: 1px solid rgba(220, 53, 69, 0.4);
-            color: #bd2130;
-        }
-        .bolinha-status {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
+        .checkbox-grid label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: normal;
+            cursor: pointer;
+            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -69,10 +58,6 @@
             <div class="hero-content">
                 <h1>Doces que tornam seus momentos especiais</h1>
                 <p>Bolos artesanais, doces finos e sobremesas feitas com carinho.</p>
-                <div class="status-loja" id="status-loja-container">
-                    <span class="bolinha-status" id="bolinha-status"></span> 
-                    <span id="texto-status">Verificando horário...</span>
-                </div>
             </div>
             <img src="imagens/logo.png" alt="Suellen Cakes Logo" class="hero-logo-destaque">
         </section>
@@ -169,8 +154,7 @@
             <div class="info-contato">
                 <p><strong>WhatsApp:</strong> (27) 99533-6204</p>
                 <p><strong>Instagram:</strong> @suellencakes</p>
-                <p><strong>Localização:</strong> Rua Topógrafo Raimundo Nonato, 117 - Bairro São Francisco, CEP: 35900-612
-       </p>
+                <p><strong>Localização:</strong> Rua Topógrafo Raimundo Nonato, 117 - Bairro São Francisco, CEP: 35900-612</p>
             </div>
         </section>
     </main>
@@ -301,12 +285,47 @@
                     <div id="painel-montar-doces-tradicionais" class="item-categoria" style="display: none;">
                         <div class="painel-opcoes">
                             <div class="grupo-campo">
-                                <label for="qtd-doces-tradicionais"><strong>Quantidade e Tipo:</strong></label>
+                                <label for="qtd-doces-tradicionais"><strong>Quantidade de Doces:</strong></label>
                                 <select id="qtd-doces-tradicionais" onchange="calcularTotal()">
-                                    <option value="" selected disabled>-- Selecione uma opção --</option>
-                                    <option value="45">50 Brigadeiros Tradicionais - R$ 45,00</option>
-                                    <option value="85">100 Brigadeiros Tradicionais - R$ 85,00</option>
+                                    <option value="" selected disabled>-- Selecione a quantidade --</option>
+                                    <option value="42.50">50 doces (R$ 0,85 un)</option>
+                                    <option value="85.00">100 doces (R$ 0,85 un)</option>
+                                    <option value="127.50">150 doces (R$ 0,85 un)</option>
+                                    <option value="170.00">200 doces (R$ 0,85 un)</option>
+                                    <option value="212.50">250 doces (R$ 0,85 un)</option>
+                                    <option value="255.00">300 doces (R$ 0,85 un)</option>
+                                    <option value="297.50">350 doces (R$ 0,85 un)</option>
+                                    <option value="340.00">400 doces (R$ 0,85 un)</option>
+                                    <option value="382.50">450 doces (R$ 0,85 un)</option>
+                                    <option value="425.00">500 doces (R$ 0,85 un)</option>
+                                    <option value="467.50">550 doces (R$ 0,85 un)</option>
+                                    <option value="510.00">600 doces (R$ 0,85 un)</option>
+                                    <option value="552.50">650 doces (R$ 0,85 un)</option>
+                                    <option value="595.00">700 doces (R$ 0,85 un)</option>
+                                    <option value="637.50">750 doces (R$ 0,85 un)</option>
+                                    <option value="680.00">800 doces (R$ 0,85 un)</option>
+                                    <option value="722.50">850 doces (R$ 0,85 un)</option>
+                                    <option value="765.00">900 doces (R$ 0,85 un)</option>
+                                    <option value="807.50">950 doces (R$ 0,85 un)</option>
+                                    <option value="850.00">1000 doces (R$ 0,85 un)</option>
                                 </select>
+                            </div>
+                            <div class="grupo-campo">
+                                <label><strong>Escolha os Sabores (pode selecionar quantos quiser):</strong></label>
+                                <div class="checkbox-grid">
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Beijinho" onchange="calcularTotal()"> Beijinho</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Brigadeiro" onchange="calcularTotal()"> Brigadeiro</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Brigadeiro Branco" onchange="calcularTotal()"> Brigadeiro Branco</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Brigadeiro de Amendoim" onchange="calcularTotal()"> Brigadeiro de Amendoim</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Brigadeiro de Limão" onchange="calcularTotal()"> Brigadeiro de Limão</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Brigadeiro de Ninho" onchange="calcularTotal()"> Brigadeiro de Ninho</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Brigadeiro de Oreo" onchange="calcularTotal()"> Brigadeiro de Oreo</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Cajuzinho" onchange="calcularTotal()"> Cajuzinho</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Côco" onchange="calcularTotal()"> Côco</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Moranguinho" onchange="calcularTotal()"> Moranguinho</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Ninho Cru" onchange="calcularTotal()"> Ninho Cru</label>
+                                    <label><input type="checkbox" name="sabor-tradicional" value="Olho de Sogra" onchange="calcularTotal()"> Olho de Sogra</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -463,7 +482,6 @@
             const pai = elementoCard.parentElement;
             pai.querySelectorAll('.card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
             
-            // Se já estava selecionado, desmarca
             const input = document.getElementById('item-sobremesa');
             if (input.value === valor) {
                 input.value = "";
@@ -478,7 +496,6 @@
             const pai = elementoCard.parentElement;
             pai.querySelectorAll('.card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
             
-            // Se já estava selecionado, desmarca
             const input = document.getElementById('item-caseiro');
             if (input.value === valor) {
                 input.value = "";
@@ -489,41 +506,9 @@
             calcularTotal();
         }
 
-        function verificarStatusLoja() {
-            const agora = new Date();
-            const diaSemana = agora.getDay();
-            const hora = agora.getHours();
-            const minutos = agora.getMinutes();
-            const horaAtualDecimal = hora + minutos / 60;
-
-            let aberto = false;
-            if (diaSemana >= 1 && diaSemana <= 6) {
-                if (horaAtualDecimal >= 8 && horaAtualDecimal < 18) {
-                    aberto = true;
-                }
-            }
-
-            const containerStatus = document.getElementById('status-loja-container');
-            const bolinha = document.getElementById('bolinha-status');
-            const texto = document.getElementById('texto-status');
-
-            if (bolinha && texto && containerStatus) {
-                if (aberto) {
-                    bolinha.style.backgroundColor = "#28a745";
-                    texto.innerHTML = "<strong>Estamos abertos! Faça seu pedido.</strong>";
-                    containerStatus.className = "status-loja status-aberto";
-                } else {
-                    bolinha.style.backgroundColor = "#dc3545";
-                    texto.innerHTML = "<strong>Estamos fechados no momento.</strong>";
-                    containerStatus.className = "status-loja status-fechado";
-                }
-            }
-        }
-
         window.onload = function() {
             popularSelectsRecheio();
             atualizarTopoGeral();
-            verificarStatusLoja();
             
             document.getElementById('forma-entrega').value = 'retirada';
             document.getElementById('painel-frete').style.display = 'none';
@@ -578,7 +563,6 @@
             categoriaAtualAtiva = categoria;
             mostrarTela('tela-montagem');
 
-            // Esconde todos os painéis e mostra apenas o da categoria clicada
             document.getElementById('painel-montar-bolo').style.display = (categoria === 'bolo') ? 'block' : 'none';
             document.getElementById('painel-montar-doces-finos').style.display = (categoria === 'doces-finos') ? 'block' : 'none';
             document.getElementById('painel-montar-doces-tradicionais').style.display = (categoria === 'doces-tradicionais') ? 'block' : 'none';
@@ -660,8 +644,16 @@
             const valDocesTrad = parseFloat(document.getElementById('qtd-doces-tradicionais').value) || 0;
             if (valDocesTrad > 0) {
                 total += valDocesTrad;
-                const textoOpcaoTrad = document.getElementById('qtd-doces-tradicionais').options[document.getElementById('qtd-doces-tradicionais').selectedIndex].text;
-                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoTrad}</span></div>`;
+                const selectTrad = document.getElementById('qtd-doces-tradicionais');
+                const textoOpcaoTrad = selectTrad.options[selectTrad.selectedIndex].text.split('(')[0].trim();
+                
+                let saboresSelecionados = [];
+                document.querySelectorAll('input[name="sabor-tradicional"]:checked').forEach(cb => {
+                    saboresSelecionados.push(cb.value);
+                });
+
+                let textoSabores = saboresSelecionados.length > 0 ? `<br><small style="color: #666;">Sabores: ${saboresSelecionados.join(', ')}</small>` : '';
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoTrad} (${valDocesTrad.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})})${textoSabores}</span></div>`;
             }
 
             // 4. Avalia Doces Gourmet
@@ -777,7 +769,16 @@
 
             if (valTrad) {
                 const selectDoces = document.getElementById('qtd-doces-tradicionais');
-                mensagem += `🍬 *Doces Tradicionais:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
+                const textoQtd = selectDoces.options[selectDoces.selectedIndex].text.split('(')[0].trim();
+                let saboresSelecionados = [];
+                document.querySelectorAll('input[name="sabor-tradicional"]:checked').forEach(cb => {
+                    saboresSelecionados.push(cb.value);
+                });
+                mensagem += `🍬 *Doces Tradicionais:* ${textoQtd}\n`;
+                if (saboresSelecionados.length > 0) {
+                    mensagem += `- Sabores: ${saboresSelecionados.join(', ')}\n`;
+                }
+                mensagem += "\n";
             }
 
             if (valGourmet) {
