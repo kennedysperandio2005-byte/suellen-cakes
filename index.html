@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suellen Cakes | Confeitaria Artesanal</title>
-    <link rel="stylesheet" href="style.css?v=25">
+    <link rel="stylesheet" href="style.css?v=26">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -328,20 +328,20 @@
                             <div class="grupo-campo">
                                 <label><strong>Escolha a Sobremesa:</strong></label>
                                 <div class="grid-selecao-fotos">
-                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-sobremesa', '50', this)">
+                                    <div class="card-opcao-foto" onclick="selecionarSobremesa('50', this)">
                                         <img src="imagens/pudim.jpg" alt="Pudim">
                                         <span>Pudim Cremoso GG<br><strong>R$ 50,00</strong></span>
                                     </div>
-                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-sobremesa', '75', this)">
+                                    <div class="card-opcao-foto" onclick="selecionarSobremesa('75', this)">
                                         <img src="imagens/taca.jpg" alt="Taça">
                                         <span>Taça da Felicidade (1.5L)<br><strong>R$ 75,00</strong></span>
                                     </div>
-                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-sobremesa', '65', this)">
+                                    <div class="card-opcao-foto" onclick="selecionarSobremesa('65', this)">
                                         <img src="imagens/torta.jpg" alt="Torta">
                                         <span>Torta Holandesa<br><strong>R$ 65,00</strong></span>
                                     </div>
                                 </div>
-                                <input type="hidden" id="item-sobremesa" value="" onchange="calcularTotal()">
+                                <input type="hidden" id="item-sobremesa" value="">
                             </div>
                         </div>
                     </div>
@@ -351,20 +351,20 @@
                             <div class="grupo-campo">
                                 <label><strong>Escolha o Bolo Caseiro:</strong></label>
                                 <div class="grid-selecao-fotos">
-                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-caseiro', '25', this)">
+                                    <div class="card-opcao-foto" onclick="selecionarCaseiro('25', this)">
                                         <img src="imagens/cenoura.jpg" alt="Cenoura">
                                         <span>Cenoura com Vulcão<br><strong>R$ 25,00</strong></span>
                                     </div>
-                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-caseiro', '22', this)">
+                                    <div class="card-opcao-foto" onclick="selecionarCaseiro('22', this)">
                                         <img src="imagens/fuba.jpg" alt="Fubá">
                                         <span>Fubá com Goiabada<br><strong>R$ 22,00</strong></span>
                                     </div>
-                                    <div class="card-opcao-foto" onclick="selecionarOpcaoInterna('item-caseiro', '28', this)">
+                                    <div class="card-opcao-foto" onclick="selecionarCaseiro('28', this)">
                                         <img src="imagens/ninho.jpg" alt="Ninho">
                                         <span>Ninho com Nutella<br><strong>R$ 28,00</strong></span>
                                     </div>
                                 </div>
-                                <input type="hidden" id="item-caseiro" value="" onchange="calcularTotal()">
+                                <input type="hidden" id="item-caseiro" value="">
                             </div>
                         </div>
                     </div>
@@ -458,11 +458,33 @@
             }
         }
 
-        function selecionarOpcaoInterna(idInput, valor, elementoCard) {
+        function selecionarSobremesa(valor, elementoCard) {
             const pai = elementoCard.parentElement;
             pai.querySelectorAll('.card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
-            elementoCard.classList.add('selecionado');
-            document.getElementById(idInput).value = valor;
+            
+            // Se já estava selecionado, desmarca
+            const input = document.getElementById('item-sobremesa');
+            if (input.value === valor) {
+                input.value = "";
+            } else {
+                elementoCard.classList.add('selecionado');
+                input.value = valor;
+            }
+            calcularTotal();
+        }
+
+        function selecionarCaseiro(valor, elementoCard) {
+            const pai = elementoCard.parentElement;
+            pai.querySelectorAll('.card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
+            
+            // Se já estava selecionado, desmarca
+            const input = document.getElementById('item-caseiro');
+            if (input.value === valor) {
+                input.value = "";
+            } else {
+                elementoCard.classList.add('selecionado');
+                input.value = valor;
+            }
             calcularTotal();
         }
 
@@ -555,54 +577,21 @@
             categoriaAtualAtiva = categoria;
             mostrarTela('tela-montagem');
 
-            document.getElementById('painel-montar-bolo').style.display = 'none';
-            document.getElementById('painel-montar-doces-finos').style.display = 'none';
-            document.getElementById('painel-montar-doces-tradicionais').style.display = 'none';
-            document.getElementById('painel-montar-doces-gourmet').style.display = 'none';
-            document.getElementById('painel-montar-sobremesa').style.display = 'none';
-            document.getElementById('painel-montar-caseiro').style.display = 'none';
+            // Esconde todos os painéis e mostra apenas o da categoria clicada
+            document.getElementById('painel-montar-bolo').style.display = (categoria === 'bolo') ? 'block' : 'none';
+            document.getElementById('painel-montar-doces-finos').style.display = (categoria === 'doces-finos') ? 'block' : 'none';
+            document.getElementById('painel-montar-doces-tradicionais').style.display = (categoria === 'doces-tradicionais') ? 'block' : 'none';
+            document.getElementById('painel-montar-doces-gourmet').style.display = (categoria === 'doces-gourmet') ? 'block' : 'none';
+            document.getElementById('painel-montar-sobremesa').style.display = (categoria === 'sobremesa') ? 'block' : 'none';
+            document.getElementById('painel-montar-caseiro').style.display = (categoria === 'caseiro') ? 'block' : 'none';
 
             let tituloTela = "Monte Seu Pedido";
-
-            if (categoria === 'bolo') {
-                document.getElementById('painel-montar-bolo').style.display = 'block';
-                tituloTela = "Monte Seu Bolo Festivo";
-                document.getElementById('tipo-bolo').value = "1";
-                document.getElementById('massa-bolo').selectedIndex = 0;
-                document.getElementById('tamanho-andar-1').selectedIndex = 0;
-                popularSelectsRecheio();
-                atualizarAndaresBolo();
-                atualizarTopoGeral();
-                document.getElementById('topo-bolo-geral').selectedIndex = 0;
-            } else if (categoria === 'doces-finos') {
-                document.getElementById('painel-montar-doces-finos').style.display = 'block';
-                tituloTela = "Escolher Doces Finos";
-                document.getElementById('qtd-doces-finos').selectedIndex = 0;
-            } else if (categoria === 'doces-tradicionais') {
-                document.getElementById('painel-montar-doces-tradicionais').style.display = 'block';
-                tituloTela = "Escolher Doces Tradicionais";
-                document.getElementById('qtd-doces-tradicionais').selectedIndex = 0;
-            } else if (categoria === 'doces-gourmet') {
-                document.getElementById('painel-montar-doces-gourmet').style.display = 'block';
-                tituloTela = "Escolher Doces Gourmet";
-                document.getElementById('qtd-doces-gourmet').selectedIndex = 0;
-            } else if (categoria === 'sobremesa') {
-                document.getElementById('painel-montar-sobremesa').style.display = 'block';
-                tituloTela = "Escolher Sobremesa";
-                document.getElementById('item-sobremesa').value = "";
-                document.querySelectorAll('#painel-montar-sobremesa .card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
-            } else if (categoria === 'caseiro') {
-                document.getElementById('painel-montar-caseiro').style.display = 'block';
-                tituloTela = "Escolher Bolo Caseiro";
-                document.getElementById('item-caseiro').value = "";
-                document.querySelectorAll('#painel-montar-caseiro .card-opcao-foto').forEach(c => c.classList.remove('selecionado'));
-            }
-
-            document.getElementById('forma-entrega').value = 'retirada';
-            document.getElementById('painel-frete').style.display = 'none';
-            if(document.getElementById('endereco-cliente')) {
-                document.getElementById('endereco-cliente').value = '';
-            }
+            if (categoria === 'bolo') tituloTela = "Monte Seu Bolo Festivo";
+            else if (categoria === 'doces-finos') tituloTela = "Escolher Doces Finos";
+            else if (categoria === 'doces-tradicionais') tituloTela = "Escolher Doces Tradicionais";
+            else if (categoria === 'doces-gourmet') tituloTela = "Escolher Doces Gourmet";
+            else if (categoria === 'sobremesa') tituloTela = "Escolher Sobremesa";
+            else if (categoria === 'caseiro') tituloTela = "Escolher Bolo Caseiro";
 
             document.getElementById('titulo-tela-montagem').innerText = tituloTela;
             calcularTotal();
@@ -627,74 +616,78 @@
             let total = 0;
             let resumoItensHTML = '';
 
-            if (categoriaAtualAtiva === 'bolo') {
-                const tamanho1 = document.getElementById('tamanho-andar-1').value;
-                const recheio1 = document.getElementById('r1-andar-1').value;
+            // 1. Avalia Bolo Festivo
+            const tamanho1 = document.getElementById('tamanho-andar-1').value;
+            const recheio1 = document.getElementById('r1-andar-1').value;
+            if (tamanho1 && recheio1) {
+                const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
+                let subtotalBolo = 0;
 
-                if (tamanho1 && recheio1) {
-                    const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
-                    let subtotalBolo = 0;
+                if (document.getElementById('massa-bolo').value.includes('Red Velvet')) subtotalBolo += 10;
 
-                    if (document.getElementById('massa-bolo').value.includes('Red Velvet')) subtotalBolo += 10;
+                for (let andar = 1; andar <= qtdAndares; andar++) {
+                    const valTamanho = parseFloat(document.getElementById(`tamanho-andar-${andar}`).value);
+                    subtotalBolo += valTamanho;
 
-                    for (let andar = 1; andar <= qtdAndares; andar++) {
-                        const valTamanho = parseFloat(document.getElementById(`tamanho-andar-${andar}`).value);
-                        subtotalBolo += valTamanho;
+                    const r1 = document.getElementById(`r1-andar-${andar}`).value;
+                    const r2 = document.getElementById(`r2-andar-${andar}`).value;
+                    const r3 = document.getElementById(`r3-andar-${andar}`).value;
 
-                        const r1 = document.getElementById(`r1-andar-${andar}`).value;
-                        const r2 = document.getElementById(`r2-andar-${andar}`).value;
-                        const r3 = document.getElementById(`r3-andar-${andar}`).value;
-
-                        if (r1 && r1.includes('Nutella')) subtotalBolo += 15;
-                        if (r2 && r2.includes('Nutella')) subtotalBolo += 15;
-                        if (r3 && r3.includes('Nutella')) subtotalBolo += 15;
-                    }
-
-                    const valTopoGeral = parseFloat(document.getElementById('topo-bolo-geral').value) || 0;
-                    if (valTopoGeral > 0) {
-                        subtotalBolo += valTopoGeral;
-                    }
-
-                    total += subtotalBolo;
-                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎂 Bolo Personalizado (${qtdAndares} Andar/es)</span> <strong>R$ ${subtotalBolo.toFixed(2).replace('.', ',')}</strong></div>`;
+                    if (r1 && r1.includes('Nutella')) subtotalBolo += 15;
+                    if (r2 && r2.includes('Nutella')) subtotalBolo += 15;
+                    if (r3 && r3.includes('Nutella')) subtotalBolo += 15;
                 }
-            } else if (categoriaAtualAtiva === 'doces-finos') {
-                const valDocesStr = document.getElementById('qtd-doces-finos').value;
-                if (valDocesStr) {
-                    const valDoces = parseFloat(valDocesStr);
-                    total += valDoces;
-                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces Finos</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
+
+                const valTopoGeral = parseFloat(document.getElementById('topo-bolo-geral').value) || 0;
+                if (valTopoGeral > 0) {
+                    subtotalBolo += valTopoGeral;
                 }
-            } else if (categoriaAtualAtiva === 'doces-tradicionais') {
-                const valDocesStr = document.getElementById('qtd-doces-tradicionais').value;
-                if (valDocesStr) {
-                    const valDoces = parseFloat(valDocesStr);
-                    total += valDoces;
-                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces Tradicionais</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
-                }
-            } else if (categoriaAtualAtiva === 'doces-gourmet') {
-                const valDocesStr = document.getElementById('qtd-doces-gourmet').value;
-                if (valDocesStr) {
-                    const valDoces = parseFloat(valDocesStr);
-                    total += valDoces;
-                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 Doces Gourmet</span> <strong>R$ ${valDoces.toFixed(2).replace('.', ',')}</strong></div>`;
-                }
-            } else if (categoriaAtualAtiva === 'sobremesa') {
-                const valSobremesaStr = document.getElementById('item-sobremesa').value;
-                if (valSobremesaStr) {
-                    const valSobremesa = parseFloat(valSobremesaStr);
-                    total += valSobremesa;
-                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 Sobremesa</span> <strong>R$ ${valSobremesa.toFixed(2).replace('.', ',')}</strong></div>`;
-                }
-            } else if (categoriaAtualAtiva === 'caseiro') {
-                const valCaseiroStr = document.getElementById('item-caseiro').value;
-                if (valCaseiroStr) {
-                    const valCaseiro = parseFloat(valCaseiroStr);
-                    total += valCaseiro;
-                    resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro</span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
-                }
+
+                total += subtotalBolo;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🎂 Bolo Personalizado (${qtdAndares} Andar/es)</span> <strong>R$ ${subtotalBolo.toFixed(2).replace('.', ',')}</strong></div>`;
             }
 
+            // 2. Avalia Doces Finos
+            const valDocesFinos = parseFloat(document.getElementById('qtd-doces-finos').value) || 0;
+            if (valDocesFinos > 0) {
+                total += valDocesFinos;
+                const textoOpcaoFinos = document.getElementById('qtd-doces-finos').options[document.getElementById('qtd-doces-finos').selectedIndex].text;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoFinos}</span></div>`;
+            }
+
+            // 3. Avalia Doces Tradicionais
+            const valDocesTrad = parseFloat(document.getElementById('qtd-doces-tradicionais').value) || 0;
+            if (valDocesTrad > 0) {
+                total += valDocesTrad;
+                const textoOpcaoTrad = document.getElementById('qtd-doces-tradicionais').options[document.getElementById('qtd-doces-tradicionais').selectedIndex].text;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoTrad}</span></div>`;
+            }
+
+            // 4. Avalia Doces Gourmet
+            const valDocesGourmet = parseFloat(document.getElementById('qtd-doces-gourmet').value) || 0;
+            if (valDocesGourmet > 0) {
+                total += valDocesGourmet;
+                const textoOpcaoGourmet = document.getElementById('qtd-doces-gourmet').options[document.getElementById('qtd-doces-gourmet').selectedIndex].text;
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍬 ${textoOpcaoGourmet}</span></div>`;
+            }
+
+            // 5. Avalia Sobremesa
+            const valSobremesa = parseFloat(document.getElementById('item-sobremesa').value) || 0;
+            if (valSobremesa > 0) {
+                total += valSobremesa;
+                let nomeSobremesa = valSobremesa === 50 ? 'Pudim Cremoso GG' : (valSobremesa === 75 ? 'Taça da Felicidade (1.5L)' : 'Torta Holandesa');
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🍮 Sobremesa: ${nomeSobremesa}</span> <strong>R$ ${valSobremesa.toFixed(2).replace('.', ',')}</strong></div>`;
+            }
+
+            // 6. Avalia Bolo Caseiro
+            const valCaseiro = parseFloat(document.getElementById('item-caseiro').value) || 0;
+            if (valCaseiro > 0) {
+                total += valCaseiro;
+                let nomeCaseiro = valCaseiro === 25 ? 'Cenoura com Vulcão' : (valCaseiro === 22 ? 'Fubá com Goiabada' : 'Ninho com Nutella');
+                resumoItensHTML += `<div class="item-resumo-carrinho"><span>🥮 Bolo Caseiro: ${nomeCaseiro}</span> <strong>R$ ${valCaseiro.toFixed(2).replace('.', ',')}</strong></div>`;
+            }
+
+            // 7. Frete
             const formaEntrega = document.getElementById('forma-entrega').value;
             if (formaEntrega === 'entrega' && total > 0) {
                 total += 50.00;
@@ -714,25 +707,24 @@
         }
 
         function enviarPedidoWhatsApp() {
-            let totalAtual = 0;
-            if (categoriaAtualAtiva === 'bolo') {
-                const tamanho1 = document.getElementById('tamanho-andar-1').value;
-                const recheio1 = document.getElementById('r1-andar-1').value;
-                if (tamanho1 && recheio1) totalAtual = 1;
-            } else if (categoriaAtualAtiva === 'doces-finos') {
-                if (document.getElementById('qtd-doces-finos').value) totalAtual = 1;
-            } else if (categoriaAtualAtiva === 'doces-tradicionais') {
-                if (document.getElementById('qtd-doces-tradicionais').value) totalAtual = 1;
-            } else if (categoriaAtualAtiva === 'doces-gourmet') {
-                if (document.getElementById('qtd-doces-gourmet').value) totalAtual = 1;
-            } else if (categoriaAtualAtiva === 'sobremesa') {
-                if (document.getElementById('item-sobremesa').value) totalAtual = 1;
-            } else if (categoriaAtualAtiva === 'caseiro') {
-                if (document.getElementById('item-caseiro').value) totalAtual = 1;
+            let temItem = false;
+            
+            const tamanho1 = document.getElementById('tamanho-andar-1').value;
+            const recheio1 = document.getElementById('r1-andar-1').value;
+            const temBolo = (tamanho1 && recheio1);
+            
+            const valFinos = document.getElementById('qtd-doces-finos').value;
+            const valTrad = document.getElementById('qtd-doces-tradicionais').value;
+            const valGourmet = document.getElementById('qtd-doces-gourmet').value;
+            const valSobremesa = document.getElementById('item-sobremesa').value;
+            const valCaseiro = document.getElementById('item-caseiro').value;
+
+            if (temBolo || valFinos || valTrad || valGourmet || valSobremesa || valCaseiro) {
+                temItem = true;
             }
 
-            if (totalAtual === 0) {
-                alert("Por favor, selecione as opções do produto antes de enviar o pedido.");
+            if (!temItem) {
+                alert("Por favor, selecione pelo menos um item para o orçamento antes de enviar.");
                 return;
             }
 
@@ -747,9 +739,9 @@
                 }
             }
 
-            let mensagem = "Olá, Suellen Cakes! Gostaria de fazer o seguinte pedido:\n\n";
+            let mensagem = "Olá, Suellen Cakes! Gostaria de fazer o seguinte orçamento/pedido:\n\n";
 
-            if (categoriaAtualAtiva === 'bolo') {
+            if (temBolo) {
                 const qtdAndares = parseInt(document.getElementById('tipo-bolo').value);
                 const massa = document.getElementById('massa-bolo').value;
                 mensagem += `🎂 *Bolo Personalizado* (${qtdAndares} Andar/es)\n`;
@@ -775,25 +767,30 @@
                     mensagem += `- Topo: ${textoTopoGeral}\n`;
                 }
                 mensagem += "\n";
-            } else if (categoriaAtualAtiva === 'doces-finos') {
+            }
+
+            if (valFinos) {
                 const selectDoces = document.getElementById('qtd-doces-finos');
-                const textoDoces = selectDoces.options[selectDoces.selectedIndex].text;
-                mensagem += `🍬 *Doces Finos:* ${textoDoces}\n\n`;
-            } else if (categoriaAtualAtiva === 'doces-tradicionais') {
+                mensagem += `🍬 *Doces Finos:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
+            }
+
+            if (valTrad) {
                 const selectDoces = document.getElementById('qtd-doces-tradicionais');
-                const textoDoces = selectDoces.options[selectDoces.selectedIndex].text;
-                mensagem += `🍬 *Doces Tradicionais:* ${textoDoces}\n\n`;
-            } else if (categoriaAtualAtiva === 'doces-gourmet') {
+                mensagem += `🍬 *Doces Tradicionais:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
+            }
+
+            if (valGourmet) {
                 const selectDoces = document.getElementById('qtd-doces-gourmet');
-                const textoDoces = selectDoces.options[selectDoces.selectedIndex].text;
-                mensagem += `🍬 *Doces Gourmet:* ${textoDoces}\n\n`;
-            } else if (categoriaAtualAtiva === 'sobremesa') {
-                const valSel = document.getElementById('item-sobremesa').value;
-                let nomeSobremesa = valSel === '50' ? 'Pudim Cremoso GG' : (valSel === '75' ? 'Taça da Felicidade (1.5L)' : 'Torta Holandesa');
+                mensagem += `🍬 *Doces Gourmet:* ${selectDoces.options[selectDoces.selectedIndex].text}\n\n`;
+            }
+
+            if (valSobremesa) {
+                let nomeSobremesa = valSobremesa === '50' ? 'Pudim Cremoso GG' : (valSobremesa === '75' ? 'Taça da Felicidade (1.5L)' : 'Torta Holandesa');
                 mensagem += `🍮 *Sobremesa:* ${nomeSobremesa}\n\n`;
-            } else if (categoriaAtualAtiva === 'caseiro') {
-                const valSel = document.getElementById('item-caseiro').value;
-                let nomeCaseiro = valSel === '25' ? 'Cenoura com Vulcão' : (valSel === '22' ? 'Fubá com Goiabada' : 'Ninho com Nutella');
+            }
+
+            if (valCaseiro) {
+                let nomeCaseiro = valCaseiro === '25' ? 'Cenoura com Vulcão' : (valCaseiro === '22' ? 'Fubá com Goiabada' : 'Ninho com Nutella');
                 mensagem += `🥮 *Bolo Caseiro:* ${nomeCaseiro}\n\n`;
             }
 
